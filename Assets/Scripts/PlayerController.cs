@@ -6,21 +6,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private Rigidbody rb;
+    private Unit playerUnit;
     
     [SerializeField] private float speed;
     [SerializeField] private Transform cam;
+    [SerializeField] PlayerHUD playerHUD; 
 
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        playerUnit = GetComponent<Unit>(); 
+        playerHUD.SetHUD(playerUnit);
     }
 
     // Update is called once per frame
     void Update() {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
-    
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
