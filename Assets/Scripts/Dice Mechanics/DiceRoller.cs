@@ -137,22 +137,18 @@ public class DiceRoller : MonoBehaviour
         print("New Number is : " + number);
 
         // Go back to hover position with new number as the current number.
-/*        IEnumerator LerpToHoverPosition(float speed)
+        IEnumerator rotateToPond(float time) 
         {
-            float startTime = Time.time;
-            Quaternion startRot = diceTransform.rotation;
-
-            while (diceTransform.rotation != targetRot)
+            yield return new WaitForSeconds(5f);
+            var originalTime = time;
+            var originalRotation = transform.rotation;
+            while (time > 0.0f)
             {
-                float timeSinceStarted = Time.time - startTime;
-                float progress = timeSinceStarted / speed;
-                diceTransform.rotation = Quaternion.Lerp(startRot, targetRot, progress);
-
+                time -= Time.deltaTime;
+                transform.rotation = Quaternion.Lerp(originalRotation, new Quaternion(0, 180, 0, 0), 1 - (time / originalTime));
                 yield return new WaitForFixedUpdate();
             }
-
-            print("Done");
-        }*/
+        }
     }
 
     /// <summary>
