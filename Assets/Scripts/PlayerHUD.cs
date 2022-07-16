@@ -9,24 +9,31 @@ public class PlayerHUD : MonoBehaviour {
     public Transform hpIconTransform;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI killText;
-    public TextMeshProUGUI bombText;
     public TextMeshProUGUI killedText;
     public TextMeshProUGUI gameOverKilledText;
     public GameObject playerAliveCanvas;
-    public GameObject playerDeadCanvas;
-    public Animator bombDiceAnim;
+    
+    
+    //public TextMeshProUGUI bombText;
+    //public Animator bombDiceAnim;
+    //private int currentBombTime;
+
+    public Slider bombSlider;
     
     public int nextWaveTimer;
-    public int bombCooldownTimer;
+    public int bombCooldown;
 
-    private int currentBombTime;
+    
     private int enemiesKilledAmount;
 
     private void Start() {
-        currentBombTime = bombCooldownTimer;
+        //currentBombTime = bombCooldown;
+
+        bombSlider.maxValue = bombCooldown;
+        bombSlider.value = 0;
 
         StartTimer(nextWaveTimer, false);
-        StartTimer(bombCooldownTimer, true);
+        StartTimer(bombSlider.value, true);
     }
 
     public void SetHUD(Unit unit) {
@@ -40,25 +47,30 @@ public class PlayerHUD : MonoBehaviour {
         }
     }
 
-    public void StartTimer(int time, bool isBombTimer) {
+    public void StartTimer(float time, bool isBombTimer) {
         StartCoroutine(GameTimer());
         
         IEnumerator GameTimer() {
-            while(time != 0) {
+            while(time >= 0) {
                 if(isBombTimer) {
-                    currentBombTime = time;
-                    print(currentBombTime);
-                    BombDice();
+                    bombSlider.value = time;
+                    time += bombSlider.maxValue/(100*bombCooldown);
+                    //BombDice();
+                    yield return new WaitForSecondsRealtime(0.01f);
                 }
-                else
+                else {
                     timerText.text = "Wave: \n" + time.ToString();
-                time -= 1;
-                yield return new WaitForSeconds(1);
+                    
+                    time -= 1;
+                    yield return new WaitForSeconds(1f);
+                }
+                
+                
             }
         }
     }
 
-    private void BombDice() {
+    /*private void BombDice() {
         switch(currentBombTime){
             case 3: 
                 bombDiceAnim.Play("3TO2");
@@ -70,7 +82,7 @@ public class PlayerHUD : MonoBehaviour {
                 bombDiceAnim.Play("1TO0");
                 break;
         }
-    }
+    }*/
 
     public void EnemyKilled() {
         enemiesKilledAmount += 1;
@@ -78,10 +90,10 @@ public class PlayerHUD : MonoBehaviour {
         gameOverKilledText.text = "Killed:\n" + enemiesKilledAmount.ToString();
     }
 
-    public void GameOver() {
+    /*public void GameOver() {
         playerAliveCanvas.SetActive(false);
         playerDeadCanvas.gameObject.SetActive(true);
         StopAllCoroutines();
-    }
+    }*/
 
 }
