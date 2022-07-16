@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 187959326838879636}
   - component: {fileID: 187959326838879643}
   - component: {fileID: 187959326838879632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &187959326838879632
 MonoBehaviour:
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 2762884660222580701}
   - component: {fileID: 8334608728323639167}
   - component: {fileID: 1477223890053866310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 5589819907067915835}
   - component: {fileID: 1381253004849162511}
   - component: {fileID: 6475856874310121155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 6228559140343369023}
   - component: {fileID: 6945123942472607880}
   - component: {fileID: 448515456376022222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 291836656918662848}
   - component: {fileID: 1573513122224637672}
   - component: {fileID: 2145902387594551868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 1585815462266066390}
   - component: {fileID: 3595285972647944476}
   - component: {fileID: 3595285972647944477}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4918876157032665616}
   - component: {fileID: 5694954978219804843}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dice Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 7838297037672445222}
   - component: {fileID: 208145516853176521}
   - component: {fileID: 733595478662436105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 3437240609702431991}
   - component: {fileID: 6791498810461199652}
   - component: {fileID: 2922732860620076711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 7415414002965412516}
   - component: {fileID: 2657917199869103770}
   - component: {fileID: 7200587977646090554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
