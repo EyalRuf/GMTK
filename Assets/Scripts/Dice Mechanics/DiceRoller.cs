@@ -58,17 +58,21 @@ public class DiceRoller : MonoBehaviour
     /// A diceroll as a consequence of an explosion at the sourcePosition.
     /// </summary>
     /// <param name="sourcePosition">The position of the center of the explosion</param>
-    /// <param name="explosionForce">The strength of the explosion at its core. Should decrease the further away the agent is from the source</param>
-    public void ExplosionDiceRoll(Vector3 sourcePosition, float explosionForce)
+    /// <param name="upForce">The strength with which the dice will be thrown in the air</param>
+    /// <param name="rotationForce">The strength with which the dice will be pushed in terms of rotation</param>
+    public void ExplosionDiceRoll(Vector3 sourcePosition, float upForce, float rotationForce)
     {
         if (rollerCR == null)
-            rollerCR = StartCoroutine(DiceRoll(sourcePosition, explosionForce));
+            rollerCR = StartCoroutine(DiceRoll(sourcePosition, upForce, rotationForce));
     }
-    private IEnumerator DiceRoll(Vector3 bombSourcePos, float force)
+    private IEnumerator DiceRoll(Vector3 bombSourcePos, float upForce, float rotationForce)
     {
         PreDiceRoll();
 
-        rb.AddExplosionForce(force, bombSourcePos, 2.5f);
+        rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
+
+        Vector3 direction = (transform.position - bombSourcePos).normalized;
+        rb.AddTorque(direction * rotationForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(0.25f);
         yield return new WaitUntil(() => rb.angularVelocity.magnitude < 0.05f);
