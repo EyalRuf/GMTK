@@ -24,6 +24,11 @@ public class EnemyStateMachine : BaseStateMachine
         RandomDice();
     }
 
+    private void OnEnable()
+    {
+        base.Start();
+    }
+
     /// <summary>
     /// Send the agent to a specified position
     /// </summary>
