@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     PlayerHUD playerHUD;
 
     [SerializeField]
-    private Transform objectTransform;
+    private Transform diceTransform;
 
     private void Start()
     {
@@ -36,10 +36,10 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask.NameToLayer("Player")))
         {
             Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
-            objectTransform.LookAt(pos);
+            transform.LookAt(pos);
         }
 
 
