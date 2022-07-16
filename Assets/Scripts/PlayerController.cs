@@ -1,28 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
+    private Transform cam;
     private Rigidbody rb;
     private Unit playerUnit;
-    
-    [SerializeField] private float speed;
-    [SerializeField] private Transform cam;
-    [SerializeField] PlayerHUD playerHUD; 
 
+    [SerializeField]
+    private float speed;
 
-    void Start() {
+    [SerializeField]
+    PlayerHUD playerHUD;
+
+    [SerializeField]
+    private Transform objectTransform;
+
+    private void Start()
+    {
         rb = GetComponent<Rigidbody>();
-        playerUnit = GetComponent<Unit>(); 
+        cam = Camera.main.transform;
+
+        playerUnit = GetComponent<Unit>();
         playerHUD.SetHUD(playerUnit);
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update()
+    {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+        {
+            Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
+            objectTransform.LookAt(pos);
+        }
+
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
@@ -34,8 +48,8 @@ public class PlayerController : MonoBehaviour {
         camF = camF.normalized;
         camR = camR.normalized;
 
-
-        if(move.magnitude >= 0.1f) {
+        if (move.magnitude >= 0.1f)
+        {
             rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
         }
 
