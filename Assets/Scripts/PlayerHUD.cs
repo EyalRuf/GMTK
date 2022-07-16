@@ -52,7 +52,6 @@ public class PlayerHUD : MonoBehaviour {
                 }
                 else
                     timerText.text = "Wave: \n" + time.ToString();
-
                 time -= 1;
                 yield return new WaitForSeconds(1);
             }
