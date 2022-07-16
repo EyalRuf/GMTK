@@ -10,11 +10,16 @@ public class PlayerController : MonoBehaviour
     private Transform camTransform;
     private Rigidbody rb;
     private Unit playerUnit;
+
     private Vector3 worldMousePos;
+    // Spear
+    public Spear spear;
 
     // For bomb placement
     public GameObject BombAsset;
+    public float BombCooldown = 5;
     private Bomb PlacedBomb;
+    private float TimeSinceBombDetonated = 0;
     
     public float speed;
     
@@ -68,15 +73,28 @@ public class PlayerController : MonoBehaviour
         camR = camR.normalized;
 
 
+
         rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
+
+        // Spear attacks
+        if (Input.GetMouseButtonDown(0))
+        {
+            spear.AttackIfPossible();
+        }
+
         
         // Bomb placement / detonation
-        if (Input.GetMouseButtonDown(0)) {
+        TimeSinceBombDetonated += Time.deltaTime;
+        
+        if (Input.GetMouseButtonDown(1)) {
 
             // If there is already a bomb, detonate it. If not, place one.
             if (PlacedBomb)
+            {
+                TimeSinceBombDetonated = 0;
                 PlacedBomb.Detonate();
-            else
+            }
+            else if (BombCooldown < TimeSinceBombDetonated)
             {
                 GameObject bomb = GameObject.Instantiate(BombAsset);
                 bomb.transform.position = worldMousePos;
