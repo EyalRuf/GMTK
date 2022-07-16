@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceBombDetonated = 0;
     
     public float speed;
-    
 
     [SerializeField]
     private float damping;
@@ -69,8 +68,6 @@ public class PlayerController : MonoBehaviour
         camR.y = 0;
         camF = camF.normalized;
         camR = camR.normalized;
-
-
 
         rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
 

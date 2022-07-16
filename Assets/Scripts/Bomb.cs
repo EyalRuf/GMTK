@@ -33,18 +33,6 @@ public class Bomb : MonoBehaviour
             Vector3 offset = position - die.transform.position;
             offset.y = 0;
 
-
-            
-            /*if (Vector3.SqrMagnitude(offset) < sqrBombRadius) {
-                Rigidbody dieRb = die.GetComponent<Rigidbody>();
-                DiceRoller diceRoller = die.GetComponent<DiceRoller>();
-                dieRb.AddExplosionForce(expolsionForce, position, 0);
-                diceRoller.RollDice();
-                print("HIT");
-
-                const float sqrBombRadius = 2f;
-                
-            }*/
             if (Vector3.SqrMagnitude(offset) < sqrBombRadius)
             {
                 die.ExplosionDiceRoll(transform.position, upForce, horizontalForce, rotationForce);
