@@ -17,9 +17,9 @@ public class PlayerController : MonoBehaviour
 
     // For bomb placement
     public GameObject BombAsset;
-    public float BombCooldown = 5;
+    public float BombCooldown = 10;
     private Bomb PlacedBomb;
-    private float TimeSinceBombDetonated = 0;
+    private float TimeSinceBombDetonated = 10;
     
     public float speed;
 
@@ -39,10 +39,13 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         camTransform = cam.transform;
 
-        playerUnit = GetComponent<Unit>();
-        playerHUD.SetHUD(playerUnit);
+        playerHUD = FindObjectOfType<PlayerHUD>();
 
-
+        if (playerHUD != null)
+        {
+            playerUnit = GetComponent<Unit>();
+            playerHUD.SetHUD(playerUnit);
+        }
     }
 
     private void Update()
@@ -57,7 +60,6 @@ public class PlayerController : MonoBehaviour
             var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
-
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
@@ -88,12 +90,14 @@ public class PlayerController : MonoBehaviour
             {
                 TimeSinceBombDetonated = 0;
                 PlacedBomb.Detonate();
+                playerHUD?.DetonateBomb();
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {
                 GameObject bomb = GameObject.Instantiate(BombAsset);
                 bomb.transform.position = worldMousePos;
                 PlacedBomb = bomb.GetComponent<Bomb>();
+                playerHUD?.SetBomb();
             }
         }
 
