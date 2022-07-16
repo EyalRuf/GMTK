@@ -16,6 +16,7 @@ public class LeaderboardController : MonoBehaviour
     [SerializeField] private GameObject submitScorePanel;
     [SerializeField] private Button submitScoreBtn;
     [SerializeField] private TextMeshProUGUI submitScoreBtnText;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject playAgainBtn;
 
     // Start is called before the first frame update
@@ -78,14 +79,16 @@ public class LeaderboardController : MonoBehaviour
         });
     }
 
-    internal void activatePostGame()
+    internal void activatePostGame(int score)
     {
         refreshPostGame();
+        scoreText.text = score + "";
         submitScorePanel.SetActive(true);
         playAgainBtn.SetActive(true);
     }
     internal void refreshPostGame()
     {
+        scoreText.text = "";
         submitScoreBtn.interactable = true;
         submitScoreBtnText.text = "Submit Score";
     }

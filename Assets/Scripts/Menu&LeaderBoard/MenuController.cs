@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -10,18 +12,20 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject InGamePanel;
 
     [Header("Other")]
-    [SerializeField] private LeaderboardController lc;
+    [SerializeField] private LeaderboardController leaderboard;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("LevelLoader")]
+    public Animator transition;
+    public float transitionTime = 1f;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        DontDestroyOnLoad(this.gameObject);
+
+        if (FindObjectsOfType<MenuController>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void GoToIngamePanel()
@@ -35,16 +39,19 @@ public class MenuController : MonoBehaviour
     public void OpenLeaderBoardFromMainMenu ()
     {
         MainMenuPanel.SetActive(false);
-        lc.FetchScores();
-        lc.disablePostGame();
+        leaderboard.FetchScores();
+        leaderboard.disablePostGame();
         LeaderBoardPanel.SetActive(true);
     }
 
     public void OpenLeaderBoardAfterGame()
     {
         InGamePanel.SetActive(false);
-        lc.FetchScores();
-        lc.activatePostGame();
+        leaderboard.FetchScores();
+
+        // SET ACTUAL SCORE
+        leaderboard.activatePostGame(10);
+
         LeaderBoardPanel.SetActive(true);
     }
 
@@ -54,7 +61,7 @@ public class MenuController : MonoBehaviour
         LeaderBoardPanel.SetActive(false);
         InGamePanel.SetActive(false);
 
-        lc.refreshPostGame();
+        leaderboard.refreshPostGame();
 
         MainMenuPanel.SetActive(true);
     }
@@ -62,5 +69,60 @@ public class MenuController : MonoBehaviour
     public void CloseGame()
     {
         Application.Quit();
+    }
+
+    // LEVEL LOADER
+    //function used to load the next level/scene 
+    public void LoadGameLevel()
+    {
+        StartCoroutine(LoadGameLevelCoRoutine());
+    }
+
+    public void LoadMenuLevel()
+    {
+        StartCoroutine(LoadMenuLevelCoRoutine());
+    }
+
+    IEnumerator LoadGameLevelCoRoutine()
+    {
+        transition.SetTrigger("StartCrossfade");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(1);
+        
+        transition.ResetTrigger("StartCrossfade");
+
+        ShowGamePanels();
+
+        yield return new WaitForSeconds(transitionTime);
+
+        transition.SetTrigger("StartCrossfade");
+    }
+    IEnumerator LoadMenuLevelCoRoutine()
+    {
+        transition.SetTrigger("StartCrossfade");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(0);
+
+        transition.ResetTrigger("StartCrossfade");
+
+        ShowMenuPanels();
+
+        yield return new WaitForSeconds(transitionTime);
+        
+        transition.SetTrigger("StartCrossfade");
+    }
+
+    private void ShowMenuPanels()
+    {
+        OpenLeaderBoardAfterGame();
+    }
+
+    private void ShowGamePanels()
+    {
+        GoToIngamePanel();
     }
 }
