@@ -2,6 +2,20 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    [SerializeField]
+    private float upForce = 3f;
+    [SerializeField]
+    private float horizontalForce = 3f;
+    [SerializeField]
+    private float rotationForce = 3f;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Detonate();
+        }
+    }
     public void Detonate()
     {
         DiceRoller[] dice = Object.FindObjectsOfType<DiceRoller>();
@@ -16,7 +30,7 @@ public class Bomb : MonoBehaviour
             const float sqrBombRadius = 2f;
             if (Vector3.SqrMagnitude(offset) < sqrBombRadius)
             {
-                // TODO: Throw away die
+                die.ExplosionDiceRoll(transform.position, upForce, horizontalForce, rotationForce);
             }
         }
 
