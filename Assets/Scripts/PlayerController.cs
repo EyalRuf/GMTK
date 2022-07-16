@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
+        // PROBLEM: Need to change what is 'forward' when dice is rotated. Lookat won't work anymore.
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
         {
             Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);

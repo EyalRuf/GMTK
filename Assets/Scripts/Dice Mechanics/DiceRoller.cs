@@ -7,7 +7,7 @@ public class DiceRoller : MonoBehaviour
     protected Rigidbody rb;
     private TMPro.TextMeshPro text;
     private Coroutine rollerCR;
-    public DiceState CurrentDiceState { get; set; } = DiceState.One;
+    public DiceStates CurrentDiceState { get; set; } = DiceStates.One;
     public float standardForce = 3f;
 
     [SerializeField]
@@ -101,10 +101,10 @@ public class DiceRoller : MonoBehaviour
     private void RandomDice()
     {
         int RandomInt = Random.Range(1, 7);
-        DiceState rdmDice = (DiceState)RandomInt;
+        DiceStates rdmDice = (DiceStates)RandomInt;
         UpdateDiceState(rdmDice);
     }
-    private void UpdateDiceState(DiceState newDiceValue)
+    private void UpdateDiceState(DiceStates newDiceValue)
     {
         CurrentDiceState = newDiceValue;
         text.SetText(((int)newDiceValue).ToString());
