@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -168,15 +168,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpIconTransform: {fileID: 1363061599}
-  gameOverPanel: {fileID: 0}
   timerText: {fileID: 633134946}
   killText: {fileID: 0}
-  bombText: {fileID: 0}
   killedText: {fileID: 0}
   gameOverKilledText: {fileID: 0}
-  CanvasGO: {fileID: 0}
+  playerAliveCanvas: {fileID: 0}
+  bombSlider: {fileID: 0}
   nextWaveTimer: 0
-  bombCooldownTimer: 0
+  bombCooldown: 0
 --- !u!1 &244181576
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
+  m_BindingMode: 0
   m_FollowOffset: {x: 13.039999, y: 21.402374, z: -5.88}
   m_XDamping: 1
   m_YDamping: 1
@@ -867,7 +866,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3161604, y: 1}
+    m_SensorSize: {x: 1.599022, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1759,9 +1758,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1304722430}
     - target: {fileID: 2213196630849646181, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
+      propertyPath: BombAsset
+      value: 
+      objectReference: {fileID: 1862130950}
+    - target: {fileID: 2213196630849646181, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 130590388}
+    - target: {fileID: 2213196630849646181, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
+      propertyPath: lookAtSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213196630849646181, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
+      propertyPath: mouseLookSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2213196630849646183, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: m_Name
       value: Player Dice
@@ -1784,19 +1795,19 @@ PrefabInstance:
       objectReference: {fileID: 1304722430}
     - target: {fileID: 2213196632098235939, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4847637
+      value: 0.48476365
       objectReference: {fileID: 0}
     - target: {fileID: 2213196632098235939, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.24446602
+      value: -0.24446599
       objectReference: {fileID: 0}
     - target: {fileID: 2213196632098235939, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.74983346
+      value: 0.7498335
       objectReference: {fileID: 0}
     - target: {fileID: 2213196632098235939, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.37814066
+      value: 0.3781407
       objectReference: {fileID: 0}
     - target: {fileID: 4596690119570814910, guid: b6181a3d8baaa1347b987c0e2650a0ca, type: 3}
       propertyPath: m_LocalPosition.z

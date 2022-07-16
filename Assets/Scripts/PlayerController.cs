@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform objectTransform;
 
+    [SerializeField]
+    float damping = 2;
+
+    private Vector3 worldMousePos;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,10 +41,12 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
-        {
-            Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
-            objectTransform.LookAt(pos);
+        Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
+        
+        if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
+            worldMousePos = rayInfo.point;
+            var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
 
 
