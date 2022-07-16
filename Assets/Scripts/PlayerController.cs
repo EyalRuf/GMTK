@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private Rigidbody rb;
+    private Unit playerUnit;
     
     [SerializeField] 
     private float speed;
@@ -14,6 +15,16 @@ public class PlayerController : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main.transform;
+    [SerializeField] private float speed;
+    [SerializeField] private Transform cam;
+    [SerializeField] PlayerHUD playerHUD; 
+
+
+    void Start() {
+        cam = Camera.main;
+        rb = GetComponent<Rigidbody>();
+        playerUnit = GetComponent<Unit>(); 
+        playerHUD.SetHUD(playerUnit);
     }
 
     private void Update()
@@ -26,6 +37,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
             objectTransform.LookAt(pos);
         }
+
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
