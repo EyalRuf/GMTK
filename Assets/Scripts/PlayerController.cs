@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PlayerHUD playerHUD;
 
-    [SerializeField]
-    private Transform diceTransform;
 
     private void Start()
     {
