@@ -217,7 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74743f34d78b0d41b01a5cb627104ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spear: {fileID: 0}
   BombAsset: {fileID: 0}
+  BombCooldown: 5
   speed: 6
   playerHUD: {fileID: 349870637}
   diceTransform: {fileID: 837358723843098129}
@@ -1275,7 +1277,7 @@ GameObject:
   - component: {fileID: 490943877}
   - component: {fileID: 490943876}
   - component: {fileID: 490943875}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
