@@ -17,18 +17,17 @@ public class LevelLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //using a button to load the next level/scene
-        if (Input.GetMouseButtonDown(0))
-        {
-            LoadNextLevel();
-        }
     }
 
     //function used to load the next level/scene 
-    public void LoadNextLevel()
+    public void LoadGameLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel(1));
+    }
 
+    public void LoadMenuLevel()
+    {
+        StartCoroutine(LoadLevel(0));
     }
 
     IEnumerator LoadLevel(int levelIndex)
@@ -38,8 +37,5 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(levelIndex);
-
-
     }
-
 }
