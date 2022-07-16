@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum DiceState
+public enum DiceStates
 {
     One = 1,
     Two = 2,
