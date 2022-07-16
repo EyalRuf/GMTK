@@ -9,10 +9,6 @@ public class PlayerHUD : MonoBehaviour {
     public Transform hpIconTransform;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI killText;
-    public TextMeshProUGUI killedText;
-    public TextMeshProUGUI gameOverKilledText;
-    public GameObject playerAliveCanvas;
-    
     
     //public TextMeshProUGUI bombText;
     //public Animator bombDiceAnim;
@@ -42,6 +38,16 @@ public class PlayerHUD : MonoBehaviour {
         }
     }
 
+    public void SetBomb()
+    {
+        bombTimerAnimator.SetTrigger("UseBomb");
+    }
+
+    public void DetonateBomb()
+    {
+        StartTimer(bombCooldown, true);
+    }
+
     public void StartTimer(float time, bool isBombTimer) {
         StartCoroutine(GameTimer());
         
@@ -49,9 +55,10 @@ public class PlayerHUD : MonoBehaviour {
 
             while(time >= 0) {
                 if(isBombTimer) {
-                    bombTimerAnimator.SetTrigger("UseBomb");
-                    yield return new WaitForSecondsRealtime(bombCooldown);
                     bombTimerAnimator.ResetTrigger("UseBomb");
+                    bombTimerAnimator.SetTrigger("Detonate");
+                    yield return new WaitForSecondsRealtime(bombCooldown);
+                    bombTimerAnimator.ResetTrigger("Detonate");
                 }
                 else {
                     timerText.text = "Wave: \n" + time.ToString();
@@ -75,18 +82,6 @@ public class PlayerHUD : MonoBehaviour {
                 bombDiceAnim.Play("1TO0");
                 break;
         }
-    }*/
-
-    public void EnemyKilled() {
-        enemiesKilledAmount += 1;
-        killedText.text = "Killed:\n" + enemiesKilledAmount.ToString();
-        gameOverKilledText.text = "Killed:\n" + enemiesKilledAmount.ToString();
-    }
-
-    /*public void GameOver() {
-        playerAliveCanvas.SetActive(false);
-        playerDeadCanvas.gameObject.SetActive(true);
-        StopAllCoroutines();
     }*/
 
 }
