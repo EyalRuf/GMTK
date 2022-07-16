@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float speed;
     [SerializeField] private Transform cam;
     [SerializeField] MeshRenderer render;
+    [SerializeField] float smashForce;
+    [SerializeField] bool instantSmash;
     
     
 
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour {
         float vertical = Input.GetAxis("Vertical");
 
         float smash = Input.GetAxis("Jump");
+
+        print(smash);
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
@@ -56,22 +60,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         if(!isGrounded) {
-            if(smash >= 0) {
+            if(smash > 0) {
                 print("SMASH!!");
+                rb.AddForce(Vector3.down * smashForce);
+                if(instantSmash) {
+                    
+                }
             }
         }
 
     }
-
-    private void OnTriggerStay(Collider other) {
-        if (other.transform.tag == "Ground") {
-            isGrounded = true;
-            Debug.Log("Grounded");
-        }
-        else{
-            isGrounded = false;
-            Debug.Log("Not Grounded!");
-        }
-    }
-
 }
