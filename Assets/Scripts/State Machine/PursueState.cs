@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class PursueState : BaseState
 {
-    public PursueState(BaseStateMachine ctx, BaseStateMachineFactory factory) : base(ctx, factory)
-    {
-    }
+    public PursueState(EnemyStateMachine ctx, EnemyStateFactory factory) : base(ctx, factory) {}
 
     public override void EnterState()
     {
@@ -18,6 +16,6 @@ public class PursueState : BaseState
 
     public override void UpdateBehaviour()
     {
-
+        _ctx.SetAgentDestination(_ctx.playerTransform);
     }
 }
