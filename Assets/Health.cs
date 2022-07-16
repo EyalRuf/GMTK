@@ -18,7 +18,8 @@ public class Health : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            print("Collided with player");
+            //print("Collided with player");
+            Damage(100);
         }
     }
 
@@ -26,7 +27,17 @@ public class Health : MonoBehaviour
     {
         if (!invincible)
             CurrentAmountOfHealth -= amount;
+
+        if (CurrentAmountOfHealth <= 0)
+            Die();
     }
+
+    public void Die()
+    {
+        print("Die, die");
+        gameObject.SetActive(false);
+    }
+
     public void Heal(int amount)
     {
         CurrentAmountOfHealth += amount;

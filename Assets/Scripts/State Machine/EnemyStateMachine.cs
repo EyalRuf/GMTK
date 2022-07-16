@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Health))]
 public class EnemyStateMachine : BaseStateMachine
 {
     private EnemyStateFactory StatesFactory;
