@@ -5,12 +5,17 @@ public class Unit : MonoBehaviour {
     
     public int maxHealth;
     public int currentHealth;
+    [SerializeField]
+    private float invincibleLength = 2f;
 
     private bool invincible = false;
 
     public bool Damage(int amount) {
         if (!invincible)
+        {
             currentHealth -= amount;
+            MakeInvincible(invincibleLength);
+        }
 
         if (currentHealth <= 0)
             return true;
@@ -22,7 +27,7 @@ public class Unit : MonoBehaviour {
         currentHealth += amount;
     }
 
-    private void MakeInvincible(int amountOfSeconds) {
+    private void MakeInvincible(float amountOfSeconds) {
         _ = StartCoroutine(InvincibleTimer());
 
         IEnumerator InvincibleTimer() {

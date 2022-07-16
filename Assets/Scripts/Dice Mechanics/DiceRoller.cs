@@ -5,27 +5,34 @@ public class DiceRoller : MonoBehaviour
 {
     #region Properties
     protected Rigidbody rb;
-    private TMPro.TextMeshPro text;
     private Coroutine rollerCR;
     public DiceStates CurrentDiceState { get; set; } = DiceStates.One;
     public float standardForce = 3f;
 
     [SerializeField]
     private float rollCooldownTimer = 2f;
+    [SerializeField]
+    private Rigidbody diceRb;
+    [SerializeField]
+    private Transform diceTransform;
+    private Vector3 hoverOffset;  // The height the dice hovers with above the platform
+
+    [SerializeField]
+    private NumberRotation[] rotations;
+
     private bool rollCooldown = false;
     #endregion
 
     public virtual void Start()
     {
         rb = GetComponentInChildren<Rigidbody>();
-        text = GetComponentInChildren<TMPro.TextMeshPro>();
+        hoverOffset = diceTransform.localPosition;
         RandomDice();
     }
 
     private void Update()
     {
         // What's currently up?
-        // Which direction is closest to Vector3.up?
         if (Input.GetKeyDown(KeyCode.Space))
             RollDice();
     }
@@ -33,45 +40,45 @@ public class DiceRoller : MonoBehaviour
     private DiceStates GetNumber()
     {
         float closestDistance = Mathf.Infinity;
-        Vector3 upside = transform.position + Vector3.up;
+        Vector3 upside = diceTransform.position + Vector3.up;
         DiceStates state = CurrentDiceState;
 
-        float forward = Vector3.Distance(transform.forward + transform.position, upside);
+        float forward = Vector3.Distance(diceTransform.forward + diceTransform.position, upside);
         if (forward < closestDistance)
         {
             closestDistance = forward;
             state = DiceStates.One;
         }
 
-        float back = Vector3.Distance(-transform.forward + transform.position, upside);
+        float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
         if (back < closestDistance)
         {
             closestDistance = back;
             state = DiceStates.Two;
         }
 
-        float left = Vector3.Distance(-transform.right + transform.position, upside);
+        float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
         if (left < closestDistance)
         {
             closestDistance = left;
             state = DiceStates.Three;
         }
 
-        float right = Vector3.Distance(transform.right + transform.position, upside);
+        float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
         if (right < closestDistance)
         {
             closestDistance = right;
             state = DiceStates.Four;
         }
 
-        float bottom = Vector3.Distance(-transform.up + transform.position, upside);
+        float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
         if (bottom < closestDistance)
         {
             closestDistance = bottom;
             state = DiceStates.Five;
         }
 
-        float up = Vector3.Distance(transform.up + transform.position, upside);
+        float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
         if (up < closestDistance)
         {
             state = DiceStates.Six;
@@ -95,15 +102,53 @@ public class DiceRoller : MonoBehaviour
     {
         PreDiceRoll();
 
-        rb.AddForce(Vector3.up * force, ForceMode.Impulse);
-        rb.AddTorque(Random.rotation.eulerAngles * force, ForceMode.Impulse);
+        //diceRb.useGravity = true;
+        diceRb.AddTorque(Random.rotation.eulerAngles * force, ForceMode.Impulse);
+        diceRb.angularDrag = 2.25f;
 
-        yield return new WaitForSeconds(0.25f);
-        yield return new WaitUntil(() => rb.angularVelocity.magnitude < 0.05f);
-        
-        _ = StartCoroutine(DiceRollCooldown());
+        yield return new WaitForSeconds(2f);
+
+        //_ = StartCoroutine(DiceRollCooldown());
+
+        //diceRb.useGravity = false;
+        diceRb.angularDrag = 7f;
+
+        yield return new WaitUntil(() => diceRb.angularVelocity.magnitude <= 0.05f);
+
+        diceRb.velocity = Vector3.zero;
+        diceRb.angularVelocity = Vector3.zero;
+
+        diceTransform.localPosition = hoverOffset;
+        Quaternion targetRot;
+
+        int number = (int)GetNumber();
+        foreach (var rot in rotations)
+        {
+            if (rot.number == number)
+            {
+                targetRot = Quaternion.Euler(rot.rotation);
+                //_ = LerpToHoverPosition(0.2f);
+                diceTransform.localRotation = targetRot;
+            }
+        }
 
         PostDiceRoll();
+        //_ = StartCoroutine(LerpToHoverPosition(0.5f));
+        print("New Number is : " + number);
+
+        // Go back to hover position with new number as the current number.
+        IEnumerator rotateToPond(float time) 
+        {
+            yield return new WaitForSeconds(5f);
+            var originalTime = time;
+            var originalRotation = transform.rotation;
+            while (time > 0.0f)
+            {
+                time -= Time.deltaTime;
+                transform.rotation = Quaternion.Lerp(originalRotation, new Quaternion(0, 180, 0, 0), 1 - (time / originalTime));
+                yield return new WaitForFixedUpdate();
+            }
+        }
     }
 
     /// <summary>
@@ -185,7 +230,13 @@ public class DiceRoller : MonoBehaviour
     private void UpdateDiceState(DiceStates newDiceValue)
     {
         CurrentDiceState = newDiceValue;
-        text.SetText(((int)newDiceValue).ToString());
     }
     #endregion
+}
+
+[System.Serializable]
+public class NumberRotation
+{
+    public int number;
+    public Vector3 rotation;
 }

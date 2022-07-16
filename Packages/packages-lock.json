@@ -8,7 +8,7 @@
       "url": "https://packages.unity.com"
     },
     "com.lootlocker.lootlockersdk": {
-      "version": "file:D:/Downloads/unity-sdk-main/unity-sdk-main",
+      "version": "file:D:/unity-sdk-main/unity-sdk-main",
       "depth": 0,
       "source": "local",
       "dependencies": {

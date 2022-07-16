@@ -19,12 +19,7 @@ public class PlayerController : MonoBehaviour
     PlayerHUD playerHUD;
 
     [SerializeField]
-    private Transform objectTransform;
-
-    [SerializeField]
-    float damping = 2;
-
-    private Vector3 worldMousePos;
+    private Transform diceTransform;
 
     private void Start()
     {
@@ -41,12 +36,10 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
-        
-        if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
-            worldMousePos = rayInfo.point;
-            var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask.NameToLayer("Player")))
+        {
+            Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
+            transform.LookAt(pos);
         }
 
 
@@ -64,11 +57,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
         }
-
-        
         
         // Bomb placement / detonation
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(0)) {
 
             // If there is already a bomb, detonate it. If not, place one.
             if (PlacedBomb)
