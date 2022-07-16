@@ -6,25 +6,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private Rigidbody rb;
-    private Ray groundedRay;
-    
-
-    private float height;
-    private bool isGrounded;
     
     [SerializeField] private float speed;
     [SerializeField] private Transform cam;
-    [SerializeField] MeshRenderer render;
-    [SerializeField] float smashForce;
-    [SerializeField] bool instantSmash;
-    
-    
-
 
 
     void Start() {
         rb = GetComponent<Rigidbody>();
-        height = render.bounds.size.y;
     }
 
     // Update is called once per frame
@@ -48,25 +36,6 @@ public class PlayerController : MonoBehaviour {
 
         if(move.magnitude >= 0.1f) {
             rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
-        }
-
-        if(Physics.Raycast(rb.position, Vector3.down, height)) {
-            isGrounded = true;
-            Debug.Log("Grounded");
-        }
-        else {
-            isGrounded = false;
-            Debug.Log("Not Grounded!");
-        }
-
-        if(!isGrounded) {
-            if(smash > 0) {
-                print("SMASH!!");
-                rb.AddForce(Vector3.down * smashForce);
-                if(instantSmash) {
-                    
-                }
-            }
         }
 
     }
