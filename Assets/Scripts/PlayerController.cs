@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour
     private Transform camTransform;
     private Rigidbody rb;
     private Unit playerUnit;
-    
+
+    private Vector3 worldMousePos;
     // Spear
     public Spear spear;
-    
+
     // For bomb placement
     public GameObject BombAsset;
     public float BombCooldown = 5;
@@ -21,13 +22,13 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceBombDetonated = 0;
     
     public float speed;
-    
+
+    [SerializeField]
+    private float damping;
 
     [SerializeField]
     PlayerHUD playerHUD;
 
-    [SerializeField]
-    private Transform diceTransform;
 
     private void Start()
     {
@@ -49,10 +50,12 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask.NameToLayer("Player")))
-        {
-            Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(pos);
+        Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
+        
+        if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
+            worldMousePos = rayInfo.point;
+            var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
 
 
@@ -66,16 +69,14 @@ public class PlayerController : MonoBehaviour
         camF = camF.normalized;
         camR = camR.normalized;
 
-        if (move.magnitude >= 0.1f)
-        {
-            rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
-        }
+        rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
 
         // Spear attacks
         if (Input.GetMouseButtonDown(0))
         {
             spear.AttackIfPossible();
         }
+
         
         // Bomb placement / detonation
         TimeSinceBombDetonated += Time.deltaTime;
@@ -90,18 +91,9 @@ public class PlayerController : MonoBehaviour
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                
-                int layermask = LayerMask.GetMask("Default");
-                
-                RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layermask))
-                {
-                    GameObject bomb = GameObject.Instantiate(BombAsset);
-                    bomb.transform.position = hitInfo.point;
-
-                    PlacedBomb = bomb.GetComponent<Bomb>();
-                }
+                GameObject bomb = GameObject.Instantiate(BombAsset);
+                bomb.transform.position = worldMousePos;
+                PlacedBomb = bomb.GetComponent<Bomb>();
             }
         }
 
