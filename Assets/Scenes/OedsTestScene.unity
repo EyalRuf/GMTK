@@ -908,6 +908,7 @@ GameObject:
   - component: {fileID: 832151211}
   - component: {fileID: 832151213}
   - component: {fileID: 832151212}
+  - component: {fileID: 832151214}
   m_Layer: 0
   m_Name: DiceValue Text
   m_TagString: Untagged
@@ -1069,6 +1070,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1183024399 &832151214
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832151210}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 180, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 649424733}
+    weight: 1
 --- !u!1 &1067808055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1429,7 @@ GameObject:
   - component: {fileID: 1363199765}
   - component: {fileID: 1363199767}
   - component: {fileID: 1363199766}
+  - component: {fileID: 1363199768}
   m_Layer: 0
   m_Name: DiceValue Text
   m_TagString: Untagged
@@ -1570,6 +1591,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1183024399 &1363199768
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363199764}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 180, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 649424733}
+    weight: 1
 --- !u!1 &1543206018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +1927,7 @@ GameObject:
   - component: {fileID: 1689430694}
   - component: {fileID: 1689430696}
   - component: {fileID: 1689430695}
+  - component: {fileID: 1689430697}
   m_Layer: 0
   m_Name: DiceValue Text
   m_TagString: Untagged
@@ -2048,6 +2089,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1183024399 &1689430697
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689430693}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 180, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 649424733}
+    weight: 1
 --- !u!1 &1692218098
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,6 +2119,7 @@ GameObject:
   - component: {fileID: 1692218099}
   - component: {fileID: 1692218101}
   - component: {fileID: 1692218100}
+  - component: {fileID: 1692218102}
   m_Layer: 0
   m_Name: DiceValue Text
   m_TagString: Untagged
@@ -2220,6 +2281,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1183024399 &1692218102
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692218098}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 180, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 649424733}
+    weight: 1
 --- !u!1 &1814101972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2446,7 @@ GameObject:
   - component: {fileID: 1912024823}
   - component: {fileID: 1912024825}
   - component: {fileID: 1912024824}
+  - component: {fileID: 1912024826}
   m_Layer: 0
   m_Name: DiceValue Text
   m_TagString: Untagged
@@ -2527,6 +2608,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1183024399 &1912024826
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912024822}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 180, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 649424733}
+    weight: 1
 --- !u!1 &1961724031
 GameObject:
   m_ObjectHideFlags: 0
