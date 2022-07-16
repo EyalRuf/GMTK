@@ -35,10 +35,6 @@ public class PlayerController : MonoBehaviour
             objectTransform.LookAt(pos);
         }*/
 
-        if(Input.GetAxis("Fire1") > 0) {
-            playerHUD.GameOver();
-        }
-
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
         Vector3 camF = cam.forward;
