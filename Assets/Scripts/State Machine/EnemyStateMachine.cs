@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Health))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Unit))]
 public class EnemyStateMachine : BaseStateMachine
 {
+    #region Properties
     private EnemyStateFactory StatesFactory;
     private NavMeshAgent agent;
-    public DiceState CurrentDiceState { get; set; } = DiceState.One;
     public Transform PlayerTransform { get; private set; }
-
-    [SerializeField]
-    private TMPro.TextMeshPro text;
+    #endregion
 
     protected override void Awake()
     {
@@ -21,13 +19,9 @@ public class EnemyStateMachine : BaseStateMachine
 
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        RandomDice();
     }
 
-    private void OnEnable()
-    {
-        base.Start();  // Sets the Agent to pursue the player again.
-    }
+    private void OnEnable() => base.Start();  // Sets the Agent to pursue the player again.
 
     /// <summary>
     /// Send the agent to a specified position
@@ -41,18 +35,4 @@ public class EnemyStateMachine : BaseStateMachine
             agent.SetDestination(destination);
         }
     }
-
-    #region internal
-    private void RandomDice()
-    {
-        int RandomInt = Random.Range(1, 7);
-        DiceState rdmDice = (DiceState)RandomInt;
-        UpdateDiceState(rdmDice);
-    }
-    private void UpdateDiceState(DiceState newDiceValue)
-    {
-        CurrentDiceState = newDiceValue;
-        text.SetText(((int)newDiceValue).ToString());
-    }
-    #endregion
 }
