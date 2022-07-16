@@ -5,14 +5,16 @@ using System.Collections;
 public class Spear : MonoBehaviour
 {
     public Transform SpearTransform;
-    public Transform Player;
+    public Transform AttackDirection;
+    public DiceRoller Player;
     public Transform SpearOrigin;
-
+    
     private bool IsAttacking = false;
     private Vector3 CurrentVelocity = Vector3.zero;
 
     private Vector3 TargetPosition;
     private Quaternion TargetRotation;
+    
     private float PositionSmoothTime = 0.05f;
     private float RotationSmoothFactor = 0.05f;
 
@@ -38,8 +40,8 @@ public class Spear : MonoBehaviour
     {
         IsAttacking = true;
         
-        TargetPosition = Player.position;
-        Vector3 attackDirection = Player.forward;
+        TargetPosition = AttackDirection.position;
+        Vector3 attackDirection = AttackDirection.forward;
         TargetRotation = Quaternion.LookRotation(attackDirection);
         
         PositionSmoothTime = 0.5f;
@@ -68,14 +70,21 @@ public class Spear : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        int enemyLayer = LayerMask.NameToLayer("Enemy");
-        
-        // TODO: Add check if the current enemy can actually be killed
-        if (IsAttacking && other.gameObject.layer == enemyLayer)
+        DiceRoller enemy = other.gameObject.GetComponent<DiceRoller>();
+
+        if (enemy)
         {
-            Debug.Log("Die, die, die!");
+            int enemyNumber = (int)enemy.GetNumber();
+            int playerNumber = (int)Player.GetNumber();
+        
+            int enemyLayer = LayerMask.NameToLayer("Enemy");
             
-            Destroy(other.gameObject);
+            Debug.Log("Touched");
+            if (IsAttacking && other.gameObject.layer == enemyLayer && enemyNumber <= playerNumber)
+            {
+                Debug.Log("Die, die, die!");
+                Destroy(other.gameObject);
+            }
         }
     }
 }

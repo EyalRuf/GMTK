@@ -37,7 +37,7 @@ public class DiceRoller : MonoBehaviour
             RollDice();
     }
 
-    private DiceStates GetNumber()
+    public DiceStates GetNumber()
     {
         float closestDistance = Mathf.Infinity;
         Vector3 upside = diceTransform.position + Vector3.up;
