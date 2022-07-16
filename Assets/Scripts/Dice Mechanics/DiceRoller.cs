@@ -48,6 +48,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = forward;
             state = DiceStates.One;
+            PlayerController.setSpeed(6);
         }
 
         float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
@@ -55,6 +56,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = back;
             state = DiceStates.Two;
+            PlayerController.setSpeed(5.5f);
         }
 
         float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
@@ -62,6 +64,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = left;
             state = DiceStates.Three;
+            PlayerController.setSpeed(5);
         }
 
         float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
@@ -69,6 +72,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = right;
             state = DiceStates.Four;
+            PlayerController.setSpeed(4.5f);
         }
 
         float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
@@ -76,12 +80,14 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = bottom;
             state = DiceStates.Five;
+            PlayerController.setSpeed(4);
         }
 
         float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
         if (up < closestDistance)
         {
             state = DiceStates.Six;
+            PlayerController.setSpeed(3.5f);
         }
 
         return state;
@@ -108,8 +114,6 @@ public class DiceRoller : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        //_ = StartCoroutine(DiceRollCooldown());
-
         //diceRb.useGravity = false;
         diceRb.angularDrag = 7f;
 
@@ -127,27 +131,34 @@ public class DiceRoller : MonoBehaviour
             if (rot.number == number)
             {
                 targetRot = Quaternion.Euler(rot.rotation);
-                //_ = LerpToHoverPosition(0.2f);
-                diceTransform.localRotation = targetRot;
+                _ = StartCoroutine(LerpToHoverPosition(0.2f));
+                //diceTransform.localRotation = targetRot;
             }
         }
 
+        _ = StartCoroutine(DiceRollCooldown());
         PostDiceRoll();
+
         //_ = StartCoroutine(LerpToHoverPosition(0.5f));
         print("New Number is : " + number);
 
         // Go back to hover position with new number as the current number.
-        IEnumerator rotateToPond(float time) 
+        IEnumerator LerpToHoverPosition(float speed)
         {
-            yield return new WaitForSeconds(5f);
-            var originalTime = time;
-            var originalRotation = transform.rotation;
-            while (time > 0.0f)
+            float startTime = Time.time;
+            Quaternion startRot = diceTransform.localRotation;
+
+            float progress = 0f;
+            while (progress <= 1f)
             {
-                time -= Time.deltaTime;
-                transform.rotation = Quaternion.Lerp(originalRotation, new Quaternion(0, 180, 0, 0), 1 - (time / originalTime));
+                float timeSinceStarted = Time.time - startTime;
+                progress = timeSinceStarted / speed;
+                diceTransform.localRotation = Quaternion.Lerp(startRot, targetRot, progress);
+
                 yield return new WaitForFixedUpdate();
             }
+
+            //print("Done");
         }
     }
 
