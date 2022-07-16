@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             //print("Collided with player");
             Damage(100);
@@ -34,7 +34,6 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        print("Die, die");
         gameObject.SetActive(false);
     }
 

@@ -26,7 +26,7 @@ public class EnemyStateMachine : BaseStateMachine
 
     private void OnEnable()
     {
-        base.Start();
+        base.Start();  // Sets the Agent to pursue the player again.
     }
 
     /// <summary>
