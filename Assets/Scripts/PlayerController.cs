@@ -64,9 +64,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
         }
+
+        
         
         // Bomb placement / detonation
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(1)) {
 
             // If there is already a bomb, detonate it. If not, place one.
             if (PlacedBomb)
