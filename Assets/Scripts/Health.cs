@@ -6,7 +6,6 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int maximumAmountOfHealth = 100;
     private bool invincible = false;
-
     public int CurrentAmountOfHealth { get; set; } = 100;
 
     private void Start()

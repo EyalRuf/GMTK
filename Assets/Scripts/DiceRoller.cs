@@ -4,13 +4,20 @@ using UnityEngine.AI;
 
 public class DiceRoller : MonoBehaviour
 {
+    #region Properties
     private Rigidbody rb;
     private NavMeshAgent agent;
+    private TMPro.TextMeshPro text;
+    private Coroutine rollerCR;
+    public DiceState CurrentDiceState { get; set; } = DiceState.One;
     private EnemyStateMachine esm;
     public float force = 3f;
-    public float cooldownTimer = 2f;
-    private Coroutine rollerCR;
-    private bool cooldown = false;
+
+    [SerializeField]
+    private float rollCooldownTimer = 2f;
+    private bool rollCooldown = false;
+    #endregion
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -19,6 +26,8 @@ public class DiceRoller : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         esm = GetComponent<EnemyStateMachine>();
+        text = GetComponentInChildren<TMPro.TextMeshPro>();
+        RandomDice();
     }
 
     private void Update()
@@ -29,7 +38,7 @@ public class DiceRoller : MonoBehaviour
 
     public void RollDice()
     {
-        if (rollerCR == null && !cooldown)
+        if (rollerCR == null && !rollCooldown)
             rollerCR = StartCoroutine(DiceRoll());
     }
 
@@ -55,8 +64,22 @@ public class DiceRoller : MonoBehaviour
     }
     private IEnumerator DiceRollCooldown()
     {
-        cooldown = true;
-        yield return new WaitForSeconds(cooldownTimer);
-        cooldown = false;
+        rollCooldown = true;
+        yield return new WaitForSeconds(rollCooldownTimer);
+        rollCooldown = false;
     }
+    
+        #region Internal
+    private void RandomDice()
+    {
+        int RandomInt = Random.Range(1, 7);
+        DiceState rdmDice = (DiceState)RandomInt;
+        UpdateDiceState(rdmDice);
+    }
+    private void UpdateDiceState(DiceState newDiceValue)
+    {
+        CurrentDiceState = newDiceValue;
+        text.SetText(((int)newDiceValue).ToString());
+    }
+    #endregion
 }
