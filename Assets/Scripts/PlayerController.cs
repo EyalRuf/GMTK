@@ -26,17 +26,18 @@ public class PlayerController : MonoBehaviour
         playerHUD.SetHUD(playerUnit);
     }
 
-    private void Update()
-    {
+    private void Update() {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
-        {
+        /*if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit)) {
             Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
             objectTransform.LookAt(pos);
-        }
+        }*/
 
+        if(Input.GetAxis("Fire1") > 0) {
+            playerHUD.GameOver();
+        }
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 

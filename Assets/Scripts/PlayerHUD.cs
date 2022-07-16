@@ -7,20 +7,24 @@ using TMPro;
 public class PlayerHUD : MonoBehaviour {
 
     public Transform hpIconTransform;
-    public Transform gameOverPanel;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI killText;
     public TextMeshProUGUI bombText;
     public TextMeshProUGUI killedText;
     public TextMeshProUGUI gameOverKilledText;
-    public GameObject CanvasGO;
+    public GameObject playerAliveCanvas;
+    public GameObject playerDeadCanvas;
+    public Animator bombDiceAnim;
     
     public int nextWaveTimer;
     public int bombCooldownTimer;
 
+    private int currentBombTime;
     private int enemiesKilledAmount;
 
     private void Start() {
+        currentBombTime = bombCooldownTimer;
+
         StartTimer(nextWaveTimer, false);
         StartTimer(bombCooldownTimer, true);
     }
@@ -41,14 +45,31 @@ public class PlayerHUD : MonoBehaviour {
         
         IEnumerator GameTimer() {
             while(time != 0) {
-                if(isBombTimer)
-                    bombText.text = "Bomb: \n" + time.ToString();
+                if(isBombTimer) {
+                    currentBombTime = time;
+                    print(currentBombTime);
+                    BombDice();
+                }
                 else
                     timerText.text = "Wave: \n" + time.ToString();
 
                 time -= 1;
                 yield return new WaitForSeconds(1);
             }
+        }
+    }
+
+    private void BombDice() {
+        switch(currentBombTime){
+            case 3: 
+                bombDiceAnim.Play("3TO2");
+                break;
+            case 2: 
+                bombDiceAnim.Play("2TO1");
+                break;
+            case 1:
+                bombDiceAnim.Play("1TO0");
+                break;
         }
     }
 
@@ -59,8 +80,9 @@ public class PlayerHUD : MonoBehaviour {
     }
 
     public void GameOver() {
-        gameOverPanel.gameObject.SetActive(true);
-        timerText.transform.parent.gameObject.SetActive(false);
+        playerAliveCanvas.SetActive(false);
+        playerDeadCanvas.gameObject.SetActive(true);
+        StopAllCoroutines();
     }
 
 }
