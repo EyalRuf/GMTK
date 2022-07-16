@@ -18,22 +18,17 @@ public class PlayerHUD : MonoBehaviour {
     //public Animator bombDiceAnim;
     //private int currentBombTime;
 
-    public Slider bombSlider;
-    
     public int nextWaveTimer;
     public int bombCooldown;
-
+    public Animator bombTimerAnimator;
     
     private int enemiesKilledAmount;
 
     private void Start() {
         //currentBombTime = bombCooldown;
 
-        bombSlider.maxValue = bombCooldown;
-        bombSlider.value = 0;
 
         StartTimer(nextWaveTimer, false);
-        StartTimer(bombSlider.value, true);
     }
 
     public void SetHUD(Unit unit) {
@@ -51,12 +46,12 @@ public class PlayerHUD : MonoBehaviour {
         StartCoroutine(GameTimer());
         
         IEnumerator GameTimer() {
+
             while(time >= 0) {
                 if(isBombTimer) {
-                    bombSlider.value = time;
-                    time += bombSlider.maxValue/(100*bombCooldown);
-                    //BombDice();
-                    yield return new WaitForSecondsRealtime(0.01f);
+                    bombTimerAnimator.SetTrigger("UseBomb");
+                    yield return new WaitForSecondsRealtime(bombCooldown);
+                    bombTimerAnimator.ResetTrigger("UseBomb");
                 }
                 else {
                     timerText.text = "Wave: \n" + time.ToString();
@@ -64,8 +59,6 @@ public class PlayerHUD : MonoBehaviour {
                     time -= 1;
                     yield return new WaitForSeconds(1f);
                 }
-                
-                
             }
         }
     }
