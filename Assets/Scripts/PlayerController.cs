@@ -67,10 +67,8 @@ public class PlayerController : MonoBehaviour
         camF = camF.normalized;
         camR = camR.normalized;
 
-        if (move.magnitude >= 0.1f)
-        {
-            rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
-        }
+
+        rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
         
         // Bomb placement / detonation
         if (Input.GetMouseButtonDown(0)) {
@@ -80,7 +78,6 @@ public class PlayerController : MonoBehaviour
                 PlacedBomb.Detonate();
             else
             {
-                
                 GameObject bomb = GameObject.Instantiate(BombAsset);
                 bomb.transform.position = worldMousePos;
                 PlacedBomb = bomb.GetComponent<Bomb>();

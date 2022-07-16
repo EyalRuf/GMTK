@@ -23,8 +23,7 @@ public class Bomb : MonoBehaviour
                 Rigidbody dieRb = die.GetComponent<Rigidbody>();
                 DiceRoller diceRoller = die.GetComponent<DiceRoller>();
                 dieRb.AddExplosionForce(expolsionForce, position, 0);
-                diceRoller.ExplosionDiceRoll(position, 3f, 3f, 3f);
-                
+                diceRoller.RollDice();
                 print("HIT");
             }
         }
