@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     private Camera cam;
     private Transform camTransform;
     private Rigidbody rb;
@@ -12,8 +14,8 @@ public class PlayerController : MonoBehaviour
     public GameObject BombAsset;
     private Bomb PlacedBomb;
     
-    [SerializeField]
-    private float speed;
+    public float speed;
+    
 
     [SerializeField]
     PlayerHUD playerHUD;
@@ -23,12 +25,16 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
+
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         camTransform = cam.transform;
 
         playerUnit = GetComponent<Unit>();
         playerHUD.SetHUD(playerUnit);
+
+
     }
 
     private void Update()
@@ -81,5 +87,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    public static void setSpeed(float speed)
+    {
+        PlayerController.instance.speed = speed;
     }
 }
