@@ -1,29 +1,28 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
+    private Transform cam;
     private Rigidbody rb;
     private Unit playerUnit;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private float speed;
-    private Transform cam;
+
+    [SerializeField]
+    PlayerHUD playerHUD;
+
     [SerializeField]
     private Transform objectTransform;
-    private void Start() 
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main.transform;
-    [SerializeField] private float speed;
-    [SerializeField] private Transform cam;
-    [SerializeField] PlayerHUD playerHUD; 
 
-
-    void Start() {
-        cam = Camera.main;
-        rb = GetComponent<Rigidbody>();
-        playerUnit = GetComponent<Unit>(); 
+        playerUnit = GetComponent<Unit>();
         playerHUD.SetHUD(playerUnit);
     }
 
