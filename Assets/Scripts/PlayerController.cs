@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    private MenuController menuController;
     public static PlayerController instance;
 
     private Camera cam;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        menuController = FindObjectOfType<MenuController>();
         instance = this;
 
         rb = GetComponent<Rigidbody>();
@@ -89,6 +91,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Death ()
+    {
+        menuController.LoadMenuLevel();
+    
+    }
+    
     public static void setSpeed(float speed)
     {
         PlayerController.instance.speed = speed;
