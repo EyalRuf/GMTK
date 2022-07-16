@@ -6,7 +6,7 @@ public class PursueState : BaseState
 
     public override void EnterState()
     {
-        Debug.Log("Started Pursue State!");
+        //Debug.Log("Started Pursue State!");
     }
 
     public override void ExitState()
