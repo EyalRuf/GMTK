@@ -16,6 +16,6 @@ public class PursueState : BaseState
 
     public override void UpdateBehaviour()
     {
-        _ctx.SetAgentDestination(_ctx.playerTransform);
+        _ctx.SetAgentDestination(_ctx.PlayerTransform.position);
     }
 }

@@ -6,12 +6,13 @@ public class EnemyStateMachine : BaseStateMachine
 {
     private EnemyStateFactory StatesFactory;
     private NavMeshAgent agent;
+    public Transform PlayerTransform { get; private set; }
 
-    private Transform playerTransform;
 
     [SerializeField, Tooltip("The amount of seconds between each update when pursuing a target.\n" +
         "A lower value means a higher performance cost!")] 
     private float followCRInterval = 0.3f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -19,7 +20,7 @@ public class EnemyStateMachine : BaseStateMachine
         StatesFactory = new EnemyStateFactory(this);
         CurrentState = StatesFactory.Pursue;
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
