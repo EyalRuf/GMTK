@@ -178,18 +178,62 @@ public class DiceRoller : MonoBehaviour
     {
         PreDiceRoll();
 
+        //diceRb.useGravity = true;
         Vector3 direction = (transform.position - bombSourcePos).normalized;
 
         rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
         rb.AddForce(direction * horizontalForce, ForceMode.Impulse);
-        rb.AddTorque(direction * rotationForce, ForceMode.Impulse);
+        diceRb.AddTorque(Random.rotation.eulerAngles * rotationForce, ForceMode.Impulse);
+        diceRb.angularDrag = 2.25f;
 
-        yield return new WaitForSeconds(0.25f);
-        yield return new WaitUntil(() => rb.angularVelocity.magnitude < 0.05f);
+        yield return new WaitForSeconds(2f);
+
+        //diceRb.useGravity = false;
+        diceRb.angularDrag = 7f;
+
+        yield return new WaitUntil(() => diceRb.angularVelocity.magnitude <= 0.05f);
+
+        diceRb.velocity = Vector3.zero;
+        diceRb.angularVelocity = Vector3.zero;
+
+        diceTransform.localPosition = hoverOffset;
+        Quaternion targetRot;
+
+        int number = (int)GetNumber();
+        foreach (var rot in rotations)
+        {
+            if (rot.number == number)
+            {
+                targetRot = Quaternion.Euler(rot.rotation);
+                _ = StartCoroutine(LerpToHoverPosition(0.2f));
+                //diceTransform.localRotation = targetRot;
+            }
+        }
 
         _ = StartCoroutine(DiceRollCooldown());
-
         PostDiceRoll();
+
+        //_ = StartCoroutine(LerpToHoverPosition(0.5f));
+        print("New Number is : " + number);
+
+        // Go back to hover position with new number as the current number.
+        IEnumerator LerpToHoverPosition(float speed)
+        {
+            float startTime = Time.time;
+            Quaternion startRot = diceTransform.localRotation;
+
+            float progress = 0f;
+            while (progress <= 1f)
+            {
+                float timeSinceStarted = Time.time - startTime;
+                progress = timeSinceStarted / speed;
+                diceTransform.localRotation = Quaternion.Lerp(startRot, targetRot, progress);
+
+                yield return new WaitForFixedUpdate();
+            }
+
+            //print("Done");
+        }
     }
     public virtual void PreDiceRoll()
     {
