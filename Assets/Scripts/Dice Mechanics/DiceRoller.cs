@@ -7,7 +7,7 @@ public class DiceRoller : MonoBehaviour
     protected Rigidbody rb;
     private TMPro.TextMeshPro text;
     private Coroutine rollerCR;
-    public DiceState CurrentDiceState { get; set; } = DiceState.One;
+    public DiceStates CurrentDiceState { get; set; } = DiceStates.One;
     public float standardForce = 3f;
 
     [SerializeField]
@@ -17,15 +17,67 @@ public class DiceRoller : MonoBehaviour
 
     public virtual void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         text = GetComponentInChildren<TMPro.TextMeshPro>();
         RandomDice();
     }
 
     private void Update()
     {
+        // What's currently up?
+        // Which direction is closest to Vector3.up?
         if (Input.GetKeyDown(KeyCode.Space))
             RollDice();
+    }
+
+    private DiceStates GetNumber()
+    {
+        float closestDistance = Mathf.Infinity;
+        Vector3 upside = transform.position + Vector3.up;
+        DiceStates state = CurrentDiceState;
+
+        float forward = Vector3.Distance(transform.forward + transform.position, upside);
+        if (forward < closestDistance)
+        {
+            closestDistance = forward;
+            state = DiceStates.One;
+        }
+
+        float back = Vector3.Distance(-transform.forward + transform.position, upside);
+        if (back < closestDistance)
+        {
+            closestDistance = back;
+            state = DiceStates.Two;
+        }
+
+        float left = Vector3.Distance(-transform.right + transform.position, upside);
+        if (left < closestDistance)
+        {
+            closestDistance = left;
+            state = DiceStates.Three;
+        }
+
+        float right = Vector3.Distance(transform.right + transform.position, upside);
+        if (right < closestDistance)
+        {
+            closestDistance = right;
+            state = DiceStates.Four;
+        }
+
+        float bottom = Vector3.Distance(-transform.up + transform.position, upside);
+        if (bottom < closestDistance)
+        {
+            closestDistance = bottom;
+            state = DiceStates.Five;
+        }
+
+        float up = Vector3.Distance(transform.up + transform.position, upside);
+        if (up < closestDistance)
+        {
+            state = DiceStates.Six;
+        }
+
+        return state;
     }
 
     public void RollDice()
@@ -59,19 +111,21 @@ public class DiceRoller : MonoBehaviour
     /// </summary>
     /// <param name="sourcePosition">The position of the center of the explosion</param>
     /// <param name="upForce">The strength with which the dice will be thrown in the air</param>
+    /// <param name="horizontalForce">The strength with which the dice will be pushed in the opposite direction of the explosion</param>
     /// <param name="rotationForce">The strength with which the dice will be pushed in terms of rotation</param>
-    public void ExplosionDiceRoll(Vector3 sourcePosition, float upForce, float rotationForce)
+    public void ExplosionDiceRoll(Vector3 sourcePosition, float upForce, float horizontalForce, float rotationForce)
     {
         if (rollerCR == null)
-            rollerCR = StartCoroutine(DiceRoll(sourcePosition, upForce, rotationForce));
+            rollerCR = StartCoroutine(DiceRoll(sourcePosition, upForce, horizontalForce, rotationForce));
     }
-    private IEnumerator DiceRoll(Vector3 bombSourcePos, float upForce, float rotationForce)
+    private IEnumerator DiceRoll(Vector3 bombSourcePos, float upForce, float horizontalForce, float rotationForce)
     {
         PreDiceRoll();
 
-        rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
-
         Vector3 direction = (transform.position - bombSourcePos).normalized;
+
+        rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
+        rb.AddForce(direction * horizontalForce, ForceMode.Impulse);
         rb.AddTorque(direction * rotationForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(0.25f);
@@ -94,15 +148,41 @@ public class DiceRoller : MonoBehaviour
         yield return new WaitForSeconds(rollCooldownTimer);
         rollCooldown = false;
     }
-    
-        #region Internal
+
+    public static Vector3 GetForward(DiceStates currentDiceState)
+    {
+        switch (currentDiceState)
+        {
+            case DiceStates.One:
+                return Vector3.forward;
+
+            case DiceStates.Two:
+                return Vector3.back;
+
+            case DiceStates.Three:
+                return Vector3.left;
+
+            case DiceStates.Four:
+                return Vector3.right;
+
+            case DiceStates.Five:
+                return Vector3.down;
+
+            case DiceStates.Six:
+                return Vector3.up;
+
+            default:
+                return Vector3.forward;
+        }
+    }
+    #region Internal
     private void RandomDice()
     {
         int RandomInt = Random.Range(1, 7);
-        DiceState rdmDice = (DiceState)RandomInt;
+        DiceStates rdmDice = (DiceStates)RandomInt;
         UpdateDiceState(rdmDice);
     }
-    private void UpdateDiceState(DiceState newDiceValue)
+    private void UpdateDiceState(DiceStates newDiceValue)
     {
         CurrentDiceState = newDiceValue;
         text.SetText(((int)newDiceValue).ToString());
