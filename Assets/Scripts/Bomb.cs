@@ -7,6 +7,21 @@ public class Bomb : MonoBehaviour
 
     [SerializeField]
     float expolsionForce = 2f;
+
+    private float upForce = 3f;
+    [SerializeField]
+    private float horizontalForce = 3f;
+    [SerializeField]
+    private float rotationForce = 3f;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Detonate();
+        }
+    }
+
     public void Detonate()
     {
         DiceRoller[] dice = Object.FindObjectsOfType<DiceRoller>();
@@ -18,18 +33,25 @@ public class Bomb : MonoBehaviour
             Vector3 offset = position - die.transform.position;
             offset.y = 0;
 
+
             
-            if (Vector3.SqrMagnitude(offset) < sqrBombRadius) {
+            /*if (Vector3.SqrMagnitude(offset) < sqrBombRadius) {
                 Rigidbody dieRb = die.GetComponent<Rigidbody>();
                 DiceRoller diceRoller = die.GetComponent<DiceRoller>();
                 dieRb.AddExplosionForce(expolsionForce, position, 0);
                 diceRoller.RollDice();
                 print("HIT");
+
+                const float sqrBombRadius = 2f;
+                
+            }*/
+            if (Vector3.SqrMagnitude(offset) < sqrBombRadius)
+            {
+                die.ExplosionDiceRoll(transform.position, upForce, horizontalForce, rotationForce);
             }
         }
 
         Destroy(gameObject);
-        
         Debug.Log("Boom");
     }
 }
