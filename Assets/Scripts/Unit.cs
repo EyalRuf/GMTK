@@ -14,6 +14,12 @@ public class Unit : MonoBehaviour {
         if (!invincible)
         {
             currentHealth -= amount;
+
+            if (currentHealth <= 0)
+            {
+                SendMessageUpwards("Death");
+            }
+
             MakeInvincible(invincibleLength);
         }
 
