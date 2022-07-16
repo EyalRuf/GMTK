@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Unit : MonoBehaviour {
@@ -7,13 +6,30 @@ public class Unit : MonoBehaviour {
     public int maxHealth;
     public int currentHealth;
 
-    public int maxSpeed;
-    public int currentSpeed;
+    private bool invincible = false;
 
-    public int damage;
+    public bool Damage(int amount) {
+        if (!invincible)
+            currentHealth -= amount;
 
-    public int maxDiceNumber;
-    public int currentDiceNumber;
+        if (currentHealth <= 0)
+            return true;
+        else 
+            return false;
+    }
 
+    public void Heal(int amount) {
+        currentHealth += amount;
+    }
+
+    private void MakeInvincible(int amountOfSeconds) {
+        _ = StartCoroutine(InvincibleTimer());
+
+        IEnumerator InvincibleTimer() {
+            invincible = true;
+            yield return new WaitForSeconds(amountOfSeconds);
+            invincible = false;
+        }
+    }
 
 }
