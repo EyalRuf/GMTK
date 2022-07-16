@@ -9,11 +9,3 @@ public enum DiceStates
     Five = 5,
     Six = 6
 }
-public class Dice
-public Vector3 GetForward(DiceStates currentDiceState)
-{
-    switch(currentDiceState)
-    {
-
-    }
-}

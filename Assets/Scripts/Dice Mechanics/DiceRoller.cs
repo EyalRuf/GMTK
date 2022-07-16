@@ -17,15 +17,67 @@ public class DiceRoller : MonoBehaviour
 
     public virtual void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         text = GetComponentInChildren<TMPro.TextMeshPro>();
         RandomDice();
     }
 
     private void Update()
     {
+        // What's currently up?
+        // Which direction is closest to Vector3.up?
         if (Input.GetKeyDown(KeyCode.Space))
             RollDice();
+    }
+
+    private DiceStates GetNumber()
+    {
+        float closestDistance = Mathf.Infinity;
+        Vector3 upside = transform.position + Vector3.up;
+        DiceStates state = CurrentDiceState;
+
+        float forward = Vector3.Distance(transform.forward + transform.position, upside);
+        if (forward < closestDistance)
+        {
+            closestDistance = forward;
+            state = DiceStates.One;
+        }
+
+        float back = Vector3.Distance(-transform.forward + transform.position, upside);
+        if (back < closestDistance)
+        {
+            closestDistance = back;
+            state = DiceStates.Two;
+        }
+
+        float left = Vector3.Distance(-transform.right + transform.position, upside);
+        if (left < closestDistance)
+        {
+            closestDistance = left;
+            state = DiceStates.Three;
+        }
+
+        float right = Vector3.Distance(transform.right + transform.position, upside);
+        if (right < closestDistance)
+        {
+            closestDistance = right;
+            state = DiceStates.Four;
+        }
+
+        float bottom = Vector3.Distance(-transform.up + transform.position, upside);
+        if (bottom < closestDistance)
+        {
+            closestDistance = bottom;
+            state = DiceStates.Five;
+        }
+
+        float up = Vector3.Distance(transform.up + transform.position, upside);
+        if (up < closestDistance)
+        {
+            state = DiceStates.Six;
+        }
+
+        return state;
     }
 
     public void RollDice()
@@ -96,8 +148,34 @@ public class DiceRoller : MonoBehaviour
         yield return new WaitForSeconds(rollCooldownTimer);
         rollCooldown = false;
     }
-    
-        #region Internal
+
+    public static Vector3 GetForward(DiceStates currentDiceState)
+    {
+        switch (currentDiceState)
+        {
+            case DiceStates.One:
+                return Vector3.forward;
+
+            case DiceStates.Two:
+                return Vector3.back;
+
+            case DiceStates.Three:
+                return Vector3.left;
+
+            case DiceStates.Four:
+                return Vector3.right;
+
+            case DiceStates.Five:
+                return Vector3.down;
+
+            case DiceStates.Six:
+                return Vector3.up;
+
+            default:
+                return Vector3.forward;
+        }
+    }
+    #region Internal
     private void RandomDice()
     {
         int RandomInt = Random.Range(1, 7);
