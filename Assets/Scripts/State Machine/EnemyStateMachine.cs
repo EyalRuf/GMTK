@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Health))]
 public class EnemyStateMachine : BaseStateMachine
 {
     private EnemyStateFactory StatesFactory;
@@ -22,6 +22,11 @@ public class EnemyStateMachine : BaseStateMachine
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         RandomDice();
+    }
+
+    private void OnEnable()
+    {
+        base.Start();
     }
 
     /// <summary>
