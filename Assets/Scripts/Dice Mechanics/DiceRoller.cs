@@ -158,7 +158,7 @@ public class DiceRoller : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
 
-            print("Done");
+            //print("Done");
         }
     }
 
