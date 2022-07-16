@@ -20,9 +20,7 @@ public class PlayerController : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        float smash = Input.GetAxis("Jump");
-
-        print(smash);
+    
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
@@ -33,6 +31,7 @@ public class PlayerController : MonoBehaviour {
         camR.y = 0;
         camF = camF.normalized;
         camR = camR.normalized;
+
 
         if(move.magnitude >= 0.1f) {
             rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
