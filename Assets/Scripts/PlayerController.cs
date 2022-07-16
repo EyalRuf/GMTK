@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    private MenuController menuController;
     private Camera cam;
     private Transform camTransform;
     private Rigidbody rb;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        menuController = FindObjectOfType<MenuController>();
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         camTransform = cam.transform;
@@ -81,5 +83,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    public void Death ()
+    {
+        menuController.LoadMenuLevel();
     }
 }
