@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -192,19 +192,7 @@ MonoBehaviour:
   rollCooldownTimer: 2
   diceRb: {fileID: 837358723843098130}
   diceTransform: {fileID: 837358723843098129}
-  rotations:
-  - number: 1
-    rotation: {x: 270, y: 0, z: 0}
-  - number: 2
-    rotation: {x: 90, y: 0, z: 0}
-  - number: 3
-    rotation: {x: 0, y: 0, z: 270}
-  - number: 4
-    rotation: {x: 0, y: 0, z: 90}
-  - number: 5
-    rotation: {x: 180, y: 0, z: 0}
-  - number: 6
-    rotation: {x: 0, y: 0, z: 0}
+  rotations: []
 --- !u!114 &88815450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,10 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74743f34d78b0d41b01a5cb627104ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BombAsset: {fileID: 0}
+  BombAsset: {fileID: 2608110624900288312, guid: 4b94645afdb8753408e106c8bd0d9d89, type: 3}
   speed: 3
+  damping: 0
   playerHUD: {fileID: 0}
-  diceTransform: {fileID: 837358723843098129}
+  diceTransform: {fileID: 0}
 --- !u!54 &88815451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1110,14 +1099,12 @@ MonoBehaviour:
   hpIconTransform: {fileID: 1761168109}
   timerText: {fileID: 1836809271}
   killText: {fileID: 996727217}
-  bombText: {fileID: 0}
   killedText: {fileID: 996727217}
   gameOverKilledText: {fileID: 0}
   playerAliveCanvas: {fileID: 1436769696}
-  playerDeadCanvas: {fileID: 0}
-  bombDiceAnim: {fileID: 0}
+  bombSlider: {fileID: 0}
   nextWaveTimer: 30
-  bombCooldownTimer: 0
+  bombCooldown: 0
 --- !u!1 &359661036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2901,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3617136, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2930,7 +2917,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047888207}
-  m_LocalRotation: {x: 0.3088481, y: 0.0000064085143, z: -0.0000020809941, w: 0.9511114}
+  m_LocalRotation: {x: 0.30884808, y: 0.0000063801695, z: -0.00000207179, w: 0.9511114}
   m_LocalPosition: {x: -0.00013475845, y: 10.96, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3820,7 +3807,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304722427}
-  m_LocalRotation: {x: 0.3088481, y: 0.0000064085143, z: -0.0000020809941, w: 0.9511114}
+  m_LocalRotation: {x: 0.30884808, y: 0.0000063801695, z: -0.00000207179, w: 0.9511114}
   m_LocalPosition: {x: -0.00013475845, y: 10.96, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

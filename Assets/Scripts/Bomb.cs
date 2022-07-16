@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    [SerializeField]
+    float sqrBombRadius = 2f;
+
+    [SerializeField]
+    float expolsionForce = 2f;
     public void Detonate()
     {
         DiceRoller[] dice = Object.FindObjectsOfType<DiceRoller>();
@@ -13,10 +18,14 @@ public class Bomb : MonoBehaviour
             Vector3 offset = position - die.transform.position;
             offset.y = 0;
 
-            const float sqrBombRadius = 2f;
-            if (Vector3.SqrMagnitude(offset) < sqrBombRadius)
-            {
-                // TODO: Throw away die
+            
+            if (Vector3.SqrMagnitude(offset) < sqrBombRadius) {
+                Rigidbody dieRb = die.GetComponent<Rigidbody>();
+                DiceRoller diceRoller = die.GetComponent<DiceRoller>();
+                dieRb.AddExplosionForce(expolsionForce, position, 0);
+                diceRoller.ExplosionDiceRoll(position, 3f, 3f, 3f);
+                
+                print("HIT");
             }
         }
 

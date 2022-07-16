@@ -137,18 +137,7 @@ public class DiceRoller : MonoBehaviour
         print("New Number is : " + number);
 
         // Go back to hover position with new number as the current number.
-        IEnumerator rotateToPond(float time) 
-        {
-            yield return new WaitForSeconds(5f);
-            var originalTime = time;
-            var originalRotation = transform.rotation;
-            while (time > 0.0f)
-            {
-                time -= Time.deltaTime;
-                transform.rotation = Quaternion.Lerp(originalRotation, new Quaternion(0, 180, 0, 0), 1 - (time / originalTime));
-                yield return new WaitForFixedUpdate();
-            }
-        }
+       
     }
 
     /// <summary>
@@ -164,21 +153,59 @@ public class DiceRoller : MonoBehaviour
             rollerCR = StartCoroutine(DiceRoll(sourcePosition, upForce, horizontalForce, rotationForce));
     }
     private IEnumerator DiceRoll(Vector3 bombSourcePos, float upForce, float horizontalForce, float rotationForce)
-    {
-        PreDiceRoll();
+    { PreDiceRoll();
 
+        //diceRb.useGravity = true;
         Vector3 direction = (transform.position - bombSourcePos).normalized;
 
         rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
         rb.AddForce(direction * horizontalForce, ForceMode.Impulse);
-        rb.AddTorque(direction * rotationForce, ForceMode.Impulse);
+        diceRb.AddTorque(Random.rotation.eulerAngles * rotationForce, ForceMode.Impulse);
+        diceRb.angularDrag = 2.25f;
 
-        yield return new WaitForSeconds(0.25f);
-        yield return new WaitUntil(() => rb.angularVelocity.magnitude < 0.05f);
+        yield return new WaitForSeconds(2f);
 
-        _ = StartCoroutine(DiceRollCooldown());
+        //_ = StartCoroutine(DiceRollCooldown());
+
+        //diceRb.useGravity = false;
+        diceRb.angularDrag = 7f;
+
+        yield return new WaitUntil(() => diceRb.angularVelocity.magnitude <= 0.05f);
+
+        diceRb.velocity = Vector3.zero;
+        diceRb.angularVelocity = Vector3.zero;
+
+        diceTransform.localPosition = hoverOffset;
+        Quaternion targetRot;
+
+        int number = (int)GetNumber();
+        foreach (var rot in rotations)
+        {
+            if (rot.number == number)
+            {
+                targetRot = Quaternion.Euler(rot.rotation);
+                //_ = LerpToHoverPosition(0.2f);
+                diceTransform.localRotation = targetRot;
+            }
+        }
 
         PostDiceRoll();
+        //_ = StartCoroutine(LerpToHoverPosition(0.5f));
+        print("New Number is : " + number);
+
+        // Go back to hover position with new number as the current number.
+        IEnumerator rotateToPond(float time) 
+        {
+            yield return new WaitForSeconds(5f);
+            var originalTime = time;
+            var originalRotation = transform.rotation;
+            while (time > 0.0f)
+            {
+                time -= Time.deltaTime;
+                transform.rotation = Quaternion.Lerp(originalRotation, new Quaternion(0, 180, 0, 0), 1 - (time / originalTime));
+                yield return new WaitForFixedUpdate();
+            }
+        }
     }
     public virtual void PreDiceRoll()
     {

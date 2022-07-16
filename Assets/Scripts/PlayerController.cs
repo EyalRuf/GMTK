@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Transform camTransform;
     private Rigidbody rb;
     private Unit playerUnit;
+    private Vector3 worldMousePos;
 
     // For bomb placement
     public GameObject BombAsset;
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]
     private float speed;
+
+    [SerializeField]
+    private float damping;
 
     [SerializeField]
     PlayerHUD playerHUD;
@@ -36,10 +40,12 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask.NameToLayer("Player")))
-        {
-            Vector3 pos = new(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(pos);
+        Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
+        
+        if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
+            worldMousePos = rayInfo.point;
+            var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
 
 
@@ -66,18 +72,10 @@ public class PlayerController : MonoBehaviour
                 PlacedBomb.Detonate();
             else
             {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 
-                int layermask = LayerMask.GetMask("Ground");
-                
-                RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layermask))
-                {
-                    GameObject bomb = GameObject.Instantiate(BombAsset);
-                    bomb.transform.position = hitInfo.point;
-
-                    PlacedBomb = bomb.GetComponent<Bomb>();
-                }
+                GameObject bomb = GameObject.Instantiate(BombAsset);
+                bomb.transform.position = worldMousePos;
+                PlacedBomb = bomb.GetComponent<Bomb>();
             }
         }
 
