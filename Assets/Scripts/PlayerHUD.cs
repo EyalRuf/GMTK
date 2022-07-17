@@ -112,7 +112,7 @@ public class PlayerHUD : MonoBehaviour {
         }
         if (v < .3f)
         {
-            H2Anim.SetBool("Fullheart", false);
+            H3Anim.SetBool("Fullheart", false);
         } else
         {
             H3Anim.SetBool("Fullheart", true);

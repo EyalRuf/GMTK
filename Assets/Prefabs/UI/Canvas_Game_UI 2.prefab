@@ -9050,7 +9050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1101327168391778825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10291,7 +10291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5480010958765706476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10751,7 +10751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8192971528368687422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10951,7 +10951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6479603451008945171, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4286682035
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6479603451008945171, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
       propertyPath: m_VerticalAlignment
