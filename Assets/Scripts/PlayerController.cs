@@ -105,7 +105,14 @@ public class PlayerController : Unit
 
     public override void Death()
     {
-        menuController.LoadMenuLevel();
+        if (menuController == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            menuController.LoadMenuLevel();
+        }
     }
 
     public override void Damage(int amount)
