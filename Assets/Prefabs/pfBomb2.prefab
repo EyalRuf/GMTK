@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5049470888056971648}
   - component: {fileID: 4910334163491345464}
   - component: {fileID: 7738559148021221770}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bomb  fiz 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5614534219060906834}
   - component: {fileID: 6806995662127382219}
   - component: {fileID: 4910108443938979121}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pfBomb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sqrBombRadius: 6
   expolsionForce: 1000
+  upForce: 5
   horizontalForce: 10
   rotationForce: 10
   height: 0.00001
@@ -273,7 +274,7 @@ GameObject:
   - component: {fileID: 2932056204570481284}
   - component: {fileID: 2932056204570481283}
   - component: {fileID: 2932056204570481282}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ringmaskless
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +379,7 @@ GameObject:
   - component: {fileID: 4618729279574606375}
   - component: {fileID: 4618729279574606374}
   - component: {fileID: 4618729279574606369}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bombring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4618729280604393769}
   - component: {fileID: 4618729280604393774}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ringmaskless
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5293292957202317189}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BombRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +602,7 @@ GameObject:
   - component: {fileID: 8474715234715393608}
   - component: {fileID: 1389897361595503269}
   - component: {fileID: 4957210671230989592}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bomb  fiz 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
