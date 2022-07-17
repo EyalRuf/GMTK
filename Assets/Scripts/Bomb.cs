@@ -16,10 +16,10 @@ public class Bomb : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Detonate();
-        }
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    Detonate();
+        //}
     }
 
     public void Detonate()

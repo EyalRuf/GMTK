@@ -17,7 +17,7 @@ public class PlayerController : Unit
 
     // For bomb placement
     public GameObject BombAsset;
-    public float BombCooldown = 10;
+    public float BombCooldown = 5;
     private Bomb PlacedBomb;
     private float TimeSinceBombDetonated = 10;
     
@@ -96,7 +96,8 @@ public class PlayerController : Unit
             {
                 TimeSinceBombDetonated = 0;
                 PlacedBomb.Detonate();
-                playerHUD?.DetonateBomb();
+                playerHUD?.DetonateBomb(BombCooldown);
+                PlacedBomb = null;
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {

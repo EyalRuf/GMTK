@@ -8,9 +8,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: UseBomb
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: bombState
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5542857511874461593}
   m_Solo: 0
@@ -33,9 +33,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Detonate
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: bombState
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8831402080303361387}
   m_Solo: 0
@@ -87,14 +87,8 @@ AnimatorController:
   m_Name: Bombanim
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: UseBomb
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: Detonate
-    m_Type: 9
+  - m_Name: bombState
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
