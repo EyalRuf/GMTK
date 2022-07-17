@@ -45,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6989178934442132307, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6989178934442132307, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6989178934442132307, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6989178934442132307, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -152,6 +152,15 @@ MonoBehaviour:
   AttackDirection: {fileID: 0}
   Player: {fileID: 0}
   SpearOrigin: {fileID: 0}
+  AttackDistance: 2
+  StandardPositionSmoothTime: 0.05
+  StandardRotationSmoothFactor: 0.03
+  PrepareDuration: 0.05
+  PreparePositionSmoothTime: 0.02
+  PrepareRotationSmoothFactor: 0.3
+  AttackDuration: 0.25
+  AttackPositionSmoothTime: 0.01
+  AttackRotationSmoothFactor: 0.5
 --- !u!4 &9156868324478495010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6989178934442132307, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}

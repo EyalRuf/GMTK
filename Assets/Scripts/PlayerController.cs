@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Unit
 {
     private MenuController menuController;
     public static PlayerController instance;
@@ -113,12 +113,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Death ()
+    public override void Death()
     {
-        menuController.LoadMenuLevel();
-    
+        if (menuController == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            menuController.LoadMenuLevel();
+        }
     }
-    
+
+    public override void Damage(int amount)
+    {
+        base.Damage(amount);
+        // animation & sound
+    }
+
     public static void setSpeed(float speed)
     {
         PlayerController.instance.speed = speed;

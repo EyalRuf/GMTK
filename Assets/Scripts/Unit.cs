@@ -10,24 +10,18 @@ public class Unit : MonoBehaviour {
 
     private bool invincible = false;
 
-    public bool Damage(int amount) {
+    public virtual void Damage(int amount) {
         if (!invincible)
         {
             currentHealth -= amount;
 
             if (currentHealth <= 0)
             {
-                SendMessageUpwards("Death");
-
+                Death();
             }
 
             MakeInvincible(invincibleLength);
         }
-
-        if (currentHealth <= 0)
-            return true;
-        else 
-            return false;
     }
 
     public void Heal(int amount) {
@@ -44,4 +38,8 @@ public class Unit : MonoBehaviour {
         }
     }
 
+    public virtual void Death()
+    {
+        Destroy(gameObject);
+    }
 }
