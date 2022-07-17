@@ -37,6 +37,8 @@ public class PlayerHUD : MonoBehaviour {
         //livesMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music");
         livesMusic.setParameterByName("Life", 1);
         livesMusic.start();
+
+        GameManager.AmountOfActiveEnemies = 0;
     }
 
     private void Start() 
