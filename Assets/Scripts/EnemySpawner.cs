@@ -3,31 +3,45 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public int maximumAmountOfSpawns = 10;
     public GameObject EnemyAsset;
     public int EnemiesPerRow;
     public float DistanceBetweenEnemies;
 
-    public void SpawnGroup(int amount)
+    public IEnumerator SpawnGroup(int amount)
     {
-        for (int i = 0; i < amount; i++)
+        int amountToSpawn = amount;
+        int amountPerWave = amount;
+
+        if (amountPerWave > maximumAmountOfSpawns)
         {
-            var enemy = Instantiate(EnemyAsset);
-            enemy.transform.position = transform.position;
-
-            Vector3 right = transform.right * DistanceBetweenEnemies * (i % EnemiesPerRow);
-            Vector3 backward = -transform.forward * DistanceBetweenEnemies * Mathf.FloorToInt(i / EnemiesPerRow);
-
-            enemy.transform.Translate(right + backward);
+            amountPerWave = maximumAmountOfSpawns;
+            amountToSpawn -= amountPerWave;
         }
-    }
 
-    public void SpawnConsecutively(int amountPerWave)
-    {
-        int amount = amountPerWave;
-        if (amount > GameLoop.instance.EnemiesLeft)  // If the wave amount is larger than there are enemies left to spawn..
-            amount = GameLoop.instance.EnemiesLeft;  // Don't spawn a larger wave than there are enemies left
+        while (amountToSpawn > 0)
+        {
+            if (amountPerWave > amountToSpawn)  // If the wave amount is higher than the amount left
+            {
+                amountPerWave = amountToSpawn;
+            }
 
-        GameLoop.instance.EnemiesLeft -= amount;
-        SpawnGroup(amount);
+            for (int i = 0; i < amountPerWave; i++)
+            {
+                GameManager.instance.EnemiesLeft--;
+                GameManager.AmountOfActiveEnemies++;
+                amountToSpawn--;
+
+                var enemy = Instantiate(EnemyAsset);
+                enemy.transform.position = transform.position;
+
+                Vector3 right = transform.right * DistanceBetweenEnemies * (i % EnemiesPerRow);
+                Vector3 backward = -transform.forward * DistanceBetweenEnemies * Mathf.FloorToInt(i / EnemiesPerRow);
+
+                enemy.transform.Translate(right + backward);
+            }
+
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

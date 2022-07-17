@@ -111,21 +111,20 @@ public class Spear : MonoBehaviour
             int playerNumber = (int)Player.GetNumber();
         
             int enemyLayer = LayerMask.NameToLayer("Enemy");
-            
-            //Debug.Log("Touched");
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
                 if (enemyNumber <= playerNumber)
                 {
-                    Debug.Log("Die, die, die!");
+                    //Debug.Log("Die, die, die!");
+                    GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
                     enemy.GetComponent<Unit>().Damage(100);
                     //play an animation
                     attack.SetTrigger("attackGood");
 
                 } else
                 {
-                    Debug.Log("Oopsie!");
+                    //Debug.Log("Oopsie!");
                     attack.SetTrigger("attackBad");
                 }
             }

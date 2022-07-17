@@ -14,29 +14,28 @@ public class Bomb : MonoBehaviour
     [SerializeField]
     private float rotationForce = 3f;
 
-    private float height;
+    public float height;
     Ray ray;
     MeshRenderer renda;
 
     private void Start() {
         renda = GetComponent<MeshRenderer>();
-        height = renda.bounds.size.y;
     }
 
     private void Update()
     {
-
-        if (Physics.Raycast(transform.position, Vector3.down, height))
-        { //Is grunded
-            print(gameObject.name);
-            //this.transform.eulerAngles = Vector3.zero;
-            GetComponent<Rigidbody>().isKinematic = false;
-            transform.Find("BombRing").gameObject.SetActive(true);
-        }
-        
         if (Input.GetKeyDown(KeyCode.F))
         {
             Detonate();
+        }
+    }
+
+    void OnTriggerStay(Collider other) {
+        if (other.transform.tag == "Ground")
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
+            transform.Find("BombRing").gameObject.SetActive(true);
+            Debug.Log("hello");
         }
     }
 

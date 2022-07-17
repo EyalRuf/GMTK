@@ -1026,7 +1026,7 @@ MonoBehaviour:
   InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
   spear: {fileID: 6435109817495131316}
   BombAsset: {fileID: 190852044900278049, guid: 0b7acbd9484aa91459173548d2f7349d, type: 3}
-  BombCooldown: 5
+  BombCooldown: 3
   speed: 6
   damping: 5
   playerHUD: {fileID: 0}
@@ -1061,12 +1061,13 @@ MonoBehaviour:
     rotation: {x: 180, y: 0, z: 0}
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
-  speedOn1: 8.5
-  speedOn2: 8
-  speedOn3: 7.5
-  speedOn4: 6.5
-  speedOn5: 5.5
-  speedOn6: 4.5
+  startNumber: 3
+  speedOn1: 6.5
+  speedOn2: 7.5
+  speedOn3: 6.5
+  speedOn4: 5.5
+  speedOn5: 4.5
+  speedOn6: 3.5
 --- !u!136 &1453563702
 CapsuleCollider:
   m_ObjectHideFlags: 0
