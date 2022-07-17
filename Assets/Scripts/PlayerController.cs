@@ -122,7 +122,7 @@ public class PlayerController : Unit
         }
         else
         {
-            menuController.LoadMenuLevel();
+            menuController.LoadMenuLevel(playerHUD.kills);
         }
     }
 
@@ -130,6 +130,8 @@ public class PlayerController : Unit
     {
         base.Damage(amount);
         // animation & sound
+
+        playerHUD?.UpdateHeartUI((float) currentHealth / (float) maxHealth);
     }
 
     public static void setSpeed(float speed)

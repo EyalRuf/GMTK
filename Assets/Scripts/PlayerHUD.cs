@@ -24,6 +24,11 @@ public class PlayerHUD : MonoBehaviour {
     private int enemiesKilledAmount;
     public int kills;
 
+    public Animator H1Anim;
+    public Animator H2Anim;
+    public Animator H3Anim;
+
+
     private void Start() {
         kills = 0;
         //currentBombTime = bombCooldown;
@@ -80,6 +85,22 @@ public class PlayerHUD : MonoBehaviour {
                     spawnTimerAnimator.ResetTrigger("spawn");
                 }
             }
+        }
+    }
+
+    internal void UpdateHeartUI(float v)
+    {
+        if (v < .9f)
+        {
+            H1Anim.SetBool("Fullheart", false);
+        }
+        if (v < .6f)
+        {
+            H2Anim.SetBool("Fullheart", false);
+        }
+        if (v < .3f)
+        {
+            H2Anim.SetBool("Fullheart", false);
         }
     }
 
