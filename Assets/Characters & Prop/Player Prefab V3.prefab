@@ -1150,7 +1150,7 @@ MonoBehaviour:
   damping: 5
   playerHUD: {fileID: 0}
   throwForce: 2
-  upwardForce: 3
+  upwardForce: 3.5
   spearCD: 1
 --- !u!114 &6284080254043366099
 MonoBehaviour:
@@ -1182,12 +1182,12 @@ MonoBehaviour:
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
   startNumber: 3
-  speedOn1: 5
-  speedOn2: 4.5
-  speedOn3: 4
-  speedOn4: 3.5
+  speedOn1: 7
+  speedOn2: 6
+  speedOn3: 5
+  speedOn4: 4
   speedOn5: 3
-  speedOn6: 2.5
+  speedOn6: 2
 --- !u!136 &1453563702
 CapsuleCollider:
   m_ObjectHideFlags: 0
