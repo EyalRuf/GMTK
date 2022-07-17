@@ -8008,6 +8008,7 @@ MonoBehaviour:
   InGamePanel: {fileID: 1101327168391778836}
   leaderboard: {fileID: 1101327167547775308}
   playeHUD: {fileID: 5188792956977673534}
+  cursoTexture: {fileID: 0}
   transition: {fileID: 6110892259147559488}
   transitionTime: 1
 --- !u!1 &1101327168089041888
@@ -8623,6 +8624,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

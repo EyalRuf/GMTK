@@ -1,23 +1,17 @@
-﻿using System.Collections;
+﻿using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class EnemyUnit : Unit
     {
-
-        // Use this for initialization
-        void Start()
+        public EventReference deathSoundReference;
+        private EventInstance deathSound;
+        private void Start()
         {
-
+            deathSound = RuntimeManager.CreateInstance(deathSoundReference);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
@@ -28,6 +22,7 @@ namespace Assets.Scripts
 
         public override void Death()
         {
+            deathSound.start();
             // Anim + SOund
             PlayerHUD plyrHud = FindObjectOfType<PlayerHUD>();
             if (plyrHud)
