@@ -17,6 +17,7 @@ public class GameLoop : MonoBehaviour
     [Header("Assignables")]
     public EnemySpawner[] spawners;
     private int currentSpawnerToUse = 0;
+    public PlayerHUD playerHUD;
 
     public int EnemiesLeft { get => currentRound.nrOfEnemiesLeft; set => currentRound.nrOfEnemiesLeft = value; }
     #endregion
@@ -25,6 +26,10 @@ public class GameLoop : MonoBehaviour
 
     private void Start()
     {
+        if (playerHUD == null)
+        {
+            playerHUD = FindObjectOfType<PlayerHUD>();
+        }
         currentRound.nrOfEnemiesLeft = currentRound.nrOfEnemiesToSpawn;
         _ = StartCoroutine(GameLoopCR());
     }
@@ -44,7 +49,7 @@ public class GameLoop : MonoBehaviour
             }
 
             print("Round over. Cooldown between rounds...");
-
+            playerHUD.SpawnAnim(timeBetweenRounds);
             yield return new WaitForSeconds(timeBetweenRounds);
 
             NextRound();
