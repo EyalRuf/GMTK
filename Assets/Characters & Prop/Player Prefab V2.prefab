@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 4376058782886771786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8690395, y: 3.21, z: 0.7083384}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1974993579487985051}
@@ -532,7 +532,7 @@ MonoBehaviour:
   BombAsset: {fileID: 7210640221513189202, guid: e5ecc39c6bf3bdf458e2bf43b851cc19, type: 3}
   BombCooldown: 5
   speed: 6
-  damping: 6
+  damping: 5
   playerHUD: {fileID: 0}
 --- !u!114 &4376058782886771781
 MonoBehaviour:
@@ -978,7 +978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9094537858504981386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0037, y: -0, z: 0.02}
+  m_LocalPosition: {x: 0.02, y: -0.0000000035762786, z: 0.020000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1057,15 +1057,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300554411183902472, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -15.476158
       objectReference: {fileID: 0}
     - target: {fileID: 2300554411183902472, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -12.84
       objectReference: {fileID: 0}
     - target: {fileID: 2300554411183902472, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.8333535
       objectReference: {fileID: 0}
     - target: {fileID: 2300554411183902472, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1094,14 +1094,6 @@ PrefabInstance:
     - target: {fileID: 2300554411183902472, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9156868324478495010, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 9156868324478495010, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.563
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
