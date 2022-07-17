@@ -6,7 +6,7 @@ public class GameLoop : MonoBehaviour
     public static GameLoop instance;
 
     public Rounds currentRound;
-
+    [Space(10)]
     public int enemiesIncreaseAmount = 2;
     public int enemiesPerWaveIncreaseAmount = 2;
 
