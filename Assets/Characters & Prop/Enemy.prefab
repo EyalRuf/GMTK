@@ -120,12 +120,12 @@ MonoBehaviour:
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
   startNumber: 3
-  speedOn1: 1.5
-  speedOn2: 2
-  speedOn3: 2.5
-  speedOn4: 3
-  speedOn5: 4
-  speedOn6: 4.5
+  speedOn1: 5.5
+  speedOn2: 5
+  speedOn3: 4.5
+  speedOn4: 4
+  speedOn5: 3.5
+  speedOn6: 3
 --- !u!136 &187959327722836510
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -10291,7 +10291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5480010958765706476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10617,14 +10617,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: caacd7f6965442c47ad30e0d5817646a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25fb8abe1abdc0940bf2f99afc03a6e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10751,7 +10751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8192971528368687422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10965,6 +10965,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6479603451008945173, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479603451117682112, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 314d89ab3da9b2d4cbf0e34bb8079882, type: 3}
+    - target: {fileID: 6479603451120987577, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4be287427dec4d944b434c9d324fec4d, type: 3}
     - target: {fileID: 6479603451120987577, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
       propertyPath: m_Color.b
       value: 0.3426486
@@ -10977,6 +10989,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9433962
       objectReference: {fileID: 0}
+    - target: {fileID: 6479603451434473522, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 314d89ab3da9b2d4cbf0e34bb8079882, type: 3}
     - target: {fileID: 6479603451434473522, guid: 05ddcc8f31905fd49a50327eaa5369b8, type: 3}
       propertyPath: m_FillAmount
       value: 0

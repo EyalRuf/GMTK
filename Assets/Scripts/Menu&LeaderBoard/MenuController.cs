@@ -14,10 +14,13 @@ public class MenuController : MonoBehaviour
     [Header("Other")]
     [SerializeField] private LeaderboardController leaderboard;
     public PlayerHUD playeHUD;
+    public Texture2D cursoTexture;
 
     [Header("LevelLoader")]
     public Animator transition;
     public float transitionTime = 1f;
+
+
 
     void Awake()
     {
@@ -27,6 +30,8 @@ public class MenuController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Cursor.SetCursor(cursoTexture, Vector2.zero, CursorMode.Auto);
     }
 
     public void GoToIngamePanel()
