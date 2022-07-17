@@ -12,9 +12,9 @@ public class DiceRoller : MonoBehaviour
     [SerializeField]
     private float rollCooldownTimer = 2f;
     [SerializeField]
-    private Rigidbody diceRb;
+    protected Rigidbody diceRb;
     [SerializeField]
-    private Transform diceTransform;
+    protected Transform diceTransform;
     private Vector3 hoverOffset;  // The height the dice hovers with above the platform
 
     [SerializeField]
@@ -45,13 +45,12 @@ public class DiceRoller : MonoBehaviour
             RollDice();
     }
 
-    public virtual DiceStates GetNumber()
+    public DiceStates GetNumber()
     {
         float closestDistance = Mathf.Infinity;
-        Vector3 upside = diceTransform.position + Vector3.up;
         DiceStates state = CurrentDiceState;
 
-        float forward = Vector3.Distance(diceTransform.forward + diceTransform.position, upside);
+        float forward = Vector3.Distance(diceTransform.forward, Vector3.up);
         if (forward < closestDistance)
         {
             closestDistance = forward;
@@ -59,7 +58,7 @@ public class DiceRoller : MonoBehaviour
             ChangeSpeed(speedOn1);
         }
 
-        float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
+        float back = Vector3.Distance(-diceTransform.forward, Vector3.up);
         if (back < closestDistance)
         {
             closestDistance = back;
@@ -67,7 +66,7 @@ public class DiceRoller : MonoBehaviour
             ChangeSpeed(speedOn2);
         }
 
-        float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
+        float left = Vector3.Distance(-diceTransform.right, Vector3.up);
         if (left < closestDistance)
         {
             closestDistance = left;
@@ -75,7 +74,7 @@ public class DiceRoller : MonoBehaviour
             ChangeSpeed(speedOn3);
         }
 
-        float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
+        float right = Vector3.Distance(diceTransform.right, Vector3.up);
         if (right < closestDistance)
         {
             closestDistance = right;
@@ -83,7 +82,7 @@ public class DiceRoller : MonoBehaviour
             ChangeSpeed(speedOn4);
         }
 
-        float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
+        float bottom = Vector3.Distance(-diceTransform.up, Vector3.up);
         if (bottom < closestDistance)
         {
             closestDistance = bottom;
@@ -91,9 +90,10 @@ public class DiceRoller : MonoBehaviour
             ChangeSpeed(speedOn5);
         }
 
-        float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
+        float up = Vector3.Distance(diceTransform.up, Vector3.up);
         if (up < closestDistance)
         {
+            closestDistance = up;
             state = DiceStates.Six;
             ChangeSpeed(speedOn6);
         }
@@ -154,8 +154,6 @@ public class DiceRoller : MonoBehaviour
 
         _ = StartCoroutine(DiceRollCooldown());
         PostDiceRoll();
-
-        print("New Number is : " + number);
     }
 
     private IEnumerator DiceRoll(float force, float upForce)
