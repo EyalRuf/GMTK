@@ -18,37 +18,25 @@ public class Bomb : MonoBehaviour
 
     public float height;
     Ray ray;
-    MeshRenderer renda;
+    MeshRenderer renderer;
 
-
-    public EventReference bombSizzlingRef;
-    public EventReference bombExplosionRef;
-    public EventReference bombThrowRef;
-    private EventInstance bombSizzling;
-    private EventInstance bombExplosion;
-    private EventInstance bombThrow;
-
-    private void Start() {
-        bombSizzling = RuntimeManager.CreateInstance(bombSizzlingRef);
-        bombExplosion = RuntimeManager.CreateInstance(bombExplosionRef);
-        bombThrow = RuntimeManager.CreateInstance(bombThrowRef);
-        renda = GetComponent<MeshRenderer>();
-        bombSizzling.start();
-        bombThrow.start();
+    private void Start()
+    {
+        renderer = GetComponent<MeshRenderer>();
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.transform.tag == "Ground")
         {
             GetComponent<Rigidbody>().isKinematic = false;
             transform.Find("BombRing").gameObject.SetActive(true);
+            Debug.Log("hello");
         }
     }
 
     public void Detonate()
     {
-        bombSizzling.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        bombExplosion.start();
         DiceRoller[] dice = Object.FindObjectsOfType<DiceRoller>();
 
         Vector3 position = transform.position;
@@ -63,10 +51,6 @@ public class Bomb : MonoBehaviour
                 die.ExplosionDiceRoll(transform.position, upForce, horizontalForce, rotationForce);
             }
         }
-
-        bombSizzling.release();
-        bombThrow.release();
-        bombExplosion.release();
 
         Destroy(gameObject);
     }
