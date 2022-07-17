@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 187959326838879639}
-  - component: {fileID: 187959326838879638}
   - component: {fileID: 187959326838879637}
   - component: {fileID: 187959326838879636}
   - component: {fileID: 187959326838879643}
   - component: {fileID: 187959326838879632}
   - component: {fileID: 187959327722836510}
+  - component: {fileID: -6904357320871432444}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -39,23 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &187959326838879638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187959326838879642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df4e55889146ac418ca929605d6a733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  invincibleLength: 2
-  BlinkDuration: 0.15
-  InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
 --- !u!195 &187959326838879637
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -155,6 +138,23 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-6904357320871432444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187959326838879642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1b40744795fe740a3054a1aef450a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 1
+  invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 0}
 --- !u!1 &798629252447687391
 GameObject:
   m_ObjectHideFlags: 0

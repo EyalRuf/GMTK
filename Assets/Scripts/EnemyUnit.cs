@@ -29,6 +29,11 @@ namespace Assets.Scripts
         public override void Death()
         {
             // Anim + SOund
+            PlayerHUD plyrHud = FindObjectOfType<PlayerHUD>();
+            if (plyrHud)
+            {
+                plyrHud.KillCounter();
+            }
 
             // This destroys game object so do it after
             base.Death();

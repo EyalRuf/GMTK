@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class PlayerHUD : MonoBehaviour {
 
@@ -21,14 +22,22 @@ public class PlayerHUD : MonoBehaviour {
     public float spawnAnimTime = 5.0f;
 
     private int enemiesKilledAmount;
+    public int kills;
 
     private void Start() {
+        kills = 0;
         //currentBombTime = bombCooldown;
     }
 
     public void SetHUD(Unit unit) {
         //unit.currentHealth = unit.maxHealth;
         //SetHP(unit.currentHealth);
+    }
+
+    internal void KillCounter()
+    {
+        kills++;
+        killText.text = kills + "";
     }
 
     public void SetHP(int hp) {
