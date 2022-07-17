@@ -173,7 +173,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eeab707237ac22249a66ec165949379a, type: 2}
+  - {fileID: 2100000, guid: b33fdfc7e2f827547b02e456c9dbf76e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
   expolsionForce: 1000
   horizontalForce: 10
   rotationForce: 10
+  height: 0.00001
 --- !u!54 &5614534219060906834
 Rigidbody:
   m_ObjectHideFlags: 0
