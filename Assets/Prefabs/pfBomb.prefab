@@ -111,4 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sqrBombRadius: 6
-  expolsionForce: 400
+  expolsionForce: 1000
+  horizontalForce: 10
+  rotationForce: 10
