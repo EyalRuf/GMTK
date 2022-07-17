@@ -12,7 +12,6 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             var enemy = Instantiate(EnemyAsset);
-            enemy.GetComponent<EnemyDiceRoller>().SetToRandomRotation();
             enemy.transform.position = transform.position;
 
             Vector3 right = transform.right * DistanceBetweenEnemies * (i % EnemiesPerRow);
