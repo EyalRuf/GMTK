@@ -1026,7 +1026,10 @@ MonoBehaviour:
   InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
   spear: {fileID: 6435109817495131316}
   BombAsset: {fileID: 190852044900278049, guid: 0b7acbd9484aa91459173548d2f7349d, type: 3}
-  BombCooldown: 5
+  BombCooldown: 3
+  InactiveBombMaterial: {fileID: 2100000, guid: 2ba322646cac1a3458cccd147ec497ca, type: 2}
+  ActiveBombMaterial: {fileID: 2100000, guid: b33fdfc7e2f827547b02e456c9dbf76e, type: 2}
+  BombInactiveDuration: 1
   speed: 6
   damping: 5
   playerHUD: {fileID: 0}
@@ -1062,12 +1065,12 @@ MonoBehaviour:
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
   startNumber: 3
-  speedOn1: 6.5
-  speedOn2: 7.5
-  speedOn3: 6.5
-  speedOn4: 5.5
-  speedOn5: 4.5
-  speedOn6: 3.5
+  speedOn1: 5
+  speedOn2: 4.5
+  speedOn3: 4
+  speedOn4: 3.5
+  speedOn5: 3
+  speedOn6: 2.5
 --- !u!136 &1453563702
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1473,12 +1476,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 588195968}
     - target: {fileID: 2300554410838731384, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
+      propertyPath: OnlyKillOne
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300554410838731384, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: SpearOrigin
       value: 
       objectReference: {fileID: 1565319772117886239}
     - target: {fileID: 2300554410838731384, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: AttackDistance
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300554410838731384, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
+      propertyPath: AttackDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2300554410838731384, guid: 8184d113d525cf64584289c51f7ab529, type: 3}
       propertyPath: AttackDirection

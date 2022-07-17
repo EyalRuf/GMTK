@@ -16,10 +16,15 @@ public class PlayerController : Unit
     public Spear spear;
 
     // For bomb placement
+    
     public GameObject BombAsset;
     public float BombCooldown = 5;
+    public Material InactiveBombMaterial;
+    public Material ActiveBombMaterial;
+    public float BombInactiveDuration = 2f;
     private Bomb PlacedBomb;
     private float TimeSinceBombDetonated = 10;
+    private float TimeSinceBombThrown = 0;
     
     public float speed;
 
@@ -69,6 +74,10 @@ public class PlayerController : Unit
 
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
+        // Prevent speed strafing
+        if (1 < move.magnitude)
+            move = move.normalized;
+        
         Vector3 camF = camTransform.forward;
         Vector3 camR = camTransform.right;
 
@@ -85,25 +94,34 @@ public class PlayerController : Unit
             spear.AttackIfPossible();
         }
 
-        
         // Bomb placement / detonation
         TimeSinceBombDetonated += Time.deltaTime;
+        TimeSinceBombThrown += Time.deltaTime;
+        if (PlacedBomb && BombInactiveDuration < TimeSinceBombThrown)
+            PlacedBomb.GetComponent<MeshRenderer>().material = ActiveBombMaterial;
         
         if (Input.GetMouseButtonDown(1)) {
 
             // If there is already a bomb, detonate it. If not, place one.
             if (PlacedBomb)
             {
-                TimeSinceBombDetonated = 0;
-                PlacedBomb.Detonate();
-                playerHUD?.DetonateBomb(BombCooldown);
-                PlacedBomb = null;
+                if (BombInactiveDuration < TimeSinceBombThrown)
+                {
+                    TimeSinceBombDetonated = 0;
+                    PlacedBomb.Detonate();
+                    playerHUD?.DetonateBomb(BombCooldown);
+                    PlacedBomb = null;
+                }
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {
+                TimeSinceBombThrown = 0;
                 
                 GameObject bomb = GameObject.Instantiate(BombAsset, rb.position + (transform.forward * 1),  Quaternion.identity);
                 Rigidbody bombRb = bomb.GetComponent<Rigidbody>();
+                
+                bomb.GetComponent<MeshRenderer>().material = InactiveBombMaterial;
+                
                 //bombRb.position = rb.position + (transform.forward * 2);
                 Vector3 forceToAdd = transform.forward * throwForce + transform.up * upwardForce;
                 bombRb.AddForce(forceToAdd, ForceMode.Impulse);
