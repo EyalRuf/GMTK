@@ -54,6 +54,8 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
 --- !u!195 &187959326838879637
 NavMeshAgent:
   m_ObjectHideFlags: 0
