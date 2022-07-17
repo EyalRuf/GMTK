@@ -47,7 +47,7 @@ public class GameLoop : MonoBehaviour
             }
 
             print("Round over. Cooldown between rounds...");
-            playerHUD.SpawnAnim(timeBetweenRounds);
+            playerHUD?.SpawnAnim(timeBetweenRounds);
             yield return new WaitForSeconds(timeBetweenRounds);
 
             NextRound();
