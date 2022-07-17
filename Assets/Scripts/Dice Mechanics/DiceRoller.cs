@@ -56,7 +56,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = forward;
             state = DiceStates.One;
-            PlayerController.setSpeed(speedOn1);
+            ChangeSpeed(speedOn1);
         }
 
         float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
@@ -64,7 +64,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = back;
             state = DiceStates.Two;
-            PlayerController.setSpeed(speedOn2);
+            ChangeSpeed(speedOn2);
         }
 
         float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
@@ -72,7 +72,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = left;
             state = DiceStates.Three;
-            PlayerController.setSpeed(speedOn3);
+            ChangeSpeed(speedOn3);
         }
 
         float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
@@ -80,7 +80,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = right;
             state = DiceStates.Four;
-            PlayerController.setSpeed(speedOn4);
+            ChangeSpeed(speedOn4);
         }
 
         float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
@@ -88,17 +88,22 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = bottom;
             state = DiceStates.Five;
-            PlayerController.setSpeed(speedOn5);
+            ChangeSpeed(speedOn5);
         }
 
         float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
         if (up < closestDistance)
         {
             state = DiceStates.Six;
-            PlayerController.setSpeed(speedOn6);
+            ChangeSpeed(speedOn6);
         }
 
         return state;
+    }
+
+    public virtual void ChangeSpeed(float newSpeed)
+    {
+        PlayerController.setSpeed(newSpeed);
     }
 
     public void RollDice()
