@@ -6,6 +6,10 @@ public class GameLoop : MonoBehaviour
     #region Properties
     public static GameLoop instance;
 
+    public static int AmountOfActiveEnemies = 0;
+
+    [SerializeField]
+    private int maxAmountOfActiveEnemies = 25;
     public Rounds currentRound;
     [Space(10)]
     public int enemiesIncreaseAmount = 2;
@@ -19,6 +23,10 @@ public class GameLoop : MonoBehaviour
     private int currentSpawnerToUse = 0;
     public PlayerHUD playerHUD;
 
+    private WaitForSeconds spawnIntervalWait;
+    private WaitForSeconds timeBetweenRoundsWait;
+    private WaitForFixedUpdate fixedUpdate;
+
     public int EnemiesLeft { get => currentRound.nrOfEnemiesLeft; set => currentRound.nrOfEnemiesLeft = value; }
     #endregion
 
@@ -26,6 +34,10 @@ public class GameLoop : MonoBehaviour
 
     private void Start()
     {
+        spawnIntervalWait = new WaitForSeconds(currentRound.spawnInterval);
+        timeBetweenRoundsWait = new WaitForSeconds(timeBetweenRounds);
+        fixedUpdate = new WaitForFixedUpdate();
+
         if (playerHUD == null)
         {
             playerHUD = FindObjectOfType<PlayerHUD>();
@@ -40,24 +52,32 @@ public class GameLoop : MonoBehaviour
     {
         while (true)
         {
-            print("Start of round.");
+            //print("Start of round.");
 
-            while (currentRound.nrOfEnemiesLeft > 0)
+            while (AmountOfActiveEnemies <= maxAmountOfActiveEnemies)
             {
-                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave);
-                yield return new WaitForSeconds(currentRound.spawnInterval);
+                while (currentRound.nrOfEnemiesLeft > 0)
+                {
+                    spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave);
+                    yield return spawnIntervalWait;
+                }
+
+                currentSpawnerToUse++;
+                if (currentSpawnerToUse >= spawners.Length)
+                    currentSpawnerToUse = 0;
+
+                // STOP THIS WHEN PAUSING SPAWNING
+                playerHUD?.SpawnAnim(timeBetweenRounds);
+
+                //print("Round over. Cooldown between rounds...");
+                yield return timeBetweenRoundsWait;
+
+                NextRound();
             }
 
-            currentSpawnerToUse++;
-            if (currentSpawnerToUse >= spawners.Length)
-                currentSpawnerToUse = 0;
+            //print(AmountOfActiveEnemies);
 
-            playerHUD?.SpawnAnim(timeBetweenRounds);
-
-            print("Round over. Cooldown between rounds...");
-            yield return new WaitForSeconds(timeBetweenRounds);
-
-            NextRound();
+            yield return fixedUpdate;
         }
     }
 

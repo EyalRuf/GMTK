@@ -8,18 +8,19 @@ public class EnemyDiceRoller : DiceRoller
     private EnemyStateMachine esm;
     #endregion
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         esm = GetComponent<EnemyStateMachine>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
         agent.updateRotation = false;
     }
-    public override void Start()
+    private void Start()
     {
-        base.Start();
         SetToRandomRotation();
     }
+
     public void SetToRandomRotation()
     {
         int randomNr = Random.Range(1, rotations.Length);
@@ -27,8 +28,6 @@ public class EnemyDiceRoller : DiceRoller
         Quaternion targetRot = Quaternion.Euler(rotations[randomNr - 1].rotation);
         diceTransform.localRotation = targetRot;
         GetAndSetSpeed();
-
-        print((int)CurrentDiceState);
     }
     public void GetAndSetSpeed()
     {

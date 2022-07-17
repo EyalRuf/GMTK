@@ -34,11 +34,14 @@ public class DiceRoller : MonoBehaviour
     public float speedOn6 = 4.5f;
     #endregion
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         rb = GetComponentInChildren<Rigidbody>();
         hoverOffset = diceTransform.localPosition;
+    }
 
+    private void Start()
+    {
         SetNumber(startNumber);
     }
 

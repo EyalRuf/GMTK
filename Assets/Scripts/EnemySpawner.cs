@@ -29,5 +29,6 @@ public class EnemySpawner : MonoBehaviour
 
         GameLoop.instance.EnemiesLeft -= amount;
         SpawnGroup(amount);
+        GameLoop.AmountOfActiveEnemies += amount;
     }
 }
