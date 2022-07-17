@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         camF = camF.normalized;
         camR = camR.normalized;
 
-        rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
+        rb.MovePosition(rb.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
 
         // Spear attacks
         if (Input.GetMouseButtonDown(0))
