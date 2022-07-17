@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PlayerHUD playerHUD;
 
+    [SerializeField]
+    float throwForce = 2;
+
+    [SerializeField]
+    float upwardForce = 2;
 
     private void Start()
     {
@@ -95,8 +100,12 @@ public class PlayerController : MonoBehaviour
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {
-                GameObject bomb = GameObject.Instantiate(BombAsset);
-                bomb.transform.position = worldMousePos;
+                
+                GameObject bomb = GameObject.Instantiate(BombAsset, rb.position + (transform.forward * 1),  Quaternion.identity);
+                Rigidbody bombRb = bomb.GetComponent<Rigidbody>();
+                //bombRb.position = rb.position + (transform.forward * 2);
+                Vector3 forceToAdd = transform.forward * throwForce + transform.up * upwardForce;
+                bombRb.AddForce(forceToAdd, ForceMode.Impulse);
                 PlacedBomb = bomb.GetComponent<Bomb>();
                 playerHUD?.SetBomb();
             }
