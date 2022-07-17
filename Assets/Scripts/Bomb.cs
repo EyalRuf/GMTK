@@ -31,10 +31,9 @@ public class Bomb : MonoBehaviour
             print(gameObject.name);
             //this.transform.eulerAngles = Vector3.zero;
             GetComponent<Rigidbody>().isKinematic = false;
-            
+            transform.Find("bombring").GetComponent<Animator>().enabled = true;
         }
-
-        transform.Find("bombring").Rotate(new Vector3(0, 0, 180 * Time.deltaTime)) ;
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             Detonate();
