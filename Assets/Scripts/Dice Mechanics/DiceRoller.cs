@@ -18,7 +18,10 @@ public class DiceRoller : MonoBehaviour
     private Vector3 hoverOffset;  // The height the dice hovers with above the platform
 
     [SerializeField]
-    private NumberRotation[] rotations;
+    protected NumberRotation[] rotations;
+
+    [SerializeField]
+    private DiceStates startNumber = DiceStates.Three;
 
     private bool rollCooldown = false;
 
@@ -35,14 +38,21 @@ public class DiceRoller : MonoBehaviour
     {
         rb = GetComponentInChildren<Rigidbody>();
         hoverOffset = diceTransform.localPosition;
-        RandomDice();
+
+        SetNumber(startNumber);
     }
 
-    private void Update()
+    public void SetNumber(DiceStates number)
     {
-        // What's currently up?
-        if (Input.GetKeyDown(KeyCode.Space))
-            RollDice();
+        foreach (var rot in rotations)
+        {
+            if (rot.number == (int)number)
+            {
+                CurrentDiceState = number;
+                Quaternion targetRot = Quaternion.Euler(rot.rotation);
+                diceTransform.localRotation = targetRot;
+            }
+        }
     }
 
     public DiceStates GetNumber()
@@ -97,6 +107,8 @@ public class DiceRoller : MonoBehaviour
             state = DiceStates.Six;
             ChangeSpeed(speedOn6);
         }
+
+        CurrentDiceState = state;
 
         return state;
     }
@@ -155,7 +167,6 @@ public class DiceRoller : MonoBehaviour
         _ = StartCoroutine(DiceRollCooldown());
         PostDiceRoll();
     }
-
     private IEnumerator DiceRoll(float force, float upForce)
     {
         PreDiceRoll();
@@ -277,16 +288,7 @@ public class DiceRoller : MonoBehaviour
     }
 
     #region Internal
-    private void RandomDice()
-    {
-        int RandomInt = Random.Range(1, 7);
-        DiceStates rdmDice = (DiceStates)RandomInt;
-        UpdateDiceState(rdmDice);
-    }
-    private void UpdateDiceState(DiceStates newDiceValue)
-    {
-        CurrentDiceState = newDiceValue;
-    }
+    private void UpdateDiceState(DiceStates newDiceValue) => CurrentDiceState = newDiceValue;
     #endregion
 }
 

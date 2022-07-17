@@ -42,6 +42,8 @@ public class Spear : MonoBehaviour
 
     [Header("Animation")]
     public Animator attack;
+    public Animator spearJab;
+    public Animator spearJab2;
 
     private void Start()
     {
@@ -67,7 +69,10 @@ public class Spear : MonoBehaviour
     IEnumerator Attack()
     {
         IsAttacking = true;
-        
+        //play animation
+        spearJab.SetTrigger("Jab");
+        spearJab2.SetTrigger("Jab");
+
         TargetPosition = AttackDirection.position;
         Vector3 attackDirection = AttackDirection.forward;
         TargetRotation = Quaternion.LookRotation(attackDirection);
@@ -107,7 +112,7 @@ public class Spear : MonoBehaviour
         
             int enemyLayer = LayerMask.NameToLayer("Enemy");
             
-            Debug.Log("Touched");
+            //Debug.Log("Touched");
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {

@@ -8,25 +8,56 @@ public class EnemyDiceRoller : DiceRoller
     private EnemyStateMachine esm;
     #endregion
 
-    public override void Start()
+    private void Awake()
     {
-        base.Start();
         esm = GetComponent<EnemyStateMachine>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
         agent.updateRotation = false;
     }
-
-    private void Update()
+    public override void Start()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-            RollDice();
+        base.Start();
+        SetToRandomRotation();
     }
-
-    public override void ChangeSpeed(float newSpeed)
+    public void SetToRandomRotation()
     {
-        agent.speed = newSpeed;
+        int randomNr = Random.Range(1, rotations.Length);
+        CurrentDiceState = (DiceStates)randomNr;
+        Quaternion targetRot = Quaternion.Euler(rotations[randomNr - 1].rotation);
+        diceTransform.localRotation = targetRot;
+        GetAndSetSpeed();
+
+        print((int)CurrentDiceState);
     }
+    public void GetAndSetSpeed()
+    {
+        switch (CurrentDiceState)
+        {
+            case DiceStates.One:
+                ChangeSpeed(speedOn1);
+                return;
+            case DiceStates.Two:
+                ChangeSpeed(speedOn2);
+                return;
+            case DiceStates.Three:
+                ChangeSpeed(speedOn3);
+                return;
+            case DiceStates.Four:
+                ChangeSpeed(speedOn4);
+                return;
+            case DiceStates.Five:
+                ChangeSpeed(speedOn5);
+                return;
+            case DiceStates.Six:
+                ChangeSpeed(speedOn6);
+                return;
+            default:
+                ChangeSpeed(speedOn3);
+                return; ;
+        }
+    }
+    public override void ChangeSpeed(float newSpeed) => agent.speed = newSpeed;
 
     public override void PreDiceRoll()
     {
@@ -41,21 +72,6 @@ public class EnemyDiceRoller : DiceRoller
         rb.isKinematic = true;
         agent.enabled = true;
         esm.enabled = true;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawSphere(diceTransform.up * 0.5f, 0.15f);  // 2
-/*        Gizmos.DrawSphere(diceTransform.right * 0.5f, 0.15f);
-        Gizmos.DrawSphere(diceTransform.forward * 0.5f, 0.15f);
-        Gizmos.DrawSphere(-diceTransform.up * 0.5f, 0.15f);
-        Gizmos.DrawSphere(-diceTransform.right * 0.5f, 0.15f);
-        Gizmos.DrawSphere(-diceTransform.forward * 0.5f, 0.15f);*/
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(Vector3.up * 2, 0.2f);
     }
 }
 
