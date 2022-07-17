@@ -1378,7 +1378,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1101327168022501354}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: GoToIngamePanel
+        m_MethodName: LoadGameLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8007,6 +8007,7 @@ MonoBehaviour:
   LeaderBoardPanel: {fileID: 1101327167111617621}
   InGamePanel: {fileID: 1101327168391778836}
   leaderboard: {fileID: 1101327167547775308}
+  playeHUD: {fileID: 5188792956977673534}
   transition: {fileID: 6110892259147559488}
   transitionTime: 1
 --- !u!1 &1101327168089041888

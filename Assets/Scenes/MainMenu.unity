@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1101327166358647766, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadGameLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327168022501354, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: playeHUD
-      value: 
-      objectReference: {fileID: 1887573041}
     - target: {fileID: 1101327168022501355, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -479,14 +471,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1887573041 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5188792956977673534, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-  m_PrefabInstance: {fileID: 505543406}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae36ba2a2203ac40ba31f902dc220d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
