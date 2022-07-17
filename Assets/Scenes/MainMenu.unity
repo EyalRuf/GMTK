@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,62 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1101327167111617611, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167111617611, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 51ea6d7577d4f954a9cc8e58f1d0e170, type: 3}
-    - target: {fileID: 1101327167111617611, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167111617611, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.b
-      value: 0.3529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167111617611, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167111617611, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.r
-      value: 0.94509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167173803410, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167173803410, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 51ea6d7577d4f954a9cc8e58f1d0e170, type: 3}
-    - target: {fileID: 1101327167173803410, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167173803410, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.b
-      value: 0.35154858
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167173803410, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7756504
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167173803410, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9433962
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327167173803420, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327168022501354, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: cursoTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: ae230f5279de16240a4cbcadc8b7bac7, type: 3}
     - target: {fileID: 1101327168022501355, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -273,18 +217,6 @@ PrefabInstance:
     - target: {fileID: 1101327168022501367, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_Name
       value: Canvas_Game_UI 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101327168391778836, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5031723205511612392, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192971528368687421, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
