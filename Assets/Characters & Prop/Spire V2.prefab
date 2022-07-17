@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9156868324478495010}
+  - {fileID: 3630306439746162074}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,6 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
+--- !u!224 &3630306439746162074 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3282075697750878187, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
+  m_PrefabInstance: {fileID: 2300554410838731377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8383568995338515352 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7761212446460697065, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
@@ -132,10 +137,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.008
-  m_Height: 0.025
+  m_Radius: 0.01
+  m_Height: 0.1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.06, z: 0.001}
+  m_Center: {x: 0, y: 0.025, z: 0.001}
 --- !u!114 &2300554410838731384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,8 +166,4 @@ MonoBehaviour:
   AttackDuration: 0.25
   AttackPositionSmoothTime: 0.01
   AttackRotationSmoothFactor: 0.5
---- !u!4 &9156868324478495010 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6989178934442132307, guid: a719487c15fdd5948854ef9c9003b09d, type: 3}
-  m_PrefabInstance: {fileID: 2300554410838731377}
-  m_PrefabAsset: {fileID: 0}
+  attack: {fileID: 0}
