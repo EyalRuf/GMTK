@@ -183,9 +183,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 0
   m_FollowOffset: {x: 0, y: 7.26, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 3
+  m_YDamping: 3
+  m_ZDamping: 3
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 297286640}
   m_Follow: {fileID: 297286640}
   m_Lens:
-    FieldOfView: 27.3
+    FieldOfView: 32.9
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -411,7 +411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047888207}
-  m_LocalRotation: {x: 0.3088481, y: 1.6026696e-15, z: -1.0972488e-15, w: 0.9511114}
+  m_LocalRotation: {x: 0.30884808, y: -0.00000002834533, z: 0.000000009204391, w: 0.9511114}
   m_LocalPosition: {x: 0, y: 7.84, z: -9.291661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -569,7 +569,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 27.3
+  field of view: 32.9
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -594,7 +594,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304722427}
-  m_LocalRotation: {x: 0.3088481, y: 1.6026696e-15, z: -1.0972488e-15, w: 0.9511114}
+  m_LocalRotation: {x: 0.30884808, y: -0.00000002834533, z: 0.000000009204391, w: 0.9511114}
   m_LocalPosition: {x: 0, y: 7.84, z: -9.291661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -920,7 +920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376058782886771782, guid: 8e1ebaf8a13b4a648b3b1431e86f7434, type: 3}
       propertyPath: damping
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4376058782886771782, guid: 8e1ebaf8a13b4a648b3b1431e86f7434, type: 3}
       propertyPath: playerHUD

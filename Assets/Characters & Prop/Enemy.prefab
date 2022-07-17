@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 187959326838879636}
   - component: {fileID: 187959326838879643}
   - component: {fileID: 187959326838879632}
+  - component: {fileID: 187959327722836510}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 187959326838879642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.82, y: -0.42, z: 0.06}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2426922705216330355}
@@ -132,6 +133,26 @@ MonoBehaviour:
     rotation: {x: 180, y: 0, z: 0}
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
+  speedOn1: 1.5
+  speedOn2: 2
+  speedOn3: 2.5
+  speedOn4: 3
+  speedOn5: 4
+  speedOn6: 4.5
+--- !u!136 &187959327722836510
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187959326838879642}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &798629252447687391
 GameObject:
   m_ObjectHideFlags: 0
