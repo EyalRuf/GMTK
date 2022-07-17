@@ -1145,12 +1145,12 @@ MonoBehaviour:
   BombCooldown: 3
   InactiveBombMaterial: {fileID: 2100000, guid: 2ba322646cac1a3458cccd147ec497ca, type: 2}
   ActiveBombMaterial: {fileID: 2100000, guid: b33fdfc7e2f827547b02e456c9dbf76e, type: 2}
-  BombInactiveDuration: 1
+  BombInactiveDuration: 0.8
   speed: 6
   damping: 5
   playerHUD: {fileID: 0}
   throwForce: 2
-  upwardForce: 2
+  upwardForce: 3
   spearCD: 1
   hurtSoundReferece:
     Guid:

@@ -34,9 +34,7 @@ public class Bomb : MonoBehaviour
         bombThrow = RuntimeManager.CreateInstance(bombThrowRef);
         renda = GetComponent<MeshRenderer>();
         bombSizzling.start();
-        bombSizzling.release();
         bombThrow.start();
-        bombThrow.release();
     }
 
     void OnTriggerStay(Collider other) {
@@ -44,14 +42,13 @@ public class Bomb : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = false;
             transform.Find("BombRing").gameObject.SetActive(true);
-            Debug.Log("hello");
         }
     }
 
     public void Detonate()
     {
+        bombSizzling.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         bombExplosion.start();
-        bombExplosion.release();
         DiceRoller[] dice = Object.FindObjectsOfType<DiceRoller>();
 
         Vector3 position = transform.position;
@@ -66,6 +63,10 @@ public class Bomb : MonoBehaviour
                 die.ExplosionDiceRoll(transform.position, upForce, horizontalForce, rotationForce);
             }
         }
+
+        bombSizzling.release();
+        bombThrow.release();
+        bombExplosion.release();
 
         Destroy(gameObject);
     }
