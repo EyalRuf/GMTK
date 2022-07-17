@@ -213,6 +213,27 @@ MonoBehaviour:
   horizontalForce: 10
   rotationForce: 10
   height: 0.00001
+  bombSizzlingRef:
+    Guid:
+      Data1: 1968423411
+      Data2: 1334415606
+      Data3: 1559336123
+      Data4: -1427086129
+    Path: event:/bomb/bomb_loop
+  bombExplosionRef:
+    Guid:
+      Data1: 215221274
+      Data2: 1157340999
+      Data3: -1052448885
+      Data4: -183802021
+    Path: event:/bomb/bomb_explosion
+  bombThrowRef:
+    Guid:
+      Data1: -1109125353
+      Data2: 1121733706
+      Data3: 162302379
+      Data4: 601963262
+    Path: event:/bomb/bomb_throw
 --- !u!54 &5614534219060906834
 Rigidbody:
   m_ObjectHideFlags: 0

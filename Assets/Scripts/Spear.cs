@@ -53,9 +53,14 @@ public class Spear : MonoBehaviour
     public EventReference EventReference;
     private EventInstance spearJabSound;
 
+    public EventReference deathSoundReference;
+    private EventInstance deathSound;
+
     private void Start()
     {
         spearJabSound = RuntimeManager.CreateInstance(EventReference);
+        deathSound = RuntimeManager.CreateInstance(deathSoundReference);
+
         PositionSmoothTime = StandardPositionSmoothTime;
         RotationSmoothFactor = StandardRotationSmoothFactor;
 
@@ -132,6 +137,8 @@ public class Spear : MonoBehaviour
                     //Debug.Log("Die, die, die!");
                     GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
                     enemy.GetComponent<Unit>().Damage(100);
+                    deathSound.start();
+
                     //play an animation
                     attack.SetTrigger("attackGood");
 

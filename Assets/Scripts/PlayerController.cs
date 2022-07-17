@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -44,9 +46,17 @@ public class PlayerController : Unit
     float cd = 0;
     public float spearCD = 1;
 
+    public EventReference hurtSoundReferece;
+    public EventReference deathSoundReference;
+    private EventInstance hurtSound;
+    private EventInstance deathSound;
+
     private void Awake() => instance = this;
     private void Start()
     {
+        hurtSound = RuntimeManager.CreateInstance(hurtSoundReferece);
+        deathSound = RuntimeManager.CreateInstance(deathSoundReference);
+
         menuController = FindObjectOfType<MenuController>();
 
         rb = GetComponent<Rigidbody>();
@@ -145,6 +155,8 @@ public class PlayerController : Unit
 
     public override void Death()
     {
+        deathSound.start();
+
         if (menuController == null)
         {
             Destroy(gameObject);
@@ -158,6 +170,7 @@ public class PlayerController : Unit
     public override void Damage(int amount)
     {
         base.Damage(amount);
+        hurtSound.start();
         // animation & sound
 
         playerHUD?.UpdateHeartUI((float) currentHealth / (float) maxHealth);

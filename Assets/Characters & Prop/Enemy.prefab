@@ -157,6 +157,13 @@ MonoBehaviour:
   invincibleLength: 2
   BlinkDuration: 0.15
   InvincibleMaterial: {fileID: 0}
+  deathSoundReference:
+    Guid:
+      Data1: -1411805263
+      Data2: 1288526267
+      Data3: -660362829
+      Data4: -1809069391
+    Path: event:/Enemy/enemy_death
 --- !u!1 &798629252447687391
 GameObject:
   m_ObjectHideFlags: 0
