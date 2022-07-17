@@ -14,6 +14,7 @@ public class PlayerController : Unit
     private Vector3 worldMousePos;
     // Spear
     public Spear spear;
+    public SpearSUm spearsum;
 
     // For bomb placement
     public GameObject BombAsset;
