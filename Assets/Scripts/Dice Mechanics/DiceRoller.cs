@@ -18,7 +18,7 @@ public class DiceRoller : MonoBehaviour
     private Vector3 hoverOffset;  // The height the dice hovers with above the platform
 
     [SerializeField]
-    private NumberRotation[] rotations;
+    protected NumberRotation[] rotations;
 
     private bool rollCooldown = false;
 
@@ -36,13 +36,6 @@ public class DiceRoller : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody>();
         hoverOffset = diceTransform.localPosition;
         RandomDice();
-    }
-
-    private void Update()
-    {
-        // What's currently up?
-        if (Input.GetKeyDown(KeyCode.Space))
-            RollDice();
     }
 
     public DiceStates GetNumber()
@@ -155,7 +148,6 @@ public class DiceRoller : MonoBehaviour
         _ = StartCoroutine(DiceRollCooldown());
         PostDiceRoll();
     }
-
     private IEnumerator DiceRoll(float force, float upForce)
     {
         PreDiceRoll();

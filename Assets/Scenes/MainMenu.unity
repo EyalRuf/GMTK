@@ -222,11 +222,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909155142978587638, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4286682035
-      objectReference: {fileID: 0}
     - target: {fileID: 5031723205511612392, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192971528368687421, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameLoop : MonoBehaviour
 {
+    #region Properties
     public static GameLoop instance;
 
     public Rounds currentRound;
@@ -19,6 +20,7 @@ public class GameLoop : MonoBehaviour
     public PlayerHUD playerHUD;
 
     public int EnemiesLeft { get => currentRound.nrOfEnemiesLeft; set => currentRound.nrOfEnemiesLeft = value; }
+    #endregion
 
     private void Awake() => instance = this;
 
@@ -28,7 +30,9 @@ public class GameLoop : MonoBehaviour
         {
             playerHUD = FindObjectOfType<PlayerHUD>();
         }
+
         currentRound.nrOfEnemiesLeft = currentRound.nrOfEnemiesToSpawn;
+
         _ = StartCoroutine(GameLoopCR());
     }
 
@@ -36,18 +40,21 @@ public class GameLoop : MonoBehaviour
     {
         while (true)
         {
-            print(currentRound.nrOfEnemiesLeft);
+            print("Start of round.");
+
             while (currentRound.nrOfEnemiesLeft > 0)
             {
-                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesToSpawn, currentRound.nrOfEnemiesPerWave, currentRound.spawnInterval);
-
-                currentSpawnerToUse++;
-                if (currentSpawnerToUse >= spawners.Length)
-                    currentSpawnerToUse = 0;
+                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave);
+                yield return new WaitForSeconds(currentRound.spawnInterval);
             }
 
+            currentSpawnerToUse++;
+            if (currentSpawnerToUse >= spawners.Length)
+                currentSpawnerToUse = 0;
+
+            playerHUD?.SpawnAnim(timeBetweenRounds);
+
             print("Round over. Cooldown between rounds...");
-            playerHUD.SpawnAnim(timeBetweenRounds);
             yield return new WaitForSeconds(timeBetweenRounds);
 
             NextRound();
