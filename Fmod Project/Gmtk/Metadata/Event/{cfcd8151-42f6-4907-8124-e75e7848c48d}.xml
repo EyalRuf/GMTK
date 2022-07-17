@@ -40,6 +40,9 @@
 		<relationship name="parameters">
 			<destination>{e05df584-1598-45ee-809c-2906381dfc77}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{73d95fdc-06cc-4590-ad62-c7a6c9ddd1f8}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{affc3c97-62f8-4841-a452-a5067a2dc54d}">
 		<relationship name="masterBus">
@@ -447,7 +450,7 @@
 			<value>13.439999999999998</value>
 		</property>
 		<property name="volume">
-			<value>-8</value>
+			<value>-3</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
