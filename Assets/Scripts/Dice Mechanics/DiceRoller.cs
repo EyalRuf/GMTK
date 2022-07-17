@@ -21,6 +21,14 @@ public class DiceRoller : MonoBehaviour
     private NumberRotation[] rotations;
 
     private bool rollCooldown = false;
+
+    [Space(5), Header("Speed on different numbers")]
+    public float speedOn1 = 8.5f;
+    public float speedOn2 = 8f;
+    public float speedOn3 = 7.5f;
+    public float speedOn4 = 6.5f;
+    public float speedOn5 = 5.5f;
+    public float speedOn6 = 4.5f;
     #endregion
 
     public virtual void Start()
@@ -48,7 +56,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = forward;
             state = DiceStates.One;
-            PlayerController.setSpeed(8.5f);
+            PlayerController.setSpeed(speedOn1);
         }
 
         float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
@@ -56,7 +64,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = back;
             state = DiceStates.Two;
-            PlayerController.setSpeed(8);
+            PlayerController.setSpeed(speedOn2);
         }
 
         float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
@@ -64,7 +72,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = left;
             state = DiceStates.Three;
-            PlayerController.setSpeed(7.5f);
+            PlayerController.setSpeed(speedOn3);
         }
 
         float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
@@ -72,7 +80,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = right;
             state = DiceStates.Four;
-            PlayerController.setSpeed(6.5f);
+            PlayerController.setSpeed(speedOn4);
         }
 
         float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
@@ -80,14 +88,14 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = bottom;
             state = DiceStates.Five;
-            PlayerController.setSpeed(5.5f);
+            PlayerController.setSpeed(speedOn5);
         }
 
         float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
         if (up < closestDistance)
         {
             state = DiceStates.Six;
-            PlayerController.setSpeed(4.5f);
+            PlayerController.setSpeed(speedOn6);
         }
 
         return state;
