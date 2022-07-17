@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1101327168022501354, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: cursoTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: ae230f5279de16240a4cbcadc8b7bac7, type: 3}
     - target: {fileID: 1101327168022501355, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_Pivot.x
       value: 0
