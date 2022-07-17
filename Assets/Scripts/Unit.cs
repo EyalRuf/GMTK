@@ -10,24 +10,22 @@ public class Unit : MonoBehaviour {
 
     private bool invincible = false;
 
-    public bool Damage(int amount) {
+    [Header("Invincibility Animation")]
+    public float BlinkDuration = 0.15f;
+    public Material InvincibleMaterial;
+
+    public virtual void Damage(int amount) {
         if (!invincible)
         {
             currentHealth -= amount;
 
             if (currentHealth <= 0)
             {
-                SendMessageUpwards("Death");
-
+                Death();
             }
 
             MakeInvincible(invincibleLength);
         }
-
-        if (currentHealth <= 0)
-            return true;
-        else 
-            return false;
     }
 
     public void Heal(int amount) {
@@ -37,6 +35,8 @@ public class Unit : MonoBehaviour {
     private void MakeInvincible(float amountOfSeconds) {
         _ = StartCoroutine(InvincibleTimer());
 
+        StartCoroutine(PlayInvincibilityAnimation());
+        
         IEnumerator InvincibleTimer() {
             invincible = true;
             yield return new WaitForSeconds(amountOfSeconds);
@@ -44,4 +44,32 @@ public class Unit : MonoBehaviour {
         }
     }
 
+    public virtual void Death()
+    {
+        Destroy(gameObject);
+    }
+
+    IEnumerator PlayInvincibilityAnimation()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        
+        // Get original materials
+        Material[] originalMaterials = new Material[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+            originalMaterials[i] = renderers[i].material;
+
+        // Play blinking animation as long as invincible
+        while (invincible)
+        {
+            foreach (var renderer in renderers)
+                renderer.material = InvincibleMaterial;
+
+            yield return new WaitForSeconds(BlinkDuration);
+
+            for (int i = 0; i < renderers.Length; i++)
+                renderers[i].material = originalMaterials[i];
+            
+            yield return new WaitForSeconds(BlinkDuration);
+        }
+    }
 }

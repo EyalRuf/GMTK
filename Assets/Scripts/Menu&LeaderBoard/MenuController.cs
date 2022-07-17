@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private LeaderboardController leaderboard;
+    public PlayerHUD playeHUD;
 
     [Header("LevelLoader")]
     public Animator transition;
@@ -32,6 +33,7 @@ public class MenuController : MonoBehaviour
     {
         LeaderBoardPanel.SetActive(false);
         MainMenuPanel.SetActive(false);
+        playeHUD.RestartGameUI();
 
         InGamePanel.SetActive(true);
     }
@@ -50,7 +52,7 @@ public class MenuController : MonoBehaviour
         leaderboard.FetchScores();
 
         // SET ACTUAL SCORE
-        leaderboard.activatePostGame(10);
+        leaderboard.activatePostGame(playeHUD.kills * 50);
 
         LeaderBoardPanel.SetActive(true);
     }

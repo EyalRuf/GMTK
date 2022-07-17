@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 4795396511883756864}
   - component: {fileID: 4795396511883756865}
   m_Layer: 3
-  m_Name: Player
+  m_Name: Player Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,10 +485,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74743f34d78b0d41b01a5cb627104ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
+  spear: {fileID: 0}
   BombAsset: {fileID: 0}
+  BombCooldown: 10
   speed: 3
+  damping: 0
   playerHUD: {fileID: 0}
-  diceTransform: {fileID: 5265357684744369160}
+  throwForce: 2
+  upwardForce: 2
 --- !u!114 &4795396511883756864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +527,12 @@ MonoBehaviour:
     rotation: {x: 180, y: 0, z: 0}
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
+  speedOn1: 8.5
+  speedOn2: 8
+  speedOn3: 7.5
+  speedOn4: 6.5
+  speedOn5: 5.5
+  speedOn6: 4.5
 --- !u!114 &4795396511883756865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +548,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 0}
 --- !u!1 &4795396512150343669
 GameObject:
   m_ObjectHideFlags: 0
