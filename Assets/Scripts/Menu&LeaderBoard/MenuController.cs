@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private LeaderboardController leaderboard;
+    public PlayerHUD playeHUD;
 
     [Header("LevelLoader")]
     public Animator transition;
@@ -32,6 +33,7 @@ public class MenuController : MonoBehaviour
     {
         LeaderBoardPanel.SetActive(false);
         MainMenuPanel.SetActive(false);
+        playeHUD.RestartGameUI();
 
         InGamePanel.SetActive(true);
     }
@@ -44,13 +46,13 @@ public class MenuController : MonoBehaviour
         LeaderBoardPanel.SetActive(true);
     }
 
-    public void OpenLeaderBoardAfterGame(int score)
+    public void OpenLeaderBoardAfterGame()
     {
         InGamePanel.SetActive(false);
         leaderboard.FetchScores();
 
         // SET ACTUAL SCORE
-        leaderboard.activatePostGame(score);
+        leaderboard.activatePostGame(playeHUD.kills * 50);
 
         LeaderBoardPanel.SetActive(true);
     }
@@ -78,9 +80,9 @@ public class MenuController : MonoBehaviour
         StartCoroutine(LoadGameLevelCoRoutine());
     }
 
-    public void LoadMenuLevel(int kills)
+    public void LoadMenuLevel()
     {
-        StartCoroutine(LoadMenuLevelCoRoutine(kills));
+        StartCoroutine(LoadMenuLevelCoRoutine());
     }
 
     IEnumerator LoadGameLevelCoRoutine()
@@ -99,7 +101,7 @@ public class MenuController : MonoBehaviour
 
         transition.SetTrigger("StartCrossfade");
     }
-    IEnumerator LoadMenuLevelCoRoutine(int score)
+    IEnumerator LoadMenuLevelCoRoutine()
     {
         transition.SetTrigger("StartCrossfade");
 
@@ -109,16 +111,16 @@ public class MenuController : MonoBehaviour
 
         transition.ResetTrigger("StartCrossfade");
 
-        ShowMenuPanels(score);
+        ShowMenuPanels();
 
         yield return new WaitForSeconds(transitionTime);
         
         transition.SetTrigger("StartCrossfade");
     }
 
-    private void ShowMenuPanels(int score)
+    private void ShowMenuPanels()
     {
-        OpenLeaderBoardAfterGame(score);
+        OpenLeaderBoardAfterGame();
     }
 
     private void ShowGamePanels()
