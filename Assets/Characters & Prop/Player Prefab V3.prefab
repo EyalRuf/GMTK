@@ -628,12 +628,16 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
   spear: {fileID: 6435109817495131316}
   BombAsset: {fileID: 7210640221513189202, guid: e5ecc39c6bf3bdf458e2bf43b851cc19, type: 3}
   BombCooldown: 5
   speed: 6
   damping: 5
   playerHUD: {fileID: 0}
+  throwForce: 2
+  upwardForce: 2
 --- !u!114 &6284080254043366099
 MonoBehaviour:
   m_ObjectHideFlags: 0
