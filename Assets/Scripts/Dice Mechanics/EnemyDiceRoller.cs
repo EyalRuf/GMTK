@@ -23,6 +23,11 @@ public class EnemyDiceRoller : DiceRoller
             RollDice();
     }
 
+    public override void ChangeSpeed(float newSpeed)
+    {
+        agent.speed = newSpeed;
+    }
+
     public override void PreDiceRoll()
     {
         base.PreDiceRoll();
