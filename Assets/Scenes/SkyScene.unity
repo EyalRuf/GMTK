@@ -463,7 +463,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7793834, y: 1}
+    m_SensorSize: {x: 1.7771587, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -763,6 +763,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6284080254043366096, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
+      propertyPath: BombAsset
+      value: 
+      objectReference: {fileID: 2608110624900288312, guid: 4b94645afdb8753408e106c8bd0d9d89, type: 3}
     m_RemovedComponents:
     - {fileID: 328117140, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
@@ -1139,6 +1143,8 @@ MonoBehaviour:
   maxHealth: 1
   currentHealth: 1
   invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 0}
 --- !u!1001 &1850593834556274410
 PrefabInstance:
   m_ObjectHideFlags: 0
