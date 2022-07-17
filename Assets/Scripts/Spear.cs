@@ -4,10 +4,31 @@ using System.Collections;
 
 public class Spear : MonoBehaviour
 {
+    [Header("Setup")]
     public Transform SpearTransform;
     public Transform AttackDirection;
     public DiceRoller Player;
     public Transform SpearOrigin;
+
+    [Header("Configuration")]
+    public float AttackDistance;
+    
+    [Range(0.0f, 0.2f)]
+    public float StandardPositionSmoothTime;
+    [Range(0.0f, 1.0f)]
+    public float StandardRotationSmoothFactor;
+
+    public float PrepareDuration;
+    [Range(0.0f, 0.2f)]
+    public float PreparePositionSmoothTime;
+    [Range(0.0f, 1.0f)]
+    public float PrepareRotationSmoothFactor;
+
+    public float AttackDuration;
+    [Range(0.0f, 0.2f)]
+    public float AttackPositionSmoothTime;
+    [Range(0.0f, 1.0f)]
+    public float AttackRotationSmoothFactor;
     
     private bool IsAttacking = false;
     private Vector3 CurrentVelocity = Vector3.zero;
@@ -20,6 +41,9 @@ public class Spear : MonoBehaviour
 
     private void Start()
     {
+        PositionSmoothTime = StandardPositionSmoothTime;
+        RotationSmoothFactor = StandardRotationSmoothFactor;
+            
         SpearTransform.position = SpearOrigin.position;
         SpearTransform.rotation = SpearOrigin.rotation;
     }
@@ -44,20 +68,20 @@ public class Spear : MonoBehaviour
         Vector3 attackDirection = AttackDirection.forward;
         TargetRotation = Quaternion.LookRotation(attackDirection);
         
-        PositionSmoothTime = 0.5f;
-        RotationSmoothFactor = 0.05f;
+        PositionSmoothTime = PreparePositionSmoothTime;
+        RotationSmoothFactor = PrepareRotationSmoothFactor;
         
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(PrepareDuration);
 
-        TargetPosition += attackDirection * 1;
+        TargetPosition += attackDirection * AttackDistance;
         
-        PositionSmoothTime = 0.1f;
-        RotationSmoothFactor = 1f;
+        PositionSmoothTime = AttackPositionSmoothTime;
+        RotationSmoothFactor = AttackRotationSmoothFactor;
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(AttackDuration);
         
-        PositionSmoothTime = 0.05f;
-        RotationSmoothFactor = 0.05f;
+        PositionSmoothTime = StandardPositionSmoothTime;
+        RotationSmoothFactor = StandardRotationSmoothFactor;
         
         IsAttacking = false;
     }
