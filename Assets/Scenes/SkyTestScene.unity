@@ -2020,7 +2020,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7791352, y: 1}
+    m_SensorSize: {x: 1.7771587, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3138,34 +3138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 187959326838879632, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: speedOn1
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 187959326838879632, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: speedOn2
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 187959326838879632, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: speedOn3
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 187959326838879632, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: speedOn4
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 187959326838879632, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: speedOn5
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 187959326838879632, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: speedOn6
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 187959326838879637, guid: e192024907776da41ac375a6a56b1818, type: 3}
-      propertyPath: m_Speed
-      value: 4.5
-      objectReference: {fileID: 0}
     - target: {fileID: 187959326838879639, guid: e192024907776da41ac375a6a56b1818, type: 3}
       propertyPath: m_RootOrder
       value: 1
