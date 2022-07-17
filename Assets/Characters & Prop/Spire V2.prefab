@@ -167,3 +167,12 @@ MonoBehaviour:
   AttackPositionSmoothTime: 0.01
   AttackRotationSmoothFactor: 0.5
   attack: {fileID: 0}
+  spearJab: {fileID: 0}
+  spearJab2: {fileID: 0}
+  EventReference:
+    Guid:
+      Data1: 1863680900
+      Data2: 1086647463
+      Data3: -87469127
+      Data4: -2119037969
+    Path: event:/char/char_attack

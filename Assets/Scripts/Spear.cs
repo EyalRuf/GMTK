@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Animations;
+using FMOD.Studio;
+using FMODUnity;
 
 public class Spear : MonoBehaviour
 {
@@ -45,11 +46,15 @@ public class Spear : MonoBehaviour
     public Animator spearJab;
     public Animator spearJab2;
 
+    public EventReference EventReference;
+    private EventInstance spearJabSound;
+
     private void Start()
     {
+        spearJabSound = RuntimeManager.CreateInstance(EventReference);
         PositionSmoothTime = StandardPositionSmoothTime;
         RotationSmoothFactor = StandardRotationSmoothFactor;
-            
+
         SpearTransform.position = SpearOrigin.position;
         SpearTransform.rotation = SpearOrigin.rotation;
     }
@@ -72,6 +77,8 @@ public class Spear : MonoBehaviour
         //play animation
         spearJab.SetTrigger("Jab");
         spearJab2.SetTrigger("Jab");
+
+        spearJabSound.start();
 
         TargetPosition = AttackDirection.position;
         Vector3 attackDirection = AttackDirection.forward;
@@ -111,12 +118,10 @@ public class Spear : MonoBehaviour
             int playerNumber = (int)Player.GetNumber();
         
             int enemyLayer = LayerMask.NameToLayer("Enemy");
-            
-            //Debug.Log("Touched");
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
-                if (enemyNumber == playerNumber)
+                if (enemyNumber <= playerNumber)
                 {
                     //Debug.Log("Die, die, die!");
                     GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES

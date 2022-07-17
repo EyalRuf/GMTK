@@ -1141,7 +1141,7 @@ MonoBehaviour:
   InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
   spear: {fileID: 6435109817495131316}
   BombAsset: {fileID: 190852044900278049, guid: 0b7acbd9484aa91459173548d2f7349d, type: 3}
-  BombCooldown: 5
+  BombCooldown: 3
   speed: 6
   damping: 5
   playerHUD: {fileID: 0}
