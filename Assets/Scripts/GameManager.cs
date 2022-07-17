@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake() => instance = this;
 
+    public FMODUnity.StudioEventEmitter emitter;
     private void Start()
     {
         spawnIntervalWait = new WaitForSeconds(currentRound.spawnInterval);
