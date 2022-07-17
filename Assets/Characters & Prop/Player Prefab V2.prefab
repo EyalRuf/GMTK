@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 4376058782886771780}
   m_Layer: 3
   m_Name: Player Prefab V2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 4376058782886771786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8690395, y: 3.21, z: 0.7083384}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1974993579487985051}
@@ -531,10 +531,9 @@ MonoBehaviour:
   spear: {fileID: 9094537859065790035}
   BombAsset: {fileID: 7210640221513189202, guid: e5ecc39c6bf3bdf458e2bf43b851cc19, type: 3}
   BombCooldown: 5
-  speed: 20
-  damping: 0
+  speed: 6
+  damping: 5
   playerHUD: {fileID: 0}
-  diceTransform: {fileID: 3973308561098050829}
 --- !u!114 &4376058782886771781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +563,12 @@ MonoBehaviour:
     rotation: {x: 180, y: 0, z: 0}
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
+  speedOn1: 8.5
+  speedOn2: 8
+  speedOn3: 7.5
+  speedOn4: 6.5
+  speedOn5: 5.5
+  speedOn6: 4.5
 --- !u!114 &4376058782886771780
 MonoBehaviour:
   m_ObjectHideFlags: 0
