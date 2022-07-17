@@ -33,6 +33,10 @@ public class PlayerHUD : MonoBehaviour {
         kills = 0;
         killText.text = "0";
         UpdateHeartUI(1);
+
+        //livesMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music");
+        livesMusic.setParameterByName("Life", 1);
+        livesMusic.start();
     }
 
     private void Start() 
@@ -42,7 +46,6 @@ public class PlayerHUD : MonoBehaviour {
         livesMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music");
         livesMusic.setParameterByName("Life", 1);
         livesMusic.start();
-        livesMusic.release();
     }
 
     public void SetHUD(Unit unit) {
