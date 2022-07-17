@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class BaseStateMachine : MonoBehaviour
 {
-    [SerializeField, Tooltip("Tickrate of update behaviour in miniseconds")] 
-    public float Tickrate { get; private set; }
+    [SerializeField, Tooltip("Tickrate of update behaviour in miniseconds")]
+    public float Tickrate = 1500;
     public WaitForSeconds TickRateSeconds { get => _TickRateSeconds; }
     private WaitForSeconds _TickRateSeconds;
 
