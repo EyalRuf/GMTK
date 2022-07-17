@@ -5,7 +5,7 @@
 			<value>char_attack</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{857f08b1-0f27-49b2-9a13-7a32ca53074e}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{3405a9ad-e514-4a40-9450-bce75b8bdc47}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{73d95fdc-06cc-4590-ad62-c7a6c9ddd1f8}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{ac1e0c9e-41b5-422c-b927-2a8e7ef41996}">
@@ -87,8 +90,11 @@
 	<object class="MixerBusPanner" id="{5bbfa65f-7496-4229-a689-2febe0d5e4d7}" />
 	<object class="SingleSound" id="{de55303f-61e7-4bdb-8b46-f8ca17331e9c}">
 		<property name="length">
-			<value>2</value>
+			<value>0.875</value>
 		</property>
+		<relationship name="audioFile">
+			<destination>{6128f16b-d486-4738-9171-fde5dba17edd}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5f4820f5-e017-4c94-b80e-e6174043f1ca}">
 		<property name="name">
