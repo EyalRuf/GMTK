@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
         
         if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
+
             worldMousePos = rayInfo.point;
             var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
