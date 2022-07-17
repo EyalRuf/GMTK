@@ -30,7 +30,9 @@ public class GameLoop : MonoBehaviour
         {
             playerHUD = FindObjectOfType<PlayerHUD>();
         }
+
         currentRound.nrOfEnemiesLeft = currentRound.nrOfEnemiesToSpawn;
+
         _ = StartCoroutine(GameLoopCR());
     }
 
@@ -38,18 +40,21 @@ public class GameLoop : MonoBehaviour
     {
         while (true)
         {
-            print(currentRound.nrOfEnemiesLeft);
+            print("Start of round.");
+
             while (currentRound.nrOfEnemiesLeft > 0)
             {
-                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave, currentRound.spawnInterval);
-
-                currentSpawnerToUse++;
-                if (currentSpawnerToUse >= spawners.Length)
-                    currentSpawnerToUse = 0;
+                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave);
+                yield return new WaitForSeconds(currentRound.spawnInterval);
             }
 
-            print("Round over. Cooldown between rounds...");
+            currentSpawnerToUse++;
+            if (currentSpawnerToUse >= spawners.Length)
+                currentSpawnerToUse = 0;
+
             playerHUD?.SpawnAnim(timeBetweenRounds);
+
+            print("Round over. Cooldown between rounds...");
             yield return new WaitForSeconds(timeBetweenRounds);
 
             NextRound();

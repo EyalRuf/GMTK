@@ -8,9 +8,8 @@ public class EnemyDiceRoller : DiceRoller
     private EnemyStateMachine esm;
     #endregion
 
-    public override void Start()
+    private void Awake()
     {
-        base.Start();
         esm = GetComponent<EnemyStateMachine>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
