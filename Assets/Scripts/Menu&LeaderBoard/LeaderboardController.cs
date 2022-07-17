@@ -1,8 +1,7 @@
 using UnityEngine.UI;
-//using LootLocker.Requests;
 using UnityEngine;
 using TMPro;
-using System;
+//using LootLocker.Requests;
 
 public class LeaderboardController : MonoBehaviour
 {
@@ -68,7 +67,8 @@ public class LeaderboardController : MonoBehaviour
         //            {
         //                leaderboardNames[i].text = res.items[i].member_id;
         //                leaderboardScores[i].text = res.items[i].score + "";
-        //            } else
+        //            }
+        //            else
         //            {
         //                leaderboardNames[i].text = "None";
         //                leaderboardScores[i].text = "0";
