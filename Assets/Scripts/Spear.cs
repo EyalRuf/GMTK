@@ -1,48 +1,91 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Animations;
 
 public class Spear : MonoBehaviour
 {
-    public Transform Player;
+    [Header("Setup")]
+    public Transform SpearTransform;
+    public Transform AttackDirection;
+    public DiceRoller Player;
     public Transform SpearOrigin;
 
-    private Vector3 AttackPosition;
-    private Vector3 AttackDirection;
-
+    [Header("Configuration")]
     public float AttackDistance;
-    public float PrepareAttackDuration;
-    public float AttackDuration;
-    public float AfterAttackDuration;
-
-    private bool IsAttacking;
     
+    [Range(0.0f, 0.2f)]
+    public float StandardPositionSmoothTime;
+    [Range(0.0f, 1.0f)]
+    public float StandardRotationSmoothFactor;
+
+    public float PrepareDuration;
+    [Range(0.0f, 0.2f)]
+    public float PreparePositionSmoothTime;
+    [Range(0.0f, 1.0f)]
+    public float PrepareRotationSmoothFactor;
+
+    public float AttackDuration;
+    [Range(0.0f, 0.2f)]
+    public float AttackPositionSmoothTime;
+    [Range(0.0f, 1.0f)]
+    public float AttackRotationSmoothFactor;
+    
+    private bool IsAttacking = false;
+    private Vector3 CurrentVelocity = Vector3.zero;
+
+    private Vector3 TargetPosition;
+    private Quaternion TargetRotation;
+    
+    private float PositionSmoothTime = 0.05f;
+    private float RotationSmoothFactor = 0.05f;
+
+    [Header("Animation")]
+    public Animator attack;
+
+    private void Start()
+    {
+        PositionSmoothTime = StandardPositionSmoothTime;
+        RotationSmoothFactor = StandardRotationSmoothFactor;
+            
+        SpearTransform.position = SpearOrigin.position;
+        SpearTransform.rotation = SpearOrigin.rotation;
+    }
+
     private void Update()
     {
-        transform.position = SpearOrigin.position;
+        if (!IsAttacking)
+        {
+            TargetPosition = SpearOrigin.position;
+            TargetRotation = SpearOrigin.rotation;
+        }
+            
+        SpearTransform.position = Vector3.SmoothDamp(SpearTransform.position, TargetPosition, ref CurrentVelocity, PositionSmoothTime);
+        SpearTransform.rotation = Quaternion.Lerp(SpearTransform.rotation, TargetRotation, RotationSmoothFactor);
     }
     
     IEnumerator Attack()
     {
         IsAttacking = true;
         
-        Vector3 preparePosition = transform.position = Player.position;
-        transform.rotation = Player.rotation;
+        TargetPosition = AttackDirection.position;
+        Vector3 attackDirection = AttackDirection.forward;
+        TargetRotation = Quaternion.LookRotation(attackDirection);
         
-        yield return new WaitForSeconds(PrepareAttackDuration);
-
-        for (float time = 0; time < AttackDuration; time += Time.deltaTime)
-        {
-            float alpha = time / AttackDuration;
-
-            transform.position = preparePosition + transform.forward * AttackDistance * alpha;
-
-            yield return null;
-        }
-
-        transform.position = preparePosition + transform.forward * AttackDistance;
+        PositionSmoothTime = PreparePositionSmoothTime;
+        RotationSmoothFactor = PrepareRotationSmoothFactor;
         
-        yield return new WaitForSeconds(AfterAttackDuration);
+        yield return new WaitForSeconds(PrepareDuration);
+
+        TargetPosition += attackDirection * AttackDistance;
+        
+        PositionSmoothTime = AttackPositionSmoothTime;
+        RotationSmoothFactor = AttackRotationSmoothFactor;
+        
+        yield return new WaitForSeconds(AttackDuration);
+        
+        PositionSmoothTime = StandardPositionSmoothTime;
+        RotationSmoothFactor = StandardRotationSmoothFactor;
         
         IsAttacking = false;
     }
@@ -50,14 +93,37 @@ public class Spear : MonoBehaviour
     public void AttackIfPossible()
     {
         if (!IsAttacking)
-        {
             StartCoroutine(Attack());
-        }
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        throw new NotImplementedException();
+        DiceRoller enemy = other.gameObject.GetComponent<DiceRoller>();
+
+        if (enemy)
+        {
+            int enemyNumber = (int)enemy.GetNumber();
+            int playerNumber = (int)Player.GetNumber();
+        
+            int enemyLayer = LayerMask.NameToLayer("Enemy");
+            
+            Debug.Log("Touched");
+
+            if (IsAttacking && other.gameObject.layer == enemyLayer)
+            {
+                if (enemyNumber <= playerNumber)
+                {
+                    Debug.Log("Die, die, die!");
+                    enemy.GetComponent<Unit>().Damage(100);
+                    //play an animation
+                    attack.SetTrigger("attackGood");
+
+                } else
+                {
+                    Debug.Log("Oopsie!");
+                    attack.SetTrigger("attackBad");
+                }
+            }
+        }
     }
 }
