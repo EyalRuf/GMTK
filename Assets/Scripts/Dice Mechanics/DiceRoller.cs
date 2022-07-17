@@ -48,7 +48,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = forward;
             state = DiceStates.One;
-            PlayerController.setSpeed(6);
+            PlayerController.setSpeed(8.5f);
         }
 
         float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
@@ -56,7 +56,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = back;
             state = DiceStates.Two;
-            PlayerController.setSpeed(5.5f);
+            PlayerController.setSpeed(8);
         }
 
         float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
@@ -64,7 +64,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = left;
             state = DiceStates.Three;
-            PlayerController.setSpeed(5);
+            PlayerController.setSpeed(7.5f);
         }
 
         float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
@@ -72,7 +72,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = right;
             state = DiceStates.Four;
-            PlayerController.setSpeed(4.5f);
+            PlayerController.setSpeed(6.5f);
         }
 
         float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
@@ -80,14 +80,14 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = bottom;
             state = DiceStates.Five;
-            PlayerController.setSpeed(4);
+            PlayerController.setSpeed(5.5f);
         }
 
         float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
         if (up < closestDistance)
         {
             state = DiceStates.Six;
-            PlayerController.setSpeed(3.5f);
+            PlayerController.setSpeed(4.5f);
         }
 
         return state;
