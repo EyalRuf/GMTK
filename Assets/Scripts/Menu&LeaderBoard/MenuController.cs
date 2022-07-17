@@ -44,13 +44,13 @@ public class MenuController : MonoBehaviour
         LeaderBoardPanel.SetActive(true);
     }
 
-    public void OpenLeaderBoardAfterGame()
+    public void OpenLeaderBoardAfterGame(int score)
     {
         InGamePanel.SetActive(false);
         leaderboard.FetchScores();
 
         // SET ACTUAL SCORE
-        leaderboard.activatePostGame(10);
+        leaderboard.activatePostGame(score);
 
         LeaderBoardPanel.SetActive(true);
     }
@@ -78,9 +78,9 @@ public class MenuController : MonoBehaviour
         StartCoroutine(LoadGameLevelCoRoutine());
     }
 
-    public void LoadMenuLevel()
+    public void LoadMenuLevel(int kills)
     {
-        StartCoroutine(LoadMenuLevelCoRoutine());
+        StartCoroutine(LoadMenuLevelCoRoutine(kills));
     }
 
     IEnumerator LoadGameLevelCoRoutine()
@@ -99,7 +99,7 @@ public class MenuController : MonoBehaviour
 
         transition.SetTrigger("StartCrossfade");
     }
-    IEnumerator LoadMenuLevelCoRoutine()
+    IEnumerator LoadMenuLevelCoRoutine(int score)
     {
         transition.SetTrigger("StartCrossfade");
 
@@ -109,16 +109,16 @@ public class MenuController : MonoBehaviour
 
         transition.ResetTrigger("StartCrossfade");
 
-        ShowMenuPanels();
+        ShowMenuPanels(score);
 
         yield return new WaitForSeconds(transitionTime);
         
         transition.SetTrigger("StartCrossfade");
     }
 
-    private void ShowMenuPanels()
+    private void ShowMenuPanels(int score)
     {
-        OpenLeaderBoardAfterGame();
+        OpenLeaderBoardAfterGame(score);
     }
 
     private void ShowGamePanels()

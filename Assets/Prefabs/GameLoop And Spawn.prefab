@@ -82,11 +82,12 @@ MonoBehaviour:
     nrOfEnemiesLeft: 0
     nrOfEnemiesPerWave: 1
     spawnInterval: 2
-  enemiesIncreaseAmount: 2
-  enemiesPerWaveIncreaseAmount: 2
-  timeBetweenRounds: 6
+  enemiesIncreaseAmount: 1
+  enemiesPerWaveIncreaseAmount: 1
+  timeBetweenRounds: 10
   spawners:
   - {fileID: 6706666841476544422}
+  playerHUD: {fileID: 0}
 --- !u!1 &6706666841476544423
 GameObject:
   m_ObjectHideFlags: 0
