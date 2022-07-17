@@ -1150,8 +1150,22 @@ MonoBehaviour:
   damping: 5
   playerHUD: {fileID: 0}
   throwForce: 2
-  upwardForce: 3.5
+  upwardForce: 2
   spearCD: 1
+  hurtSoundReferece:
+    Guid:
+      Data1: -1472025961
+      Data2: 1233522441
+      Data3: -1529322353
+      Data4: -754227208
+    Path: event:/char/char_damage
+  deathSoundReference:
+    Guid:
+      Data1: -305815150
+      Data2: 1275153784
+      Data3: -674906726
+      Data4: -1235419052
+    Path: event:/char/char_death
 --- !u!114 &6284080254043366099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,12 +1196,12 @@ MonoBehaviour:
   - number: 6
     rotation: {x: 0, y: 0, z: 0}
   startNumber: 3
-  speedOn1: 7
-  speedOn2: 6
-  speedOn3: 5
-  speedOn4: 4
+  speedOn1: 5
+  speedOn2: 4.5
+  speedOn3: 4
+  speedOn4: 3.5
   speedOn5: 3
-  speedOn6: 2
+  speedOn6: 2.5
 --- !u!136 &1453563702
 CapsuleCollider:
   m_ObjectHideFlags: 0
