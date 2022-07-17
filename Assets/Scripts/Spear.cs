@@ -31,6 +31,10 @@ public class Spear : MonoBehaviour
     public float AttackPositionSmoothTime;
     [Range(0.0f, 1.0f)]
     public float AttackRotationSmoothFactor;
+
+    public bool OnlyKillOne;
+
+    private bool HasKilled;
     
     private bool IsAttacking = false;
     private Vector3 CurrentVelocity = Vector3.zero;
@@ -74,6 +78,8 @@ public class Spear : MonoBehaviour
     IEnumerator Attack()
     {
         IsAttacking = true;
+        HasKilled = false;
+        
         //play animation
         spearJab.SetTrigger("Jab");
         spearJab2.SetTrigger("Jab");
@@ -121,7 +127,7 @@ public class Spear : MonoBehaviour
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
-                if (enemyNumber <= playerNumber)
+                if (enemyNumber <= playerNumber && (!HasKilled || !OnlyKillOne))
                 {
                     //Debug.Log("Die, die, die!");
                     GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
@@ -129,6 +135,7 @@ public class Spear : MonoBehaviour
                     //play an animation
                     attack.SetTrigger("attackGood");
 
+                    HasKilled = true;
                 } else
                 {
                     //Debug.Log("Oopsie!");

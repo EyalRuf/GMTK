@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour
 
     [SerializeField]
     float expolsionForce = 2f;
-
+    [SerializeField]
     private float upForce = 3f;
     [SerializeField]
     private float horizontalForce = 3f;
@@ -24,10 +24,12 @@ public class Bomb : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.F))
         {
             Detonate();
         }
+        */
     }
 
     void OnTriggerStay(Collider other) {
