@@ -116,7 +116,7 @@ public class Spear : MonoBehaviour
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
-                if (enemyNumber <= playerNumber)
+                if (enemyNumber == playerNumber)
                 {
                     Debug.Log("Die, die, die!");
                     enemy.GetComponent<Unit>().Damage(100);
