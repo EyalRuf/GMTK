@@ -1,9 +1,10 @@
-using System;
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Animations;
+using TMPro;
 
-public class Spear : MonoBehaviour
+public class SpearSUm : MonoBehaviour
 {
     [Header("Setup")]
     public Transform SpearTransform;
@@ -13,7 +14,7 @@ public class Spear : MonoBehaviour
 
     [Header("Configuration")]
     public float AttackDistance;
-    
+
     [Range(0.0f, 0.2f)]
     public float StandardPositionSmoothTime;
     [Range(0.0f, 1.0f)]
@@ -30,13 +31,13 @@ public class Spear : MonoBehaviour
     public float AttackPositionSmoothTime;
     [Range(0.0f, 1.0f)]
     public float AttackRotationSmoothFactor;
-    
+
     private bool IsAttacking = false;
     private Vector3 CurrentVelocity = Vector3.zero;
 
     private Vector3 TargetPosition;
     private Quaternion TargetRotation;
-    
+
     private float PositionSmoothTime = 0.05f;
     private float RotationSmoothFactor = 0.05f;
 
@@ -45,13 +46,18 @@ public class Spear : MonoBehaviour
     public Animator spearJab;
     public Animator spearJab2;
 
+    public float sum;
+    public float timer;
+    public TextMeshProUGUI sumNumber;
+
     private void Start()
     {
         PositionSmoothTime = StandardPositionSmoothTime;
         RotationSmoothFactor = StandardRotationSmoothFactor;
-            
+
         SpearTransform.position = SpearOrigin.position;
         SpearTransform.rotation = SpearOrigin.rotation;
+        findSum();
     }
 
     private void Update()
@@ -61,11 +67,26 @@ public class Spear : MonoBehaviour
             TargetPosition = SpearOrigin.position;
             TargetRotation = SpearOrigin.rotation;
         }
-            
+
         SpearTransform.position = Vector3.SmoothDamp(SpearTransform.position, TargetPosition, ref CurrentVelocity, PositionSmoothTime);
         SpearTransform.rotation = Quaternion.Lerp(SpearTransform.rotation, TargetRotation, RotationSmoothFactor);
+
+        timer += Time.deltaTime;
+        if (timer >= 10 )
+        {
+            findSum();
+        }
+       
     }
-    
+
+    public void findSum()
+    {
+        //randomize the sum
+        sum = Random.Range(2, 13);
+        sumNumber.text = sum.ToString();
+        timer = 0;
+    }
+
     IEnumerator Attack()
     {
         IsAttacking = true;
@@ -76,25 +97,25 @@ public class Spear : MonoBehaviour
         TargetPosition = AttackDirection.position;
         Vector3 attackDirection = AttackDirection.forward;
         TargetRotation = Quaternion.LookRotation(attackDirection);
-        
+
         PositionSmoothTime = PreparePositionSmoothTime;
         RotationSmoothFactor = PrepareRotationSmoothFactor;
-        
+
         yield return new WaitForSeconds(PrepareDuration);
 
         TargetPosition += attackDirection * AttackDistance;
-        
+
         PositionSmoothTime = AttackPositionSmoothTime;
         RotationSmoothFactor = AttackRotationSmoothFactor;
-        
+
         yield return new WaitForSeconds(AttackDuration);
-        
+
         PositionSmoothTime = StandardPositionSmoothTime;
         RotationSmoothFactor = StandardRotationSmoothFactor;
-        
+
         IsAttacking = false;
     }
-    
+
     public void AttackIfPossible()
     {
         if (!IsAttacking)
@@ -109,12 +130,14 @@ public class Spear : MonoBehaviour
         {
             int enemyNumber = (int)enemy.GetNumber();
             int playerNumber = (int)Player.GetNumber();
-        
+
             int enemyLayer = LayerMask.NameToLayer("Enemy");
+
+            //Debug.Log("Touched");
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
-                if (enemyNumber <= playerNumber)
+                if (enemyNumber + playerNumber == sum || enemyNumber == playerNumber || enemyNumber == sum)
                 {
                     //Debug.Log("Die, die, die!");
                     GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
@@ -122,7 +145,8 @@ public class Spear : MonoBehaviour
                     //play an animation
                     attack.SetTrigger("attackGood");
 
-                } else
+                }
+                else
                 {
                     //Debug.Log("Oopsie!");
                     attack.SetTrigger("attackBad");

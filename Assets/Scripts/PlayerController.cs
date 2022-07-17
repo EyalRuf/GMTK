@@ -14,6 +14,7 @@ public class PlayerController : Unit
     private Vector3 worldMousePos;
     // Spear
     public Spear spear;
+    public SpearSUm spearsum;
 
     // For bomb placement
     public GameObject BombAsset;
@@ -34,6 +35,9 @@ public class PlayerController : Unit
 
     [SerializeField]
     float upwardForce = 2;
+
+    float cd = 0;
+    public float spearCD = 1;
 
     private void Awake() => instance = this;
     private void Start()
@@ -82,9 +86,13 @@ public class PlayerController : Unit
         // Spear attacks
         if (Input.GetMouseButtonDown(0))
         {
-            spear.AttackIfPossible();
+            if (cd < 0)
+            {
+                spear.AttackIfPossible();
+                cd = spearCD;
+            }
         }
-
+        cd -= Time.deltaTime;
         
         // Bomb placement / detonation
         TimeSinceBombDetonated += Time.deltaTime;
