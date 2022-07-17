@@ -26,7 +26,7 @@ public class Bomb : MonoBehaviour
     private void Update()
     {
 
-        if (Physics.Raycast(transform.position, Vector3.down, height) || Physics.Raycast(transform.position, Vector3.up, height))
+        if (Physics.Raycast(transform.position, Vector3.down, height))
         { //Is grunded
             print(gameObject.name);
             //this.transform.eulerAngles = Vector3.zero;
