@@ -800,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 6284080254043366096, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
       propertyPath: BombAsset
       value: 
-      objectReference: {fileID: 2608110624900288312, guid: 4b94645afdb8753408e106c8bd0d9d89, type: 3}
+      objectReference: {fileID: 190852044900278049, guid: 0b7acbd9484aa91459173548d2f7349d, type: 3}
     m_RemovedComponents:
     - {fileID: 328117140, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
@@ -894,6 +894,14 @@ PrefabInstance:
     - target: {fileID: 6706666841347515781, guid: 215d7082a5552e846ad863328615dc07, type: 3}
       propertyPath: playerHUD
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706666841476544421, guid: 215d7082a5552e846ad863328615dc07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706666841476544421, guid: 215d7082a5552e846ad863328615dc07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 215d7082a5552e846ad863328615dc07, type: 3}
