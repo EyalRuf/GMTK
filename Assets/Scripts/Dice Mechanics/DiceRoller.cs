@@ -21,6 +21,14 @@ public class DiceRoller : MonoBehaviour
     private NumberRotation[] rotations;
 
     private bool rollCooldown = false;
+
+    [Space(5), Header("Speed on different numbers")]
+    public float speedOn1 = 8.5f;
+    public float speedOn2 = 8f;
+    public float speedOn3 = 7.5f;
+    public float speedOn4 = 6.5f;
+    public float speedOn5 = 5.5f;
+    public float speedOn6 = 4.5f;
     #endregion
 
     public virtual void Start()
@@ -48,7 +56,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = forward;
             state = DiceStates.One;
-            PlayerController.setSpeed(6);
+            ChangeSpeed(speedOn1);
         }
 
         float back = Vector3.Distance(-diceTransform.forward + diceTransform.position, upside);
@@ -56,7 +64,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = back;
             state = DiceStates.Two;
-            PlayerController.setSpeed(5.5f);
+            ChangeSpeed(speedOn2);
         }
 
         float left = Vector3.Distance(-diceTransform.right + diceTransform.position, upside);
@@ -64,7 +72,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = left;
             state = DiceStates.Three;
-            PlayerController.setSpeed(5);
+            ChangeSpeed(speedOn3);
         }
 
         float right = Vector3.Distance(diceTransform.right + diceTransform.position, upside);
@@ -72,7 +80,7 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = right;
             state = DiceStates.Four;
-            PlayerController.setSpeed(4.5f);
+            ChangeSpeed(speedOn4);
         }
 
         float bottom = Vector3.Distance(-diceTransform.up + diceTransform.position, upside);
@@ -80,17 +88,22 @@ public class DiceRoller : MonoBehaviour
         {
             closestDistance = bottom;
             state = DiceStates.Five;
-            PlayerController.setSpeed(4);
+            ChangeSpeed(speedOn5);
         }
 
         float up = Vector3.Distance(diceTransform.up + diceTransform.position, upside);
         if (up < closestDistance)
         {
             state = DiceStates.Six;
-            PlayerController.setSpeed(3.5f);
+            ChangeSpeed(speedOn6);
         }
 
         return state;
+    }
+
+    public virtual void ChangeSpeed(float newSpeed)
+    {
+        PlayerController.setSpeed(newSpeed);
     }
 
     public void RollDice()
@@ -103,18 +116,21 @@ public class DiceRoller : MonoBehaviour
         if (rollerCR == null && !rollCooldown)
             rollerCR = StartCoroutine(DiceRoll(force));
     }
+    public void RollDice(float force, float upForce)
+    {
+        if (rollerCR == null && !rollCooldown)
+            rollerCR = StartCoroutine(DiceRoll(force, upForce));
+    }
 
     private IEnumerator DiceRoll(float force)
     {
         PreDiceRoll();
 
-        //diceRb.useGravity = true;
         diceRb.AddTorque(Random.rotation.eulerAngles * force, ForceMode.Impulse);
         diceRb.angularDrag = 2.25f;
 
         yield return new WaitForSeconds(2f);
 
-        //diceRb.useGravity = false;
         diceRb.angularDrag = 7f;
 
         yield return new WaitUntil(() => diceRb.angularVelocity.magnitude <= 0.05f);
@@ -131,7 +147,7 @@ public class DiceRoller : MonoBehaviour
             if (rot.number == number)
             {
                 targetRot = Quaternion.Euler(rot.rotation);
-                _ = StartCoroutine(LerpToHoverPosition(0.2f));
+                _ = StartCoroutine(LerpToHoverPosition(0.2f, targetRot));
                 //diceTransform.localRotation = targetRot;
             }
         }
@@ -139,27 +155,44 @@ public class DiceRoller : MonoBehaviour
         _ = StartCoroutine(DiceRollCooldown());
         PostDiceRoll();
 
-        //_ = StartCoroutine(LerpToHoverPosition(0.5f));
         print("New Number is : " + number);
+    }
 
-        // Go back to hover position with new number as the current number.
-        IEnumerator LerpToHoverPosition(float speed)
+    private IEnumerator DiceRoll(float force, float upForce)
+    {
+        PreDiceRoll();
+
+        diceRb.AddTorque(Random.rotation.eulerAngles * force, ForceMode.Impulse);
+        rb.AddForce(transform.up * upForce, ForceMode.Impulse);
+        diceRb.angularDrag = 2.25f;
+
+        yield return new WaitForSeconds(2f);
+
+        diceRb.angularDrag = 7f;
+
+        yield return new WaitUntil(() => diceRb.angularVelocity.magnitude <= 0.05f);
+
+        diceRb.velocity = Vector3.zero;
+        diceRb.angularVelocity = Vector3.zero;
+
+        diceTransform.localPosition = hoverOffset;
+        Quaternion targetRot;
+
+        int number = (int)GetNumber();
+        foreach (var rot in rotations)
         {
-            float startTime = Time.time;
-            Quaternion startRot = diceTransform.localRotation;
-
-            float progress = 0f;
-            while (progress <= 1f)
+            if (rot.number == number)
             {
-                float timeSinceStarted = Time.time - startTime;
-                progress = timeSinceStarted / speed;
-                diceTransform.localRotation = Quaternion.Lerp(startRot, targetRot, progress);
-
-                yield return new WaitForFixedUpdate();
+                targetRot = Quaternion.Euler(rot.rotation);
+                _ = StartCoroutine(LerpToHoverPosition(0.2f, targetRot));
+                //diceTransform.localRotation = targetRot;
             }
-
-            //print("Done");
         }
+
+        _ = StartCoroutine(DiceRollCooldown());
+        PostDiceRoll();
+
+        print("New Number is : " + number);
     }
 
     /// <summary>
@@ -178,7 +211,6 @@ public class DiceRoller : MonoBehaviour
     {
         PreDiceRoll();
 
-        //diceRb.useGravity = true;
         Vector3 direction = (transform.position - bombSourcePos).normalized;
 
         rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
@@ -188,7 +220,6 @@ public class DiceRoller : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        //diceRb.useGravity = false;
         diceRb.angularDrag = 7f;
 
         yield return new WaitUntil(() => diceRb.angularVelocity.magnitude <= 0.05f);
@@ -205,7 +236,7 @@ public class DiceRoller : MonoBehaviour
             if (rot.number == number)
             {
                 targetRot = Quaternion.Euler(rot.rotation);
-                _ = StartCoroutine(LerpToHoverPosition(0.2f));
+                _ = StartCoroutine(LerpToHoverPosition(0.2f, targetRot));
                 //diceTransform.localRotation = targetRot;
             }
         }
@@ -213,27 +244,25 @@ public class DiceRoller : MonoBehaviour
         _ = StartCoroutine(DiceRollCooldown());
         PostDiceRoll();
 
-        //_ = StartCoroutine(LerpToHoverPosition(0.5f));
         print("New Number is : " + number);
+    }
 
-        // Go back to hover position with new number as the current number.
-        IEnumerator LerpToHoverPosition(float speed)
+    private IEnumerator LerpToHoverPosition(float speed, Quaternion targetRot)
+    {
+        float startTime = Time.time;
+        Quaternion startRot = diceTransform.localRotation;
+
+        float progress = 0f;
+        while (progress <= 1f)
         {
-            float startTime = Time.time;
-            Quaternion startRot = diceTransform.localRotation;
+            float timeSinceStarted = Time.time - startTime;
+            progress = timeSinceStarted / speed;
+            diceTransform.localRotation = Quaternion.Lerp(startRot, targetRot, progress);
 
-            float progress = 0f;
-            while (progress <= 1f)
-            {
-                float timeSinceStarted = Time.time - startTime;
-                progress = timeSinceStarted / speed;
-                diceTransform.localRotation = Quaternion.Lerp(startRot, targetRot, progress);
-
-                yield return new WaitForFixedUpdate();
-            }
-
-            //print("Done");
+            yield return new WaitForFixedUpdate();
         }
+
+        //print("Done");
     }
     public virtual void PreDiceRoll()
     {
