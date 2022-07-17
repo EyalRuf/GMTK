@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             {
                 while (currentRound.nrOfEnemiesLeft > 0)
                 {
-                    spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave);
+                    yield return spawners[currentSpawnerToUse].SpawnGroup(currentRound.nrOfEnemiesPerWave);
                     yield return spawnIntervalWait;
                 }
 
@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
                 if (currentSpawnerToUse >= spawners.Length)
                     currentSpawnerToUse = 0;
 
-                // STOP THIS WHEN PAUSING SPAWNING
                 playerHUD?.SpawnAnim(timeBetweenRounds);
 
                 //print("Round over. Cooldown between rounds...");
