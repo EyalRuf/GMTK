@@ -222,41 +222,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2909155142580562524, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4be287427dec4d944b434c9d324fec4d, type: 3}
-    - target: {fileID: 2909155142583876133, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+    - target: {fileID: 2909155142401023959, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 314d89ab3da9b2d4cbf0e34bb8079882, type: 3}
-    - target: {fileID: 2909155142978587632, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 2909155142401023959, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: m_FillAmount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909155142583876133, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5031723205511612392, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192971527301694284, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192971527301694286, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 25fb8abe1abdc0940bf2f99afc03a6e7, type: 3}
-    - target: {fileID: 8192971527301694286, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192971527301694286, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192971527301694286, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8192971528368687421, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
       propertyPath: m_IsActive
