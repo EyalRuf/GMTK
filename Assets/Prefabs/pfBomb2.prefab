@@ -120,6 +120,9 @@ GameObject:
   - component: {fileID: 5614534219060906834}
   - component: {fileID: 6806995662127382219}
   - component: {fileID: 4910108443938979121}
+  - component: {fileID: 4571015035805971129}
+  - component: {fileID: 74726917880104171}
+  - component: {fileID: 5827709631041122067}
   m_Layer: 10
   m_Name: pfBomb2
   m_TagString: Untagged
@@ -213,27 +216,6 @@ MonoBehaviour:
   horizontalForce: 10
   rotationForce: 10
   height: 0.00001
-  bombSizzlingRef:
-    Guid:
-      Data1: 1968423411
-      Data2: 1334415606
-      Data3: 1559336123
-      Data4: -1427086129
-    Path: event:/bomb/bomb_loop
-  bombExplosionRef:
-    Guid:
-      Data1: 215221274
-      Data2: 1157340999
-      Data3: -1052448885
-      Data4: -183802021
-    Path: event:/bomb/bomb_explosion
-  bombThrowRef:
-    Guid:
-      Data1: -1109125353
-      Data2: 1121733706
-      Data3: 162302379
-      Data4: 601963262
-    Path: event:/bomb/bomb_throw
 --- !u!54 &5614534219060906834
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -284,6 +266,96 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8153681380810226223, guid: a0ee7414929ef1941b8b0b20000a2d73, type: 3}
+--- !u!114 &4571015035805971129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190852044900278049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1968423411
+      Data2: 1334415606
+      Data3: 1559336123
+      Data4: -1427086129
+    Path: event:/bomb/bomb_loop
+  Event: 
+  PlayEvent: 1
+  StopEvent: 12
+  AllowFadeout: 0
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &74726917880104171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190852044900278049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 215221274
+      Data2: 1157340999
+      Data3: -1052448885
+      Data4: -183802021
+    Path: event:/bomb/bomb_explosion
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &5827709631041122067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190852044900278049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1109125353
+      Data2: 1121733706
+      Data3: 162302379
+      Data4: 601963262
+    Path: event:/bomb/bomb_throw
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 0
+  TriggerOnce: 1
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2932056204570481281
 GameObject:
   m_ObjectHideFlags: 0

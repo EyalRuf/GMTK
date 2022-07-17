@@ -20,23 +20,8 @@ public class Bomb : MonoBehaviour
     Ray ray;
     MeshRenderer renda;
 
-
-    public EventReference bombSizzlingRef;
-    public EventReference bombExplosionRef;
-    public EventReference bombThrowRef;
-    private EventInstance bombSizzling;
-    private EventInstance bombExplosion;
-    private EventInstance bombThrow;
-
     private void Start() {
-        bombSizzling = RuntimeManager.CreateInstance(bombSizzlingRef);
-        bombExplosion = RuntimeManager.CreateInstance(bombExplosionRef);
-        bombThrow = RuntimeManager.CreateInstance(bombThrowRef);
         renda = GetComponent<MeshRenderer>();
-        bombSizzling.start();
-        bombSizzling.release();
-        bombThrow.start();
-        bombThrow.release();
     }
 
     void OnTriggerStay(Collider other) {
@@ -50,8 +35,6 @@ public class Bomb : MonoBehaviour
 
     public void Detonate()
     {
-        bombExplosion.start();
-        bombExplosion.release();
         DiceRoller[] dice = Object.FindObjectsOfType<DiceRoller>();
 
         Vector3 position = transform.position;
