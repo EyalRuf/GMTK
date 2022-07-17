@@ -18,13 +18,15 @@ public class Bomb : MonoBehaviour
 
     public float height;
     Ray ray;
-    MeshRenderer renda;
+    MeshRenderer renderer;
 
-    private void Start() {
-        renda = GetComponent<MeshRenderer>();
+    private void Start()
+    {
+        renderer = GetComponent<MeshRenderer>();
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.transform.tag == "Ground")
         {
             GetComponent<Rigidbody>().isKinematic = false;
