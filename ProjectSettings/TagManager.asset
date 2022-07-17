@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -18,6 +19,8 @@ TagManager:
   - Enemy
   - Ground
   - Bomb
+  - Wall
+  - 
   - 
   - 
   - 

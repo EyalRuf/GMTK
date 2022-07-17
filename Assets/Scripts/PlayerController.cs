@@ -79,7 +79,7 @@ public class PlayerController : Unit
 
         Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
         
-        if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
+        if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, Mathf.Infinity, 11)) {
 
             worldMousePos = rayInfo.point;
             var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
