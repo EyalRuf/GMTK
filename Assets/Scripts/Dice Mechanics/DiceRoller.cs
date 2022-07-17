@@ -20,6 +20,9 @@ public class DiceRoller : MonoBehaviour
     [SerializeField]
     protected NumberRotation[] rotations;
 
+    [SerializeField]
+    private DiceStates startNumber = DiceStates.Three;
+
     private bool rollCooldown = false;
 
     [Space(5), Header("Speed on different numbers")]
@@ -35,7 +38,21 @@ public class DiceRoller : MonoBehaviour
     {
         rb = GetComponentInChildren<Rigidbody>();
         hoverOffset = diceTransform.localPosition;
-        RandomDice();
+
+        SetNumber(startNumber);
+    }
+
+    public void SetNumber(DiceStates number)
+    {
+        foreach (var rot in rotations)
+        {
+            if (rot.number == (int)number)
+            {
+                CurrentDiceState = number;
+                Quaternion targetRot = Quaternion.Euler(rot.rotation);
+                diceTransform.localRotation = targetRot;
+            }
+        }
     }
 
     public DiceStates GetNumber()
@@ -90,6 +107,8 @@ public class DiceRoller : MonoBehaviour
             state = DiceStates.Six;
             ChangeSpeed(speedOn6);
         }
+
+        CurrentDiceState = state;
 
         return state;
     }
@@ -269,16 +288,7 @@ public class DiceRoller : MonoBehaviour
     }
 
     #region Internal
-    private void RandomDice()
-    {
-        int RandomInt = Random.Range(1, 7);
-        DiceStates rdmDice = (DiceStates)RandomInt;
-        UpdateDiceState(rdmDice);
-    }
-    private void UpdateDiceState(DiceStates newDiceValue)
-    {
-        CurrentDiceState = newDiceValue;
-    }
+    private void UpdateDiceState(DiceStates newDiceValue) => CurrentDiceState = newDiceValue;
     #endregion
 }
 

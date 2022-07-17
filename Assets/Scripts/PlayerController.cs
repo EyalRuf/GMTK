@@ -35,10 +35,10 @@ public class PlayerController : Unit
     [SerializeField]
     float upwardForce = 2;
 
+    private void Awake() => instance = this;
     private void Start()
     {
         menuController = FindObjectOfType<MenuController>();
-        instance = this;
 
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
