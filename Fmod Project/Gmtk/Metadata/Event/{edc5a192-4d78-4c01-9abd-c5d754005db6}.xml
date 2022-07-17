@@ -5,7 +5,7 @@
 			<value>char_death</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{857f08b1-0f27-49b2-9a13-7a32ca53074e}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{ed412e45-d88b-4ee4-8d64-e738cd271ef8}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{73d95fdc-06cc-4590-ad62-c7a6c9ddd1f8}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{04be3d17-48d0-47d7-b054-365645ac0ba5}">
@@ -56,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{431d5ba8-b96b-4df8-8790-f12f39dd08fe}" />
 	<object class="MarkerTrack" id="{33431a3e-a62d-4ece-a58f-09a5f9bd84ab}" />
 	<object class="GroupTrack" id="{32df7c5c-2a31-45d0-8776-bc81a37ad175}">
+		<relationship name="modules">
+			<destination>{365bfbb6-6936-4127-94fd-780cef715786}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{0cc61237-fd4f-4021-ae00-11e88595d7e0}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{ed412e45-d88b-4ee4-8d64-e738cd271ef8}" />
+	<object class="Timeline" id="{ed412e45-d88b-4ee4-8d64-e738cd271ef8}">
+		<relationship name="modules">
+			<destination>{365bfbb6-6936-4127-94fd-780cef715786}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{e42763e5-ff33-4efd-96b9-699dba721c4c}">
 		<relationship name="effectChain">
 			<destination>{cddec601-8f35-47bc-b711-608fee21ef86}</destination>
@@ -78,6 +88,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e9e2731e-b94e-49eb-8c30-18d6cc0bbbd7}" />
+	<object class="SingleSound" id="{365bfbb6-6936-4127-94fd-780cef715786}">
+		<property name="length">
+			<value>3.008375</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{89cd884b-a229-4096-940e-99d0dfc6cfb9}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{0cc61237-fd4f-4021-ae00-11e88595d7e0}">
 		<property name="name">
 			<value>Audio 1</value>

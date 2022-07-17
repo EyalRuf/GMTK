@@ -42,6 +42,8 @@ public class Spear : MonoBehaviour
 
     [Header("Animation")]
     public Animator attack;
+    public Animator spearJab;
+    public Animator spearJab2;
 
     private void Start()
     {
@@ -67,7 +69,10 @@ public class Spear : MonoBehaviour
     IEnumerator Attack()
     {
         IsAttacking = true;
-        
+        //play animation
+        spearJab.SetTrigger("Jab");
+        spearJab2.SetTrigger("Jab");
+
         TargetPosition = AttackDirection.position;
         Vector3 attackDirection = AttackDirection.forward;
         TargetRotation = Quaternion.LookRotation(attackDirection);
@@ -111,16 +116,17 @@ public class Spear : MonoBehaviour
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
-                if (enemyNumber <= playerNumber)
+                if (enemyNumber == playerNumber)
                 {
-                    Debug.Log("Die, die, die!");
+                    //Debug.Log("Die, die, die!");
+                    GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
                     enemy.GetComponent<Unit>().Damage(100);
                     //play an animation
                     attack.SetTrigger("attackGood");
 
                 } else
                 {
-                    Debug.Log("Oopsie!");
+                    //Debug.Log("Oopsie!");
                     attack.SetTrigger("attackBad");
                 }
             }
