@@ -107,7 +107,7 @@ public class Spear : MonoBehaviour
         
             int enemyLayer = LayerMask.NameToLayer("Enemy");
             
-            Debug.Log("Touched");
+            //Debug.Log("Touched");
 
             if (IsAttacking && other.gameObject.layer == enemyLayer)
             {
