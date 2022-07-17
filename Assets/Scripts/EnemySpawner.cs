@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             var enemy = Instantiate(EnemyAsset);
+            enemy.GetComponent<EnemyDiceRoller>().SetToRandomRotation();
             enemy.transform.position = transform.position;
 
             Vector3 right = transform.right * DistanceBetweenEnemies * (i % EnemiesPerRow);
@@ -21,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnConsecutively(int totalAmount, int amountPerWave, float interval)
+    public void SpawnConsecutively(int amountPerWave, float interval)
     {
         _ = StartCoroutine(SpawnConsecutivelyCR());
 
@@ -36,7 +37,6 @@ public class EnemySpawner : MonoBehaviour
                 SpawnGroup(amount);
 
                 GameLoop.instance.EnemiesLeft -= amount;
-                print(GameLoop.instance.EnemiesLeft + " enemies left!");
 
                 yield return new WaitForSeconds(interval);
             }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameLoop : MonoBehaviour
 {
+    #region Properties
     public static GameLoop instance;
 
     public Rounds currentRound;
@@ -18,6 +19,7 @@ public class GameLoop : MonoBehaviour
     private int currentSpawnerToUse = 0;
 
     public int EnemiesLeft { get => currentRound.nrOfEnemiesLeft; set => currentRound.nrOfEnemiesLeft = value; }
+    #endregion
 
     private void Awake() => instance = this;
 
@@ -34,7 +36,7 @@ public class GameLoop : MonoBehaviour
             print(currentRound.nrOfEnemiesLeft);
             while (currentRound.nrOfEnemiesLeft > 0)
             {
-                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesToSpawn, currentRound.nrOfEnemiesPerWave, currentRound.spawnInterval);
+                spawners[currentSpawnerToUse].SpawnConsecutively(currentRound.nrOfEnemiesPerWave, currentRound.spawnInterval);
 
                 currentSpawnerToUse++;
                 if (currentSpawnerToUse >= spawners.Length)
