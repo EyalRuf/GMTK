@@ -123,7 +123,7 @@ public class PlayerController : Unit
         }
         else
         {
-            menuController.LoadMenuLevel(playerHUD.kills);
+            menuController.LoadMenuLevel();
         }
     }
 

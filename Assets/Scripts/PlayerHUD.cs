@@ -28,6 +28,12 @@ public class PlayerHUD : MonoBehaviour {
     public Animator H2Anim;
     public Animator H3Anim;
 
+    public void RestartGameUI ()
+    {
+        kills = 0;
+        killText.text = "0";
+        UpdateHeartUI(1);
+    }
 
     private void Start() {
         kills = 0;
@@ -93,14 +99,23 @@ public class PlayerHUD : MonoBehaviour {
         if (v < .9f)
         {
             H1Anim.SetBool("Fullheart", false);
+        } else
+        {
+            H1Anim.SetBool("Fullheart", true);
         }
         if (v < .6f)
         {
             H2Anim.SetBool("Fullheart", false);
+        } else
+        {
+            H2Anim.SetBool("Fullheart", true);
         }
         if (v < .3f)
         {
-            H2Anim.SetBool("Fullheart", false);
+            H3Anim.SetBool("Fullheart", false);
+        } else
+        {
+            H3Anim.SetBool("Fullheart", true);
         }
     }
 
