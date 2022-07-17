@@ -218,6 +218,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Game_UI 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1101327168391778836, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031723205511612392, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192971528368687421, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f10e014ae65f341a23bb1baba31726, type: 3}
 --- !u!1 &705507993
