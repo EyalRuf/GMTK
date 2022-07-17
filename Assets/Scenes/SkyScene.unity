@@ -463,7 +463,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7778947, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -766,7 +766,7 @@ PrefabInstance:
     - target: {fileID: 6284080254043366096, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
       propertyPath: BombAsset
       value: 
-      objectReference: {fileID: 2608110624900288312, guid: 4b94645afdb8753408e106c8bd0d9d89, type: 3}
+      objectReference: {fileID: 190852044900278049, guid: 0b7acbd9484aa91459173548d2f7349d, type: 3}
     m_RemovedComponents:
     - {fileID: 328117140, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
