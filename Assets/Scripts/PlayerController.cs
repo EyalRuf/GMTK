@@ -17,9 +17,9 @@ public class PlayerController : MonoBehaviour
 
     // For bomb placement
     public GameObject BombAsset;
-    public float BombCooldown = 5;
+    public float BombCooldown = 10;
     private Bomb PlacedBomb;
-    private float TimeSinceBombDetonated = 0;
+    private float TimeSinceBombDetonated = 10;
     
     public float speed;
 
@@ -39,10 +39,13 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         camTransform = cam.transform;
 
-        playerUnit = GetComponent<Unit>();
-        playerHUD.SetHUD(playerUnit);
+        playerHUD = FindObjectOfType<PlayerHUD>();
 
-
+        if (playerHUD != null)
+        {
+            playerUnit = GetComponent<Unit>();
+            playerHUD.SetHUD(playerUnit);
+        }
     }
 
     private void Update()
@@ -59,7 +62,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
 
-
         Vector3 move = new Vector3(horizontal, 0f, vertical);
 
         Vector3 camF = camTransform.forward;
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
         camF = camF.normalized;
         camR = camR.normalized;
 
-        rb.MovePosition(transform.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
+        rb.MovePosition(rb.position + (camR * move.x + move.z * camF) * Time.deltaTime * speed);
 
         // Spear attacks
         if (Input.GetMouseButtonDown(0))
@@ -89,12 +91,14 @@ public class PlayerController : MonoBehaviour
             {
                 TimeSinceBombDetonated = 0;
                 PlacedBomb.Detonate();
+                playerHUD?.DetonateBomb();
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {
                 GameObject bomb = GameObject.Instantiate(BombAsset);
                 bomb.transform.position = worldMousePos;
                 PlacedBomb = bomb.GetComponent<Bomb>();
+                playerHUD?.SetBomb();
             }
         }
 
