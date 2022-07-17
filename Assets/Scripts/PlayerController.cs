@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Unit
 {
     private MenuController menuController;
     public static PlayerController instance;
@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PlayerHUD playerHUD;
 
+    [SerializeField]
+    float throwForce = 2;
+
+    [SerializeField]
+    float upwardForce = 2;
 
     private void Start()
     {
@@ -56,6 +61,7 @@ public class PlayerController : MonoBehaviour
         Ray mousePosRay = cam.ScreenPointToRay(Input.mousePosition);
         
         if (Physics.Raycast(mousePosRay, out RaycastHit rayInfo, maxDistance: 500)) {
+
             worldMousePos = rayInfo.point;
             var rotation = Quaternion.LookRotation (new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z) - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
@@ -94,8 +100,12 @@ public class PlayerController : MonoBehaviour
             }
             else if (BombCooldown < TimeSinceBombDetonated)
             {
-                GameObject bomb = GameObject.Instantiate(BombAsset);
-                bomb.transform.position = worldMousePos;
+                
+                GameObject bomb = GameObject.Instantiate(BombAsset, rb.position + (transform.forward * 1),  Quaternion.identity);
+                Rigidbody bombRb = bomb.GetComponent<Rigidbody>();
+                //bombRb.position = rb.position + (transform.forward * 2);
+                Vector3 forceToAdd = transform.forward * throwForce + transform.up * upwardForce;
+                bombRb.AddForce(forceToAdd, ForceMode.Impulse);
                 PlacedBomb = bomb.GetComponent<Bomb>();
                 playerHUD?.SetBomb();
             }
@@ -103,12 +113,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Death ()
+    public override void Death()
     {
-        menuController.LoadMenuLevel();
-    
+        if (menuController == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            menuController.LoadMenuLevel();
+        }
     }
-    
+
+    public override void Damage(int amount)
+    {
+        base.Damage(amount);
+        // animation & sound
+    }
+
     public static void setSpeed(float speed)
     {
         PlayerController.instance.speed = speed;
