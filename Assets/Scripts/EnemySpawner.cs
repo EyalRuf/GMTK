@@ -24,11 +24,11 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnConsecutively(int amountPerWave)
     {
         int amount = amountPerWave;
-        if (amount > GameLoop.instance.EnemiesLeft)  // If the wave amount is larger than there are enemies left to spawn..
-            amount = GameLoop.instance.EnemiesLeft;  // Don't spawn a larger wave than there are enemies left
+        if (amount > GameManager.instance.EnemiesLeft)  // If the wave amount is larger than there are enemies left to spawn..
+            amount = GameManager.instance.EnemiesLeft;  // Don't spawn a larger wave than there are enemies left
 
-        GameLoop.instance.EnemiesLeft -= amount;
+        GameManager.instance.EnemiesLeft -= amount;
         SpawnGroup(amount);
-        GameLoop.AmountOfActiveEnemies += amount;
+        GameManager.AmountOfActiveEnemies += amount;
     }
 }

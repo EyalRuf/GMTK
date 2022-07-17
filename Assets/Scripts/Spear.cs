@@ -119,7 +119,7 @@ public class Spear : MonoBehaviour
                 if (enemyNumber <= playerNumber)
                 {
                     //Debug.Log("Die, die, die!");
-                    GameLoop.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
+                    GameManager.AmountOfActiveEnemies--;  // REMOVE FROM ACTIVE ENEMIES
                     enemy.GetComponent<Unit>().Damage(100);
                     //play an animation
                     attack.SetTrigger("attackGood");

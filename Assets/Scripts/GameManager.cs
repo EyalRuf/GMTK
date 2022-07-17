@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class GameLoop : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     #region Properties
-    public static GameLoop instance;
+    public static GameManager instance;
 
     public static int AmountOfActiveEnemies = 0;
 
