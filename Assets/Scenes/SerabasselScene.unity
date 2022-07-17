@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (8)
@@ -365,6 +377,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (12)
@@ -531,6 +555,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (3)
@@ -596,6 +632,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -663,6 +711,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (6)
@@ -729,6 +789,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (7)
@@ -794,6 +866,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -879,8 +963,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9998992, g: 0.76792455, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Color: {r: 0.96470565, g: 0.8039216, b: 1, a: 1}
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -975,6 +1059,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -1073,6 +1169,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -1369,7 +1477,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 3.3269513, y: 1}
+    m_SensorSize: {x: 2.042493, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1404,6 +1512,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -1470,6 +1590,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -1571,6 +1703,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (11)
@@ -1636,6 +1780,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -1829,7 +1985,7 @@ MonoBehaviour:
   priority: 10
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a1159a151dd166b48bbd959ab3cc31bd, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 321664324bc4e0f4295aa0a6c2577d22, type: 2}
 --- !u!114 &1304722433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,6 +2029,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -2118,6 +2286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8117654697285746160, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f7e6e8a265dad488b9e44ab7c8fef4, type: 3}
 --- !u!1001 &1469981451
@@ -2130,6 +2302,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -2197,6 +2381,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (13)
@@ -2262,6 +2458,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -2423,6 +2631,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -2587,6 +2807,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (10)
@@ -2658,6 +2890,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (5)
@@ -2723,6 +2967,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -2942,6 +3198,18 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
       value: Column (20)
@@ -3007,6 +3275,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
@@ -3166,6 +3446,18 @@ PrefabInstance:
     - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Intensity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 5558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682287426082953099, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869691660065289231, guid: 2fd1c8b57d65848448797942677033e2, type: 3}
       propertyPath: m_Name
