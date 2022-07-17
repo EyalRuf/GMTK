@@ -106,6 +106,7 @@ public class PlayerController : Unit
                 //bombRb.position = rb.position + (transform.forward * 2);
                 Vector3 forceToAdd = transform.forward * throwForce + transform.up * upwardForce;
                 bombRb.AddForce(forceToAdd, ForceMode.Impulse);
+                
                 PlacedBomb = bomb.GetComponent<Bomb>();
                 playerHUD?.SetBomb();
             }
