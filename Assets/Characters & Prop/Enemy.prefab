@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187959326838879642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.82, y: -0.42, z: 0.06}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2426922705216330355}
@@ -54,6 +54,8 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   invincibleLength: 2
+  BlinkDuration: 0.15
+  InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
 --- !u!195 &187959326838879637
 NavMeshAgent:
   m_ObjectHideFlags: 0

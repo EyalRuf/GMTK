@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 8df4e55889146ac418ca929605d6a733
+guid: d348f2453d182e045a28cb9360817fe3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - InvincibleMaterial: {fileID: 2100000, guid: b721c17c4fbc7bf418dbf7f6fc40a65b, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
