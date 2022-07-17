@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_water
-  m_Shader: {fileID: -6465566751694194690, guid: 5b0108c0a40b7dc4c8d4e56ab19d613b, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 8cdb738641c6d1442b1e6a014a726396, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -83,7 +83,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _QueueControl: -1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -94,6 +94,19 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &4343627860341132102
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!114 &7609280764189188672
 MonoBehaviour:
   m_ObjectHideFlags: 11
