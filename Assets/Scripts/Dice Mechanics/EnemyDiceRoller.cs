@@ -15,13 +15,20 @@ public class EnemyDiceRoller : DiceRoller
         agent.updateUpAxis = false;
         agent.updateRotation = false;
     }
+    public override void Start()
+    {
+        base.Start();
+        SetToRandomRotation();
+    }
     public void SetToRandomRotation()
     {
-        int randomNr = Random.Range(0, rotations.Length);
+        int randomNr = Random.Range(1, rotations.Length);
         CurrentDiceState = (DiceStates)randomNr;
-        GetAndSetSpeed();
-        Quaternion targetRot = Quaternion.Euler(rotations[randomNr].rotation);
+        Quaternion targetRot = Quaternion.Euler(rotations[randomNr - 1].rotation);
         diceTransform.localRotation = targetRot;
+        GetAndSetSpeed();
+
+        print((int)CurrentDiceState);
     }
     public void GetAndSetSpeed()
     {
