@@ -6,12 +6,6 @@ namespace Assets.Scripts
 {
     public class EnemyUnit : Unit
     {
-        public EventReference deathSoundReference;
-        private EventInstance deathSound;
-        private void Start()
-        {
-            deathSound = RuntimeManager.CreateInstance(deathSoundReference);
-        }
         void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
@@ -22,7 +16,6 @@ namespace Assets.Scripts
 
         public override void Death()
         {
-            deathSound.start();
             // Anim + SOund
             PlayerHUD plyrHud = FindObjectOfType<PlayerHUD>();
             if (plyrHud)
