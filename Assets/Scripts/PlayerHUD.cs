@@ -1,9 +1,7 @@
+using FMOD.Studio;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System;
+using UnityEngine;
 
 public class PlayerHUD : MonoBehaviour {
 
@@ -28,6 +26,8 @@ public class PlayerHUD : MonoBehaviour {
     public Animator H2Anim;
     public Animator H3Anim;
 
+    private EventInstance livesMusic;
+
     public void RestartGameUI ()
     {
         kills = 0;
@@ -35,9 +35,14 @@ public class PlayerHUD : MonoBehaviour {
         UpdateHeartUI(1);
     }
 
-    private void Start() {
+    private void Start() 
+    {
         kills = 0;
         //currentBombTime = bombCooldown;
+        livesMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music");
+        livesMusic.setParameterByName("Life", 1);
+        livesMusic.start();
+        livesMusic.release();
     }
 
     public void SetHUD(Unit unit) {
@@ -98,22 +103,30 @@ public class PlayerHUD : MonoBehaviour {
     {
         if (v < .9f)
         {
+            print("2 lives left");
             H1Anim.SetBool("Fullheart", false);
-        } else
+            livesMusic.setParameterByName("Life", 2);
+        }
+        else
         {
             H1Anim.SetBool("Fullheart", true);
         }
         if (v < .6f)
         {
+            print("1 life left");
             H2Anim.SetBool("Fullheart", false);
-        } else
+            livesMusic.setParameterByName("Life", 3);
+        }
+        else
         {
             H2Anim.SetBool("Fullheart", true);
         }
         if (v < .3f)
         {
             H3Anim.SetBool("Fullheart", false);
-        } else
+            livesMusic.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+        else
         {
             H3Anim.SetBool("Fullheart", true);
         }

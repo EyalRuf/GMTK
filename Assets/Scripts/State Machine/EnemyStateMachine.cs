@@ -29,10 +29,8 @@ public class EnemyStateMachine : BaseStateMachine
     /// <param name="destination">The destination's coordinates</param>
     public void SetAgentDestination(Vector3 destination)
     {
-        if (!agent.pathPending)
-        {
-            agent.ResetPath();
-            agent.SetDestination(destination);
-        }
+        //agent.ResetPath();
+        agent.SetDestination(destination);
+        print(destination);
     }
 }

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d99302f9e7243434e8c2e7d3a4bd5844
   - enabled: 1
+    path: Assets/Scenes/OedsScene.unity
+    guid: 3861842057773bb478641a75c237e1fd
+  - enabled: 1
     path: Assets/Scenes/EyalScene.unity
     guid: 8eb091d3c901c734d93aa522a70b7899
   m_configObjects: {}
