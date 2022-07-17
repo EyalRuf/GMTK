@@ -45,7 +45,7 @@ public class DiceRoller : MonoBehaviour
             RollDice();
     }
 
-    public virtual DiceStates GetNumber()
+    public DiceStates GetNumber()
     {
         float closestDistance = Mathf.Infinity;
         DiceStates state = CurrentDiceState;

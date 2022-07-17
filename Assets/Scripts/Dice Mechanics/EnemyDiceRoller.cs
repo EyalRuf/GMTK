@@ -43,61 +43,6 @@ public class EnemyDiceRoller : DiceRoller
         esm.enabled = true;
     }
 
-    public override DiceStates GetNumber()
-    {
-        float closestDistance = Mathf.Infinity;
-        DiceStates state = CurrentDiceState;
-        Vector3 upWorld = Vector3.up * 2;
-        float bottom = Vector3.Distance(-diceTransform.up, upWorld);
-        if (bottom < closestDistance)
-        {
-            closestDistance = bottom;
-            state = DiceStates.One;
-            ChangeSpeed(speedOn1);
-        }
-
-        float up = Vector3.Distance(diceTransform.up, upWorld);
-        if (up < closestDistance)
-        {
-            closestDistance = up;
-            state = DiceStates.Two;
-            ChangeSpeed(speedOn2);
-        }
-
-        float left = Vector3.Distance(-diceTransform.right, upWorld);
-        if (left < closestDistance)
-        {
-            closestDistance = left;
-            state = DiceStates.Three;
-            ChangeSpeed(speedOn3);
-        }
-
-        float right = Vector3.Distance(diceTransform.right, upWorld);
-        if (right < closestDistance)
-        {
-            closestDistance = right;
-            state = DiceStates.Four;
-            ChangeSpeed(speedOn4);
-        }
-
-        float back = Vector3.Distance(-diceTransform.forward, upWorld);
-        if (back < closestDistance)
-        {
-            closestDistance = back;
-            state = DiceStates.Five;
-            ChangeSpeed(speedOn5);
-        }
-
-        float forward = Vector3.Distance(diceTransform.forward, upWorld);
-        if (forward < closestDistance)
-        {
-            closestDistance = forward;
-            state = DiceStates.Six;
-            ChangeSpeed(speedOn6);
-        }
-        return state;
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
