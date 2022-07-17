@@ -45,7 +45,7 @@ public class DiceRoller : MonoBehaviour
             RollDice();
     }
 
-    public DiceStates GetNumber()
+    public virtual DiceStates GetNumber()
     {
         float closestDistance = Mathf.Infinity;
         Vector3 upside = diceTransform.position + Vector3.up;
@@ -278,32 +278,6 @@ public class DiceRoller : MonoBehaviour
         rollCooldown = false;
     }
 
-    public static Vector3 GetForward(DiceStates currentDiceState)
-    {
-        switch (currentDiceState)
-        {
-            case DiceStates.One:
-                return Vector3.forward;
-
-            case DiceStates.Two:
-                return Vector3.back;
-
-            case DiceStates.Three:
-                return Vector3.left;
-
-            case DiceStates.Four:
-                return Vector3.right;
-
-            case DiceStates.Five:
-                return Vector3.down;
-
-            case DiceStates.Six:
-                return Vector3.up;
-
-            default:
-                return Vector3.forward;
-        }
-    }
     #region Internal
     private void RandomDice()
     {
